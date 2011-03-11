@@ -1,14 +1,13 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <b>Name:</b>
-  <%= @project.name %>
-</p>
+<h2><%= @project.name %> » Features</h2>
 
-<p>
-  <b>Path:</b>
-  <%= @project.path %>
-</p>
+<h3>Feature files</h3>
+<ul>
+<% Dir.glob(File.join(@project.path_to_features, '**/*.feature')).each do |f| %>
+  <li><%= render_feature(f) %></li>
+<% end %>
+</ul>
 
 
 <%= link_to 'Edit', edit_project_path(@project) %> |
