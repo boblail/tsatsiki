@@ -1,0 +1,16 @@
+### Similar projects
+
+ - [Cucumber FM](http://demo.cucumber.fm/documentation/features)
+ - [Courgette](http://21croissants.github.com/courgette/)
+ - [Relish](http://relishapp.com/)
+ - [Viewcumber](https://github.com/versapay/viewcumber) &mdash; a custom formatter
+
+### Cucumber help
+
+ - http://cukes.info/
+ - [Cucumber and Ruby on Rails](https://github.com/aslakhellesoy/cucumber/wiki/ruby-on-rails)
+ - [Fixtures](https://github.com/aslakhellesoy/cucumber/wiki/fixtures)
+ - [Tags](https://github.com/aslakhellesoy/cucumber/wiki/Tags)
+ - [Organization](http://testingwithvision.com/2011/01/06/cucumber-feature-organization-classification/)
+ - [Keywords](https://github.com/aslakhellesoy/cucumber/wiki/Feature-Introduction)
+ 
