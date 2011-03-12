@@ -1,14 +1,26 @@
 <p id="notice"><%= notice %></p>
 
 <h2><%= @project.name %> » Features</h2>
+<p>Path: <%= @project.path %></p>
 
-<h3>Feature files</h3>
+<h3>Features</h3>
 <ul>
-<% Dir.glob(File.join(@project.path_to_features, '**/*.feature')).each do |f| %>
-  <li><%= render_feature(f) %></li>
-<% end %>
+  <%= render :partial => "feature", :collection => @project.features -%>
 </ul>
-
 
 <%= link_to 'Edit', edit_project_path(@project) %> |
 <%= link_to 'Back', projects_path %>
+
+<script type="text/javascript">
+  document.observe('dom:loaded', function() {
+    App.debug('loaded');
+    
+    var ws = new WebSocket("ws://localhost:3000/socket");
+    ws.onmessage = function(e) { App.debug(e.data); };
+    ws.onclose = function() { App.debug('closed'); };
+    ws.onopen = function() { 
+      App.debug('open');
+      ws.send("hello server");
+    };
+  });
+</script>

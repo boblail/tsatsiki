@@ -2,12 +2,6 @@ require 'cucumber'
 
 module ProjectsHelper
   
-  def render_feature(file)
-    ast = Cucumber::FeatureFile.new(file).parse([], {})
-    sexp = ast.to_sexp
-    render_sexp(sexp)
-  end
-  
   #
   # sexp Examples
   #
@@ -15,13 +9,17 @@ module ProjectsHelper
   #   Scenario: [:scenario,        line, keyword, text, children]
   #   Step:     [:step_invocation, line, keyword, text          ]
   #
-  def render_sexp(sexp)
-    html = "<dl><dt>" << sexp.shift.to_s << "</dt><dd>"
-    sexp.each do |item|
-      html << (item.is_a?(Array) ? render_sexp(item) : "#{item}<br />")
-    end
-    html << "</dd></dl>"
-    html.html_safe
+  def render_scenarios(scenarios)
+    html = scenarios.inject("") {|html, scenario| scenario?(scenario) ? (html << render_scenario(scenario)) : html}
+    html.blank? ? html : "<ul>#{html}</ul>".html_safe
+  end
+  
+  def scenario?(sexp)
+    sexp.is_a?(Array) && (sexp.first == :scenario)
+  end
+  
+  def render_scenario(scenario)
+    "<li>#{scenario[3]}</li>"
   end
   
 end
