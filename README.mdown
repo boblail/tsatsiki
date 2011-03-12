@@ -6,19 +6,16 @@ Tsatsiki is a Project Management tool that uses Cucumber Features for tickets.
 
 Check out the repo
 
-    git://github.com/boblail/tsatsiki.git
+    git clone git://github.com/boblail/tsatsiki.git
+    cd tsatsiki
 
 Install the bundle
 
     bundle install
 
-Run migrations
+Run migrations and (optionally) Seed the site with the Project data for Tsatsiki
 
-    rake db:create db:migrate
-
-(Optionally) Seed the site with the Project data for Tsatsiki
-
-    rake db:fixtures:load
+    rake db:create db:migrate db:fixtures:load
 
 Finally run tsatsiki:
 
