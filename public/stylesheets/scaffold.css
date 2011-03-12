@@ -58,3 +58,15 @@ div.field, div.actions {
 #ajax_loader {
   display:hidden;
 }
+
+.scenario.unknown {
+  color:#ccc;
+}
+
+.scenario.passed {
+  color:green;
+}
+
+.scenario.failed {
+  color:red;
+}

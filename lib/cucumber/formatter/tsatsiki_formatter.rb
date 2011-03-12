@@ -14,7 +14,27 @@ module Cucumber
       
       def after_feature(feature)
         super
-        @websocket.send_message('data', {:project_id => @options[:project_id], :data => @gf.gherkin_object})
+        @websocket.send_message('result', {
+          :project_id => @options[:project_id],
+          :feature_file => feature.file,
+          :scenarios => format_scenarios(@gf.gherkin_object)
+        })
+      end
+      
+      def format_scenarios(results)
+        results['elements'].map do |element|
+          {
+            :line => element['line'],
+            :status => get_status_of_steps(element['steps'])
+          }
+        end
+      end
+      
+      def get_status_of_steps(steps)
+        statuses = steps.map {|step| step['result']['status']}
+        status = nil
+        begin; status = statuses.shift; end while(status == "passed")
+        status || "passed"
       end
       
     end

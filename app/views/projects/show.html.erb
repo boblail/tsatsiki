@@ -26,6 +26,15 @@
       ws.send(JSON.stringify({message: message, data: data}));
     }
     
+    function applyResult(data) {
+      App.debug(data);
+      var feature = $$('li[data-path="' + data.feature_file + '"]')[0];
+      data.scenarios.__each(function(scenario) {
+        var li = feature.down('li[data-line="' + scenario.line + '"]');
+        li.className = 'scenario ' + scenario.status;
+      });
+    }
+    
     ws.onmessage = function(e) { 
       var json = JSON.parse(e.data),
           message = json.message,
@@ -43,8 +52,8 @@
             loader && loader.hide();
             break;
             
-          case 'data':
-            App.debug(data);
+          case 'result':
+            applyResult(data);
             break;
         }
       }

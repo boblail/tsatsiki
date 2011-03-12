@@ -1,5 +1,3 @@
-require 'cucumber'
-
 module ProjectsHelper
   
   #
@@ -19,7 +17,7 @@ module ProjectsHelper
   end
   
   def render_scenario(scenario)
-    "<li>#{scenario[3]}</li>"
+    "<li class=\"scenario unknown\" data-line=\"#{scenario[1]}\">#{scenario[3]}</li>"
   end
   
 end
