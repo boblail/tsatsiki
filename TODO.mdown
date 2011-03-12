@@ -1,5 +1,5 @@
 # TODO
 
-1. Write a custom Formatter for Cucumber that emits JSON through the socket; have the page request it when it opens the socket
+1. Have TsatsikiConfiguration load cucumber.yml
 2. Include FreightTrain and implement the editor that allows creation of new features
 3. Make Features and Scenarios expandable and collapsable; when expanding a scenario load its detail

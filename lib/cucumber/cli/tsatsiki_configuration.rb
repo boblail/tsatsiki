@@ -5,8 +5,9 @@ module Cucumber
     class TsatsikiConfiguration < ::Cucumber::Cli::Configuration
       
       def initialize(websocket, params)
-        super
+        super()
         @websocket = websocket
+        @options.parse!([])
         @options[:paths] = []
         @options[:project_id] = params['project_id']
       end
