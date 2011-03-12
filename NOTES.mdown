@@ -13,4 +13,11 @@
  - [Tags](https://github.com/aslakhellesoy/cucumber/wiki/Tags)
  - [Organization](http://testingwithvision.com/2011/01/06/cucumber-feature-organization-classification/)
  - [Keywords](https://github.com/aslakhellesoy/cucumber/wiki/Feature-Introduction)
- 
+
+### Asynchronous WebSockets
+
+ - [WebSockets](http://www.igvita.com/2009/12/22/ruby-websockets-tcp-for-the-browser/)
+ - [Faye](http://www.igvita.com/2009/12/22/ruby-websockets-tcp-for-the-browser/)
+ - [rails3-faye](https://github.com/jcoglan/rails3-faye)
+ - [socky-example](https://github.com/socky/socky-example)
+ - [websocket-rack](https://github.com/imanel/websocket-rack)
