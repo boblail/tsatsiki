@@ -12,7 +12,7 @@ class Feature
   end
   
   def name
-    sexp[2]
+    sexp[2][/.*$/]
   end
   
   def scenarios
