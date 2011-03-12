@@ -16,11 +16,22 @@
     App.debug('loaded');
     
     var ws = new WebSocket("ws://localhost:3000/socket");
-    ws.onmessage = function(e) { App.debug(e.data); };
+    
+    function sendMessage(message, data) {
+      App.debug('sending ' + message);
+      ws.send(JSON.stringify({message:message, data:data}));
+    }
+    
+    ws.onmessage = function(e) { 
+      var json = JSON.parse(e.data),
+          message = json.message,
+          data = json.data;
+      App.debug('received ' + message);
+    };
     ws.onclose = function() { App.debug('closed'); };
     ws.onopen = function() { 
       App.debug('open');
-      ws.send("hello server");
+      sendMessage('execute', {project:<%= @project.id %>, features:'all'});
     };
   });
 </script>
