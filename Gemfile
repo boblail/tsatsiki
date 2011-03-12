@@ -3,10 +3,11 @@ source 'http://rubygems.org'
 gem 'rails', '3.0.3'
 gem 'sqlite3-ruby', :require => 'sqlite3'
 
+gem 'gherkin', '2.3.2' # an API change post-2.3.2 breaks cucumber's GherkinFormatterAdapter
 gem 'cucumber'
 gem 'websocket-rack'
 
-# We need to use a web server is running EventMachine for WebSocket-Rack
+# We need to use a web server running EventMachine for WebSocket-Rack
 # gem 'eventmachine', '>= 1.0.0'
 gem 'thin'
 

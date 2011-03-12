@@ -1,4 +1,5 @@
 require 'rack/websocket'
+require 'cucumber'
 
 class WebsocketApp < Rack::WebSocket::Application
   
@@ -56,7 +57,16 @@ private
   
   
   def on_execute(params)
-    send_message('ok')
+    send_message('started', params)
+    
+    configuration = Cucumber::Cli::TsatsikiConfiguration.new(self, params)
+    runtime = Cucumber::Runtime.new(configuration)
+    runtime.run!
+    
+  rescue Cucumber::Cli::ProfilesNotDefinedError, Cucumber::Cli::YmlLoadError, Cucumber::Cli::ProfileNotFound => e
+    send_message('error', {:message => $!.message})
+  ensure
+    send_message('finished', params)
   end
   
   

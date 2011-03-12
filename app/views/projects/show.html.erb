@@ -11,27 +11,48 @@
 <%= link_to 'Edit', edit_project_path(@project) %> |
 <%= link_to 'Back', projects_path %>
 
+<p><%= image_tag "ajax-loader.gif", :id => "ajax_loader" -%></p>
+
 <script type="text/javascript">
   document.observe('dom:loaded', function() {
     App.debug('loaded');
     
-    var ws = new WebSocket("ws://localhost:3000/socket");
+    var ws = new WebSocket("ws://localhost:3000/socket"),
+        loader = $('ajax_loader');
     
     function sendMessage(message, data) {
-      App.debug('sending ' + message);
-      ws.send(JSON.stringify({message:message, data:data}));
+      App.debug('sending "' + message + '"');
+      data.project_id = <%= @project.id %>;
+      ws.send(JSON.stringify({message: message, data: data}));
     }
     
     ws.onmessage = function(e) { 
       var json = JSON.parse(e.data),
           message = json.message,
           data = json.data;
-      App.debug('received ' + message);
+          
+      if(data.project_id == <%= @project.id %>) {
+        App.debug('received "' + message + '"');
+        
+        switch(message) {
+          case 'started':
+            loader && loader.show();
+            break;
+            
+          case 'finished':
+            loader && loader.hide();
+            break;
+            
+          case 'data':
+            App.debug(data);
+            break;
+        }
+      }
     };
     ws.onclose = function() { App.debug('closed'); };
     ws.onopen = function() { 
       App.debug('open');
-      sendMessage('execute', {project:<%= @project.id %>, features:'all'});
+      sendMessage('execute', {features: 'all'});
     };
   });
 </script>

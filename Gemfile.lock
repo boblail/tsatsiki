@@ -60,8 +60,9 @@ GEM
     eventmachine (0.12.10)
     ffi (0.6.3)
       rake (>= 0.8.7)
-    gherkin (2.3.4)
+    gherkin (2.3.2)
       json (~> 1.4.6)
+      term-ansicolor (~> 1.0.5)
     i18n (0.5.0)
     json (1.4.6)
     json_pure (1.5.1)
@@ -126,6 +127,7 @@ DEPENDENCIES
   cucumber
   cucumber-rails
   database_cleaner
+  gherkin (= 2.3.2)
   rails (= 3.0.3)
   sqlite3-ruby
   thin
