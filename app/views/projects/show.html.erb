@@ -11,7 +11,7 @@
 <%= link_to 'Edit', edit_project_path(@project) %> |
 <%= link_to 'Back', projects_path %>
 
-<p><%= image_tag "ajax-loader.gif", :id => "ajax_loader" -%></p>
+<p><%= image_tag "ajax-loader.gif", :id => "ajax_loader", :style => "display:none;" -%></p>
 
 <script type="text/javascript">
   document.observe('dom:loaded', function() {
@@ -22,6 +22,7 @@
     
     function sendMessage(message, data) {
       App.debug('sending "' + message + '"');
+      data = data || {};
       data.project_id = <%= @project.id %>;
       ws.send(JSON.stringify({message: message, data: data}));
     }
@@ -38,14 +39,13 @@
     ws.onmessage = function(e) { 
       var json = JSON.parse(e.data),
           message = json.message,
-          data = json.data;
-          
+          data = json.data || {};
+      
+      App.debug('received "' + message + '"' + (data.project_id ? (' for project ' + data.project_id) : ''));
+      
       if(data.project_id == <%= @project.id %>) {
-        App.debug('received "' + message + '"');
-        
         switch(message) {
           case 'started':
-            loader && loader.show();
             break;
             
           case 'finished':
@@ -62,6 +62,7 @@
     ws.onopen = function() { 
       App.debug('open');
       sendMessage('execute', {features: 'all'});
+      loader && loader.show();
     };
   });
 </script>

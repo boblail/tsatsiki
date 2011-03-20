@@ -70,3 +70,7 @@ div.field, div.actions {
 .scenario.failed {
   color:red;
 }
+
+.scenario.undefined {
+  color:#D8D000;
+}

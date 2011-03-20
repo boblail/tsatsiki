@@ -1,8 +1,9 @@
 class Feature
   
-  def initialize(absolute_path)
-     @absolute_path = absolute_path
-     @relative_path = Pathname.new(absolute_path).relative_path_from(Rails.root)
+  def initialize(project, absolute_path)
+    @project = project
+    @absolute_path = absolute_path
+    @relative_path = Pathname.new(absolute_path).relative_path_from(Pathname.new(@project.path))
   end
   
   attr_reader :absolute_path, :relative_path
