@@ -1,7 +1,5 @@
 # TODO
 
-1. Run Cucumber in a separate process
-2. Include FreightTrain and implement the editor that allows creation of new features
-3. Make scenarios link to scenario story view/edit (edit -- using same form from #2)
-4. Make Features expandable and collapsable
-5. Make it prettier
+- Work on stability
+- Include FreightTrain and implement the editor that allows creation of new features
+- Make Features and Scenarios expandable and collapsable; when expanding a scenario load its detail
