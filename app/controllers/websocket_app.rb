@@ -69,9 +69,31 @@ private
     tsatsiki_url    = "ws://localhost:3000/socket"
     command         = "cucumber-tsatsiki TSATSIKI_URL=#{tsatsiki_url} TSATSIKI_PROJECT_ID=#{project.id}"
     
-    process = ChildProcess.new("cd #{project.path} && #{command}")
-    process.io.inherit!
-    process.start
+    # fork do 
+    #   with_clean_env do
+    #     exec("cd #{project.path} && #{command}")
+    #   end
+    # end
+    with_clean_env do
+      process = ChildProcess.new("cd #{project.path} && #{command}")
+      process.io.inherit!
+      process.start
+    end
+  end
+  
+  
+  
+  # c.f. http://spectator.in/2011/01/28/bundler-in-subshells/
+  # c.f. https://github.com/carlhuda/bundler/issuesearch?state=open&q=with_clean_env#issue/900
+  
+  BUNDLER_VARS = %w(BUNDLE_GEMFILE RUBYOPT BUNDLE_BIN_PATH)
+  
+  def with_clean_env
+    bundled_env = ENV.to_hash
+    BUNDLER_VARS.each{ |var| ENV.delete(var) }
+    yield
+  ensure
+    ENV.replace(bundled_env.to_hash)
   end
   
   
