@@ -9,31 +9,35 @@ class WebsocketApp < Rack::WebSocket::Application
   end
   
   def self.connections
-    @connections ||= []
+    (@connections ||= [])
   end
   
   def connections
     self.class.connections
   end
   
+  def connection
+    websocket_handler
+  end
   
   
   
-  def on_open
-    connections.push(@conn) unless connections.member?(@conn)
+  
+  def on_open(env)
+    connections.push(connection) unless connections.member?(connection)
     puts Rails.logger.debug "Client connected (#{connections.length} connections)"
   end
   
-  def on_close
-    connections.delete(@conn)
+  def on_close(env)
+    connections.delete(connection)
     puts Rails.logger.debug "Client disconnected (#{connections.length} connections)"
   end
   
-  def on_error(error)
+  def on_error(env, error)
     puts Rails.logger.error "Error occured: " + error.message
   end
   
-  def on_message(raw_message)
+  def on_message(env, raw_message)
     json = JSON.parse(raw_message)
     message = json['message']
     data = json['data']
@@ -113,7 +117,7 @@ private
   
   def send_data_to_all(data)
     connections.each do |connection|
-      connection.send(data)
+      connection.send_data(data)
     end
   end
   
