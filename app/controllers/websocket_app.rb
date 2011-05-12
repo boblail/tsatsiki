@@ -43,7 +43,7 @@ class WebsocketApp < Rack::WebSocket::Application
     data = json['data']
     
     case message
-    when 'execute':                         on_execute(data)
+    when 'execute':                         on_execute(env, data)
     when 'hello':                           on_hello(data)
     when 'started', 'finished', 'result':   relay_message(message, raw_message)
     else
@@ -64,14 +64,13 @@ private
   end
   
   
-  def on_execute(params)
+  def on_execute(env, params)
     puts "[execute] #{params.inspect}"
     
     project         = Project.find params['project_id'].to_i
     formatter       = 'Tsatsiki::Cucumber::Formatter'
     formatter_path  = File.join(Rails.root, 'lib', 'tsatsiki', 'cucumber', 'formatter.rb')
-    tsatsiki_url    = "ws://localhost:3000/socket"
-    command         = "cucumber-tsatsiki TSATSIKI_URL=#{tsatsiki_url} TSATSIKI_PROJECT_ID=#{project.id}"
+    command         = "cucumber-tsatsiki TSATSIKI_URL=#{tsatsiki_url(env)} TSATSIKI_PROJECT_ID=#{project.id}"
     
     # fork do 
     #   with_clean_env do
@@ -120,6 +119,14 @@ private
       connection.send_data(data)
     end
   end
+  
+  
+  
+  def tsatsiki_url(env)
+    root_url = env['HTTP_HOST']
+    "ws://#{root_url}/socket"
+  end
+  
   
   
 end
