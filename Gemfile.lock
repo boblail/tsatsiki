@@ -135,7 +135,8 @@ GEM
     thor (0.14.6)
     treetop (1.4.9)
       polyglot (>= 0.3.1)
-    tsatsiki-cucumber-formatter (0.1.0)
+    tsatsiki-cucumber-formatter (0.1.1)
+      addressable
       cucumber
       libwebsocket
     tzinfo (0.3.27)
@@ -160,5 +161,5 @@ DEPENDENCIES
   ruby-debug19
   sqlite3-ruby
   thin
-  tsatsiki-cucumber-formatter
+  tsatsiki-cucumber-formatter (= 0.1.1)
   websocket-rack (= 0.3.0)
