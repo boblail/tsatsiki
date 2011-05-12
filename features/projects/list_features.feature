@@ -1,5 +1,6 @@
 Feature: Show Project
 
+  @human
   Scenario: List Features
     When I am on the Tsatsiki project page
     Then I should see the Tsatsiki features

@@ -17,7 +17,15 @@ class Feature
   end
   
   def scenarios
-    sexp[3..-1]
+    @scenarios ||= sexp[3..-1].select(&method(:scenario?)).map {|scenario| Scenario.new(self, scenario)}
+  end
+  
+  
+private
+  
+  
+  def scenario?(*scenario)
+    scenario.is_a?(Array) && (scenario.first == :scenario)
   end
   
 end
