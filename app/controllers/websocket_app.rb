@@ -78,7 +78,7 @@ private
     #   end
     # end
     with_clean_env do
-      process = ChildProcess.new("cd #{project.path} && #{command}")
+      process = ChildProcess.new("cd #{project.path} && bundle exec #{command}")
       process.io.inherit!
       process.start
     end
