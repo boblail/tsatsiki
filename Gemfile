@@ -5,7 +5,7 @@ gem 'sqlite3-ruby', :require => 'sqlite3'
 
 # gem 'gherkin', '2.3.2' # an API change post-2.3.2 breaks cucumber's GherkinFormatterAdapter
 gem 'cucumber'
-gem 'websocket-rack', '0.2.1'
+gem 'websocket-rack', '0.3.0'
 gem 'childprocess'
 gem 'tsatsiki-cucumber-formatter'
 
