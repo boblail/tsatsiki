@@ -7,7 +7,7 @@ class Project < ActiveRecord::Base
   end
   
   def features
-    @features ||= Dir.glob(File.join(self.path_to_features, '**/*.feature')).map {|path| Feature.new(self, path)}
+    @features ||= Category.get_features(self, self.path_to_features)
   end
   
   

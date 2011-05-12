@@ -16,3 +16,10 @@ end
 Then /^I should see the Tsatsiki features$/ do
   # Slime
 end
+
+Then /^I the "([^"]*)" feature should be in the category "([^"]*)"$/ do |feature, category_path|
+  within("li[data-path=\"features#{category_path}\"]") do
+    assert page.has_content?(feature)
+  end
+end
+

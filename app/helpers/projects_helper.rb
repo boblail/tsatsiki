@@ -20,4 +20,10 @@ module ProjectsHelper
     "<li class=\"scenario unknown\" data-line=\"#{scenario[1]}\">#{scenario[3]}</li>"
   end
   
+  
+  
+  def render_features(features)
+    "<ul>#{render(:partial => "feature", :collection => features)}</ul>".html_safe
+  end
+  
 end
