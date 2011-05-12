@@ -68,7 +68,6 @@ private
     puts "[execute] #{params.inspect}"
     
     project         = Project.find params['project_id'].to_i
-    formatter       = 'Tsatsiki::Cucumber::Formatter'
     formatter_path  = File.join(Rails.root, 'lib', 'tsatsiki', 'cucumber', 'formatter.rb')
     command         = "cucumber-tsatsiki TSATSIKI_URL=#{tsatsiki_url(env)} TSATSIKI_PROJECT_ID=#{project.id}"
     
