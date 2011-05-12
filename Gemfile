@@ -12,6 +12,11 @@ gem 'tsatsiki-cucumber-formatter'
 # We need to use a web server running EventMachine for WebSocket-Rack
 gem 'thin'
 
+group :development do
+  gem "ruby-debug", :platforms => :mri_18
+  gem "ruby-debug19", :platforms => :mri_19
+end
+
 # We'd be hypocrites if we didn't use cucumber for integration testing :)
 group :development, :test do
   gem 'cucumber-rails'
