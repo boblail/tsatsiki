@@ -8,6 +8,8 @@
   <%= render :partial => "feature", :collection => @project.features -%>
 </ul>
 
+<button id="run_examples">Test Features</button>
+
 <%= link_to 'Edit', edit_project_path(@project) %> |
 <%= link_to 'Back', projects_path %>
 
@@ -17,7 +19,7 @@
   document.observe('dom:loaded', function() {
     App.debug('loaded');
     
-    var ws = new WebSocket("<%= socket_url %>"),
+    var ws = new WebSocket('<%= socket_url %>'),
         loader = $('ajax_loader');
     
     function sendMessage(message, data) {
@@ -59,10 +61,16 @@
       }
     };
     ws.onclose = function() { App.debug('closed'); };
-    ws.onopen = function() { 
-      App.debug('open');
+    ws.onopen = function() { App.debug('open'); };
+    
+    function runExamples() {
       sendMessage('execute', {features: 'all'});
       loader && loader.show();
-    };
+    }
+    
+    $('run_examples').observe('click', function() {
+      runExamples();
+    });
+    
   });
 </script>
