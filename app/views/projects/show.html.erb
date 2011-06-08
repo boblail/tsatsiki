@@ -1,7 +1,6 @@
 <p id="notice"><%= notice %></p>
 
-<h2><%= link_to "Projects", projects_path %> » <%= @project.name %> » Features</h2>
-<p>Path: <%= @project.path %></p>
+<h2><%= link_to "Projects", projects_path %> » <%= @project.name %></h2>
 
 <div class="split-screen">
   <div class="left">
@@ -41,6 +40,19 @@
       $.get(a.attr('href'), function(response) {
         $('#scenario').html(response);
       })
-    })
+    });
+    
+    $('.scenario').each(function() {
+      var a = $(this);
+      if(a.hasClass('tag-human')) {
+        a.find('.caption').append('<img width="14" height="14" class="icon" src="/assets/icons/user.png" title="This feature must be tested manually." />');
+      }
+    });
+    
+    function resizeFeatures() {
+      $('#features').height($(window).height() - 200);
+    }
+    $(window).resize(resizeFeatures);
+    resizeFeatures();
   });
 </script>

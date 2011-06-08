@@ -18,6 +18,10 @@ module ProjectsHelper
     "<ul class=\"tree features\">#{render(:partial => "feature", :collection => features)}</ul>".html_safe
   end
   
+  def colorize_step(step)
+    step.gsub(/("[^"]*?")/, '<em>\1</em>').html_safe
+  end
+  
   # def render_steps(steps)
   #   "<ul class=\"scenario-steps\">#{render(:partial => "step", :collection => steps)}</ul>".html_safe
   # end

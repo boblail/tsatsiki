@@ -15,12 +15,13 @@
 //  background-color: #efefef;
   margin-bottom: 2em;
   padding: 6px 8px;
+  height: 400px;
+  overflow: scroll;
 }
 
 a.scenario-steps-link {
   &.natural {
     background-color: transparent;
-//    line-height: 1em;
 //  border-width: 0 0 1px 0;
 //  border-style: dotted;
 //  padding-bottom: 0;
@@ -50,9 +51,6 @@ a.scenario-steps-link {
     background-position: 0px 4px;
     padding: 1px 0 1px 16px;
     margin: 0;
-    font-size: 1.15em;
-    color: #777;
-    font-family: 'Arial', sans-serif;
     cursor: pointer;
   }
   
@@ -63,11 +61,13 @@ a.scenario-steps-link {
 }
 
 .feature > .caption {
-  display: inline-block;
-  border-radius: 2px;
-  background-color: #d4d4d4;
-  color: black;
-  padding: .5px 4px;
+//  display: inline-block;
+//  border-radius: 2px;
+//  background-color: #d4d4d4;
+//  color: black;
+//  padding: .5px 4px;
+  color: #555;
+  font-weight: bold;
 }
 
 .scenarios {
@@ -79,16 +79,28 @@ a.scenario-steps-link {
   list-style: none;
   margin: 0;
   padding: 1px 0 1px 16px;
+  background-repeat: no-repeat;
+  background-position: 0px 4px;
   
   &.unknown   .scenario-steps-link { color:#ccc;    border-color:#ccc;}
   &.passed    .scenario-steps-link { color:green;   border-color:green; }
   &.failed    .scenario-steps-link { color:red;     border-color:red; }
   &.undefined .scenario-steps-link { color:#D8D000; border-color:#D8D000; }
+  
+  .icon {
+    margin-left: 4px;
+    position: relative;
+    top: 2px;
+  }
+  
+//  &.tag-human {
+//    background-image: url('/assets/icons/user.png');
+//  }
 }
 
 .scenario-steps {
   background-color: #eee;
-  padding: 6px 8px;
+  padding: 12px 16px;
   
   h4 {
     color: auto;
@@ -96,11 +108,26 @@ a.scenario-steps-link {
     padding: 0;
   }
   
+  em {
+    font-style: normal;
+    font-weight: bold;
+  }
+  
+  .scenario-step-term {
+    color: #a0a0a0;
+  }
+  
   ul {
     margin: 0;
+//    padding: 0 0 0 32px;
     padding: 0;
     color: #555;
     
-    > li { list-style: none; }
+    > li {
+      list-style: none;
+//      list-style: square;
+      margin: 2px 0;
+
+    }
   }
 }
