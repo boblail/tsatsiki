@@ -1,7 +1,7 @@
 <%= content_tag :li,
-                :class => scenario_class(scenario),
+                :class => "collapsed #{scenario_class(scenario)}",
                 'data-line' => scenario.line,
                 'data-tags' => scenario_tags(scenario) do %>
-  <%= scenario.name %>
+  <span class="caption"><%= scenario.name %></span>
   <%= render_steps(scenario.steps) %>
 <% end %>

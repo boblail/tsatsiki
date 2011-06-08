@@ -1,4 +1,4 @@
-<li class="<%= feature.class.name.downcase %>" data-path="<%= feature.relative_path %>">
-  <%= feature.name %>
+<li class="feature <%= feature.class.name.downcase %>" data-path="<%= feature.relative_path %>">
+  <span class="caption"><%= feature.name %></span>
   <%= feature.is_a?(Category) ? render_features(feature.features) : render_scenarios(feature.scenarios) %>
 </li>

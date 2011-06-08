@@ -1,0 +1,53 @@
+#features {
+  border: 1px solid #ccc;
+//  background-color: #efefef;
+  margin-bottom: 2em;
+  padding: 6px 8px;
+}
+
+.tree {
+  margin:0;
+  padding:0;
+  
+  > li {
+    list-style: none;
+    background-image: url('/assets/tree-expanded.png');
+    background-repeat: no-repeat;
+    background-position: 0px 4px;
+    padding: 1px 0 1px 16px;
+    margin: 0;
+    font-size: 1.15em;
+    color: #777;
+    font-family: 'Arial', sans-serif;
+    cursor: pointer;
+  }
+  
+  > li.collapsed {
+    background-image: url('/assets/tree-collapsed.png');
+    ul { display: none; }
+  }
+}
+
+.feature > .caption {
+  display: inline-block;
+  border-radius: 2px;
+  background-color: #bbb;
+  color: black;
+  padding: 1px 4px;
+}
+
+.scenario {
+  &.unknown   { color:#ccc; }
+  &.passed    { color:green; }
+  &.failed    { color:red; }
+  &.undefined { color:#D8D000; }
+}
+
+.scenario-steps {
+  margin: 4px 12px;
+  padding: 4px 12px;
+  background-color: #eee;
+  color: #555;
+  
+  > li { list-style: none; }
+}
