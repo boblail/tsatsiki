@@ -16,7 +16,7 @@
 <p><%= image_tag "ajax-loader.gif", :id => "ajax_loader", :style => "display:none;" -%></p>
 
 <script type="text/javascript">
-  document.observe('dom:loaded', function() {
+  $(function() {
     App.debug('loaded');
     
     var ws = new WebSocket('<%= socket_url %>'),
@@ -68,7 +68,7 @@
       loader && loader.show();
     }
     
-    $('run_examples').observe('click', function() {
+    $('run_examples').click(function() {
       runExamples();
     });
     

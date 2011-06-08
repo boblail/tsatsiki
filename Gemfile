@@ -1,7 +1,19 @@
 source 'http://rubygems.org'
 
-gem 'rails', '3.0.3'
-gem 'sqlite3-ruby', :require => 'sqlite3'
+gem 'rails', '3.1.0.rc1'
+
+# Bundle edge Rails instead:
+# gem 'rails',     :git => 'git://github.com/rails/rails.git'
+
+gem 'sqlite3'
+
+# Asset template engines
+gem 'json'
+gem 'sass'
+gem 'coffee-script'
+gem 'uglifier'
+
+gem 'jquery-rails'
 
 # gem 'gherkin', '2.3.2' # an API change post-2.3.2 breaks cucumber's GherkinFormatterAdapter
 gem 'cucumber'
