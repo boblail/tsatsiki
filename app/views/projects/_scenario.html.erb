@@ -2,6 +2,5 @@
                 :class => "collapsed #{scenario_class(scenario)}",
                 'data-line' => scenario.line,
                 'data-tags' => scenario_tags(scenario) do %>
-  <span class="caption"><%= scenario.name %></span>
-  <%= render_steps(scenario.steps) %>
+  <span class="caption"><%= link_to scenario.name, scenario_path(scenario), :class => "natural scenario-steps-link" %></span>
 <% end %>

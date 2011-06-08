@@ -1,4 +1,8 @@
-body { background-color: #fff; color: #333; }
+body {
+  background-color: #fff;
+  color: #333;
+  padding: 16px;
+}
 
 body, p, ol, ul, td {
   font-family: verdana, arial, helvetica, sans-serif;
@@ -21,12 +25,21 @@ a {
   background-color: #efefef;
   border-radius: 2px;
   display: inline-block;
-  padding: 1px 4px;
+  padding: .5px 4px;
   text-decoration: none;
   
   &:hover {
     background-color:#333;
     color: #fff;
+  }
+}
+
+a.natural {
+  background-color: transparent;
+  color: auto;
+  &:hover {
+    background-color: transparent;
+    color: auto;
   }
 }
 

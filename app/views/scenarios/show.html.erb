@@ -1,0 +1,7 @@
+<h3><%= @scenario.name %></h3>
+<div class="scenario-steps">
+  <h4>Steps to Test</h4>
+  <ul>
+    <%= render :partial => "step", :collection => @scenario.steps %>
+  </ul>
+</div>

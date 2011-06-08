@@ -3,15 +3,21 @@
 <h2><%= link_to "Projects", projects_path %> » <%= @project.name %> » Features</h2>
 <p>Path: <%= @project.path %></p>
 
-<h3>Features</h3>
-<div id="features">
-  <ul class="tree">
-    <%= render :partial => "feature", :collection => @project.features -%>
-  </ul>
+<div class="split-screen">
+  <div class="left">
+    <h3>Features</h3>
+    <div id="features">
+      <ul class="tree">
+        <%= render :partial => "feature", :collection => @project.features -%>
+      </ul>
+    </div>
+  </div>
+  <div class="right">
+    <div id="scenario"></div>
+  </div>
 </div>
 
-<button id="run_examples">Test Features</button>
-
+<button id="run_examples">Test Features</button> |
 <%= link_to 'Edit', edit_project_path(@project) %> |
 <%= link_to 'Back', projects_path %>
 
@@ -25,5 +31,16 @@
       project_id: <%= @project.id %>
     });
     new Collapsable('#features');
+    
+    $('#features').delegate('a.scenario-steps-link', 'click', function(e) {
+      e.stopPropagation();
+      e.preventDefault();
+      var a = $(this);
+      $('.scenario-steps-link.selected').removeClass('selected');
+      a.addClass('selected');
+      $.get(a.attr('href'), function(response) {
+        $('#scenario').html(response);
+      })
+    })
   });
 </script>

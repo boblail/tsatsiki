@@ -1,3 +1,15 @@
+.split-screen {
+  overflow: hidden;
+  
+  .left {
+    float: left;
+    width: 500px;
+  }
+  .right {
+    margin-left:516px;
+  }
+}
+
 #features {
   border: 1px solid #ccc;
 //  background-color: #efefef;
@@ -5,9 +17,31 @@
   padding: 6px 8px;
 }
 
+a.scenario-steps-link {
+  &.natural {
+    background-color: transparent;
+//    line-height: 1em;
+//  border-width: 0 0 1px 0;
+//  border-style: dotted;
+//  padding-bottom: 0;
+    
+    &:hover {
+      color: #446088;
+      border-color: #446088;
+    }
+  }
+  
+  &.selected {
+    background-color: #446088 !important;
+    color: white              !important;
+//  border-style: none        !important;
+//  padding-bottom: 1px       !important;
+  }
+}
+
 .tree {
-  margin:0;
-  padding:0;
+  margin: 0;
+  padding: 0;
   
   > li {
     list-style: none;
@@ -24,30 +58,49 @@
   
   > li.collapsed {
     background-image: url('/assets/tree-collapsed.png');
-    ul { display: none; }
+    > ul { display: none; }
   }
 }
 
 .feature > .caption {
   display: inline-block;
   border-radius: 2px;
-  background-color: #bbb;
+  background-color: #d4d4d4;
   color: black;
-  padding: 1px 4px;
+  padding: .5px 4px;
+}
+
+.scenarios {
+  margin: 0;
+  padding: 0;
 }
 
 .scenario {
-  &.unknown   { color:#ccc; }
-  &.passed    { color:green; }
-  &.failed    { color:red; }
-  &.undefined { color:#D8D000; }
+  list-style: none;
+  margin: 0;
+  padding: 1px 0 1px 16px;
+  
+  &.unknown   .scenario-steps-link { color:#ccc;    border-color:#ccc;}
+  &.passed    .scenario-steps-link { color:green;   border-color:green; }
+  &.failed    .scenario-steps-link { color:red;     border-color:red; }
+  &.undefined .scenario-steps-link { color:#D8D000; border-color:#D8D000; }
 }
 
 .scenario-steps {
-  margin: 4px 12px;
-  padding: 4px 12px;
   background-color: #eee;
-  color: #555;
+  padding: 6px 8px;
   
-  > li { list-style: none; }
+  h4 {
+    color: auto;
+    margin: 0 0 0.5em 0;
+    padding: 0;
+  }
+  
+  ul {
+    margin: 0;
+    padding: 0;
+    color: #555;
+    
+    > li { list-style: none; }
+  }
 }

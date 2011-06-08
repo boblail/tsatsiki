@@ -11,15 +11,15 @@ module ProjectsHelper
   end
   
   def render_scenarios(scenarios)
-    "<ul class=\"tree scenarios\">#{render(:partial => "scenario", :collection => scenarios)}</ul>".html_safe
+    "<ul class=\"scenarios\">#{render(:partial => "scenario", :collection => scenarios)}</ul>".html_safe
   end 
   
   def render_features(features)
     "<ul class=\"tree features\">#{render(:partial => "feature", :collection => features)}</ul>".html_safe
   end
   
-  def render_steps(steps)
-    "<ul class=\"scenario-steps\">#{render(:partial => "step", :collection => steps)}</ul>".html_safe
-  end
+  # def render_steps(steps)
+  #   "<ul class=\"scenario-steps\">#{render(:partial => "step", :collection => steps)}</ul>".html_safe
+  # end
   
 end

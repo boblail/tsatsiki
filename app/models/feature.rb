@@ -6,7 +6,8 @@ class Feature
     @relative_path = Pathname.new(absolute_path).relative_path_from(Pathname.new(@project.path))
   end
   
-  attr_reader :absolute_path, :relative_path
+  attr_reader :project, :absolute_path, :relative_path
+  alias :path :relative_path
   
   def sexp
     @sexp ||= Cucumber::FeatureFile.new(self.absolute_path).parse([], {}).to_sexp
