@@ -1,4 +1,7 @@
-<%= content_tag :li, scenario.name,
+<%= content_tag :li,
                 :class => scenario_class(scenario),
                 'data-line' => scenario.line,
-                'data-tags' => scenario_tags(scenario) %>
+                'data-tags' => scenario_tags(scenario) do %>
+  <%= scenario.name %>
+  <%= render_steps(scenario.steps) %>
+<% end %>

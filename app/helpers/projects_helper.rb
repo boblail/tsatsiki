@@ -18,4 +18,8 @@ module ProjectsHelper
     "<ul>#{render(:partial => "feature", :collection => features)}</ul>".html_safe
   end
   
+  def render_steps(steps)
+    "<ul class=\"scenario-steps\">#{render(:partial => "step", :collection => steps)}</ul>".html_safe
+  end
+  
 end
