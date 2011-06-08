@@ -1,3 +1,12 @@
+GIT
+  remote: git://github.com/boblail/tsatsiki-cucumber-formatter.git
+  revision: 9ead3e0d97b63cdd76f8d38b0b9e738ff2163214
+  specs:
+    tsatsiki-cucumber-formatter (0.1.1)
+      addressable
+      cucumber
+      libwebsocket
+
 GEM
   remote: http://rubygems.org/
   specs:
@@ -135,10 +144,6 @@ GEM
     thor (0.14.6)
     treetop (1.4.9)
       polyglot (>= 0.3.1)
-    tsatsiki-cucumber-formatter (0.1.1)
-      addressable
-      cucumber
-      libwebsocket
     tzinfo (0.3.27)
     websocket-rack (0.3.0)
       em-websocket (~> 0.3.0)
@@ -161,5 +166,5 @@ DEPENDENCIES
   ruby-debug19
   sqlite3-ruby
   thin
-  tsatsiki-cucumber-formatter (= 0.1.1)
+  tsatsiki-cucumber-formatter!
   websocket-rack (= 0.3.0)

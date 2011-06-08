@@ -7,7 +7,7 @@ gem 'sqlite3-ruby', :require => 'sqlite3'
 gem 'cucumber'
 gem 'websocket-rack', '0.3.0'
 gem 'childprocess'
-gem 'tsatsiki-cucumber-formatter', '0.1.1'
+gem 'tsatsiki-cucumber-formatter', :git => 'git://github.com/boblail/tsatsiki-cucumber-formatter.git'
 
 # We need to use a web server running EventMachine for Websocket-Rack
 gem 'thin'
