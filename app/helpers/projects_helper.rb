@@ -25,6 +25,8 @@ module ProjectsHelper
       "<p class=\"scenario-tag tag-human\">This feature must be tested manually</p>".html_safe
     when "javascript"
       "<p class=\"scenario-tag tag-javascript\">This feature requires JavaScript</p>".html_safe
+    when "wip", "todo"
+      "<p class=\"scenario-tag tag-todo\">This feature is not yet implemented</p>".html_safe
     end
   end
   
