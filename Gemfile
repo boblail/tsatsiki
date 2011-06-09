@@ -11,6 +11,7 @@ gem 'sqlite3'
 gem 'json'
 gem 'sass'
 gem 'coffee-script'
+gem 'therubyracer', '0.8.1'
 gem 'uglifier'
 
 gem 'jquery-rails'
