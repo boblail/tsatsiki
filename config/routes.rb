@@ -1,6 +1,6 @@
 Tsatsiki::Application.routes.draw do
   
-  root :to => redirect("/projects")
+  root :to => redirect("#{Rails.configuration.try(:relative_url_root)}/projects")
   
   resources :projects
   
