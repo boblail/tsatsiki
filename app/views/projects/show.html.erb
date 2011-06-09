@@ -4,7 +4,7 @@
 
 <div class="split-screen">
   <div class="left">
-    <h3>Features</h3>
+    <h3>Features <button id="run_examples">Test Features</button></h3>
     <div id="features">
       <ul class="tree">
         <%= render :partial => "feature", :collection => @project.features -%>
@@ -16,7 +16,6 @@
   </div>
 </div>
 
-<button id="run_examples">Test Features</button> |
 <%= link_to 'Edit', edit_project_path(@project) %> |
 <%= link_to 'Back', projects_path %>
 

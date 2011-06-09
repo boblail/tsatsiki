@@ -47,7 +47,7 @@ var RunExamples = (function() {
       }
     };
     ws.onclose = function() { App.debug('closed'); };
-    ws.onopen = function() { App.debug('open'); };
+    ws.onopen = function() { App.debug('open'); $('#run_examples').show(); };
     
     function runExamples() {
       sendMessage('execute', {features: 'all'});
