@@ -47,6 +47,9 @@
       if(a.hasClass('tag-human')) {
         a.find('.caption').append('<img width="14" height="14" class="icon" src="/assets/icons/user.png" title="This feature must be tested manually." />');
       }
+      if(a.hasClass('tag-javascript')) {
+        a.find('.caption').append('<img width="14" height="14" class="icon" src="/assets/icons/script_code.png" title="This feature requires JavaScript" />');
+      }
     });
     
     function resizeFeatures() {

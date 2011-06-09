@@ -131,3 +131,13 @@ a.scenario-steps-link {
     }
   }
 }
+
+.scenario-tag {
+  padding: 0 0 0 22px;
+  background-repeat: no-repeat;
+  background-position: 0px 0px;
+  
+  &.tag-human { background-image: url('/assets/icons/user.png'); }
+  &.tag-javascript { background-image: url('/assets/icons/script_code.png'); }
+  
+}

@@ -18,6 +18,20 @@ module ProjectsHelper
     "<ul class=\"tree features\">#{render(:partial => "feature", :collection => features)}</ul>".html_safe
   end
   
+  def render_tag(tag)
+    tag = tag[1..-1] # remove the '@'
+    case tag
+    when "human"
+      "<p class=\"scenario-tag tag-human\">This feature must be tested manually</p>".html_safe
+    when "javascript"
+      "<p class=\"scenario-tag tag-javascript\">This feature requires JavaScript</p>".html_safe
+    end
+  end
+  
+  def known_tag?(tag)
+    %w{human javascript}.member?(tag)
+  end
+  
   def colorize_step(step)
     step.gsub(/("[^"]*?")/, '<em>\1</em>').html_safe
   end

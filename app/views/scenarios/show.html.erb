@@ -5,3 +5,8 @@
     <%= render :partial => "step", :collection => @scenario.steps %>
   </ul>
 </div>
+<div class="scenario-tags">
+  <% @scenario.tags.each do |tag| %>
+    <%= render_tag(tag) %>
+  <% end %>
+</div>
