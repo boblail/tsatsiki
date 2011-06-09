@@ -48,7 +48,7 @@ a.scenario-steps-link {
   
   > li {
     list-style: none;
-    background-image: url('<%= asset_path("tree-expanded.png") %>');
+    background-image: url('<%= "#{Rails.configuration.try(:relative_url_root)}#{asset_path("tree-expanded.png")}" %>');
     background-repeat: no-repeat;
     background-position: 0px 4px;
     padding: 1px 0 1px 16px;
@@ -57,7 +57,7 @@ a.scenario-steps-link {
   }
   
   > li.collapsed {
-    background-image: url('<%= asset_path("tree-collapsed.png") %>');
+    background-image: url('<%= "#{Rails.configuration.try(:relative_url_root)}#{asset_path("tree-collapsed.png")}" %>');
     > ul { display: none; }
   }
 }
@@ -96,7 +96,7 @@ a.scenario-steps-link {
   }
   
 //  &.tag-human {
-//    background-image: url('<%= asset_path("icons/user.png") %>');
+//    background-image: url('<%= "#{Rails.configuration.try(:relative_url_root)}#{asset_path("icons/user.png")}" %>');
 //  }
 }
 
@@ -139,7 +139,7 @@ a.scenario-steps-link {
   background-repeat: no-repeat;
   background-position: 0px 0px;
   
-  &.tag-human { background-image: url('<%= asset_path("icons/user.png") %>'); }
-  &.tag-javascript { background-image: url('<%= asset_path("icons/script_code.png") %>'); }
+  &.tag-human { background-image: url('<%= "#{Rails.configuration.try(:relative_url_root)}#{asset_path("icons/user.png")}" %>'); }
+  &.tag-javascript { background-image: url('<%= "#{Rails.configuration.try(:relative_url_root)}#{asset_path("icons/script_code.png")}" %>'); }
   
 }
