@@ -34,11 +34,79 @@
     });
     new Collapsable('#features');
     
-    $('a.scenario-steps-link').pjax('#scenario').click(function() {
+    
+    
+    $('a.scenario-steps-link').click(updateSelectedScenario)
+                              .pjax('#scenario')
+                              .dblclick(renameSelectedItem);
+    
+    
+    
+    var selectedItem = $('.scenario-steps-link.selected');
+    
+    function updateSelectedScenario(e) {
       var a = $(this);
-      $('.scenario-steps-link.selected').removeClass('selected');
-      a.addClass('selected');
-    });
+      if(a.hasClass('selected')) {
+        e.preventDefault();
+        e.stopImmediatePropagation();
+      } else {
+        selectedItem && selectedItem.removeClass('selected');
+        selectedItem = a;
+        selectedItem.addClass('selected');
+      }
+    }
+    
+    
+    
+    function renameSelectedItem() {
+      if(selectedItem) {
+        var caption = selectedItem.parent(),
+            input = $(document.createElement('input'));
+        
+        input.attr('type', 'text')
+             .addClass('renamer')
+             .blur(abortRename)
+             .keyup(__onKeyUpInRename)
+             .val(selectedItem.text())
+             .appendTo(caption)
+             .select();
+        selectedItem.addClass('being-renamed').hide();
+      }
+    }
+    
+    function commitRename() {
+      if(selectedItem) {
+        var input = $('.renamer'),
+            name  = input.val();
+        if(name) {
+          selectedItem.html(name);
+          saveName(selectedItem.attr('href'), name);
+        }
+      }
+      __endRename();
+    }
+    
+    function abortRename() {
+      __endRename();
+    }
+    
+    function __endRename() {
+      $('.renamer').remove();
+      $('.being-renamed').show();
+    }
+    
+    function __onKeyUpInRename(e) {
+      (e.keyCode == 13) && commitRename(); // Enter
+      (e.keyCode == 27) && abortRename(); // Escape
+    }
+    
+    
+    
+    function saveName(url, name) {
+      $.put(url, {name: name});
+    }
+    
+    
     
     $('.scenario').each(function() {
       var a = $(this);

@@ -5,6 +5,7 @@ Tsatsiki::Application.routes.draw do
   resources :projects
   
   match '/projects/:project_id/features/*feature/:line' => 'scenarios#show', :via => :get
+  match '/projects/:project_id/features/*feature/:line' => 'scenarios#update', :via => :put
   
   mount WebsocketApp, :at => '/socket'
   

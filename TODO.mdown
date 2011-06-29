@@ -10,7 +10,7 @@
 
 ### Editing
 
- - Allow double-clicking a scenario to rename it
+ - Implement rendering features for writing to files
  - Include FreightTrain and implement the editor that allows creation of new features
 
 ### Running tests
