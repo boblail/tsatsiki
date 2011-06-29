@@ -30,9 +30,8 @@ class Feature
   
   
   def write!
-    File.open(absolute_path, "w") do |f|
-      f << self.render
-    end
+    rendered_feature = self.render
+    File.open(absolute_path, "w") {|f| f.write(rendered_feature)}
   end
   
   def render
