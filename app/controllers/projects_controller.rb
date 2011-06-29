@@ -11,7 +11,7 @@ class ProjectsController < ApplicationController
   
   def show
     @project = Project.find(params[:id])
-    respond_with(@project)
+    respond_with(@project, :layout => "project")
   end
   
   

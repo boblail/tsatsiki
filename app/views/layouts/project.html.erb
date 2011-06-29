@@ -1,0 +1,61 @@
+<%= within_layout("application") do %>
+
+<p id="notice"><%= notice %></p>
+
+<h2><%= link_to "Projects", projects_path %> » <%= @project.name %></h2>
+
+<div class="split-screen">
+  <div class="left">
+    <h3><%= @project.feature_count %> Features <button id="run_examples">Test Features</button></h3>
+    <div id="features">
+      <ul class="tree">
+        <%= render :partial => "projects/feature", :collection => @project.features -%>
+      </ul>
+    </div>
+  </div>
+  <div class="right">
+    <div id="scenario">
+      <%= yield %>
+    </div>
+  </div>
+</div>
+
+<%= link_to 'Edit', edit_project_path(@project) %> |
+<%= link_to 'Back', projects_path %>
+
+<p><%= image_tag "ajax-loader.gif", :id => "ajax_loader", :style => "display:none;" -%></p>
+
+<script type="text/javascript">
+  $(function() {
+    App.debug('loaded');
+    RunExamples.init({
+      socket_url: '<%= socket_url %>',
+      project_id: <%= @project.id %>
+    });
+    new Collapsable('#features');
+    
+    $('a.scenario-steps-link').pjax('#scenario').click(function() {
+      var a = $(this);
+      $('.scenario-steps-link.selected').removeClass('selected');
+      a.addClass('selected');
+    });
+    
+    $('.scenario').each(function() {
+      var a = $(this);
+      if(a.hasClass('tag-human')) {
+        a.find('.caption').append('<img width="14" height="14" class="icon" src="<%= asset_path("icons/user.png") %>" title="This feature must be tested manually." />');
+      }
+      if(a.hasClass('tag-wip') || a.hasClass('tag-todo')) {
+        a.find('.caption').append('<img width="14" height="14" class="icon" src="<%= asset_path("icons/page_edit.png") %>" title="This feature is not yet implemented" />');
+      }
+    });
+    
+    function resizeFeatures() {
+      $('#features').height($(window).height() - 200);
+    }
+    $(window).resize(resizeFeatures);
+    resizeFeatures();
+  });
+</script>
+
+<% end %>

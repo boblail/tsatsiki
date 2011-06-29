@@ -1,5 +1,18 @@
 # TODO
 
-- Work on stability
-- Include FreightTrain and implement the editor that allows creation of new features
-- Make Features and Scenarios expandable and collapsable; when expanding a scenario load its detail
+### Global
+
+ - Add Devise for authentication
+
+### Bugs
+
+ - Render tables in the Steps to Test blocks
+
+### Editing
+
+ - Allow double-clicking a scenario to rename it
+ - Include FreightTrain and implement the editor that allows creation of new features
+
+### Running tests
+
+ - Work on stability

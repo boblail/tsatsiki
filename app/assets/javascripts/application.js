@@ -6,4 +6,5 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require jquery.pjax.js
 //= require_tree .

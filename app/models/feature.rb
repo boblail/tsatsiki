@@ -1,12 +1,18 @@
 class Feature
   
+  
+  
   def initialize(project, absolute_path)
     @project = project
     @absolute_path = absolute_path
     @relative_path = Pathname.new(absolute_path).relative_path_from(Pathname.new(@project.path))
   end
   
-  attr_reader :project, :absolute_path, :relative_path
+  
+  
+  attr_reader :project,
+              :absolute_path,
+              :relative_path
   alias :path :relative_path
   
   def sexp
@@ -22,12 +28,16 @@ class Feature
   end
   
   
+  
 private
+  
   
   
   def scenario?(*scenario)
     scenario.is_a?(Array) && (scenario.first == :scenario)
   end
+  
+  
   
 end
     

@@ -1,12 +1,12 @@
-<h3><%= @scenario.name %></h3>
+<h3><%= @selected_scenario.name %></h3>
 <div class="scenario-steps">
   <h4>Steps to Test</h4>
   <ul>
-    <%= render :partial => "step", :collection => @scenario.steps %>
+    <%= render :partial => "step", :collection => @selected_scenario.steps %>
   </ul>
 </div>
 <div class="scenario-tags">
-  <% @scenario.tags.each do |tag| %>
+  <% @selected_scenario.tags.each do |tag| %>
     <%= render_tag(tag) %>
   <% end %>
 </div>

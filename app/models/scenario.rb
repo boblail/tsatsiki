@@ -1,5 +1,6 @@
 class Scenario
   
+  
   #
   # sexp Examples
   #
@@ -16,10 +17,26 @@ class Scenario
     @steps = read_steps(children)
   end
   
-  attr_reader :feature, :line, :name, :tags, :steps
+  
+  
+  attr_reader :feature,
+              :line,
+              :name,
+              :tags,
+              :steps
+  
+  def path
+    "/#{feature.relative_path}/#{line}"
+  end
+  
+  def ==(other)
+    other && self.path == other.path
+  end
+  
   
   
 private
+  
   
   
   def read_tags(children)

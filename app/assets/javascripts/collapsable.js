@@ -9,7 +9,7 @@ Collapsable = (function() {
   function Collapsable(element) {
     this.element = $(element);
     this.element.addClass('tree')
-    this.element.delegate('li > .caption', 'click', function(e) {
+    this.element.delegate('.tree > li > .caption', 'click', function(e) {
       e.preventDefault();
       e.stopPropagation();
       return $(this).parent().toggleClass('collapsed');
