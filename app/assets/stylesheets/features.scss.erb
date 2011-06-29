@@ -1,3 +1,6 @@
+//$link-highlight: #446088;
+$link-highlight: #4be;
+
 .split-screen {
   overflow: hidden;
   
@@ -22,6 +25,7 @@
 #run_examples { display: none; }
 
 a.scenario-steps-link {
+  
   &.natural {
     background-color: transparent;
 //  border-width: 0 0 1px 0;
@@ -29,13 +33,13 @@ a.scenario-steps-link {
 //  padding-bottom: 0;
     
     &:hover {
-      color: #446088;
-      border-color: #446088;
+      color: $link-highlight;
+      border-color: $link-highlight;
     }
   }
   
   &.selected {
-    background-color: #446088 !important;
+    background-color: $link-highlight !important;
     color: white              !important;
 //  border-style: none        !important;
 //  padding-bottom: 1px       !important;
@@ -50,30 +54,35 @@ a.scenario-steps-link {
     list-style: none;
     background-image: url('<%= "#{Rails.configuration.try(:relative_url_root)}#{asset_path("tree-expanded.png")}" %>');
     background-repeat: no-repeat;
-    background-position: 0px 4px;
-    padding: 1px 0 1px 16px;
+    background-position: 0px 5px;
+    padding: 1px 0 1px 14px;
     margin: 0;
     cursor: pointer;
   }
   
   > li.collapsed {
     background-image: url('<%= "#{Rails.configuration.try(:relative_url_root)}#{asset_path("tree-collapsed.png")}" %>');
+    background-position: 1px 5px;
     > ul { display: none; }
+    > .caption {
+      background-color: transparent;
+      color: #999; }
   }
 }
 
 .feature > .caption {
-//  display: inline-block;
-//  border-radius: 2px;
-//  background-color: #d4d4d4;
-//  color: black;
-//  padding: .5px 4px;
-  color: #555;
+  display: inline-block;
+  border-radius: 2px;
+  background-color: #c4c4c4;
+  color: white;
+  padding: 2px 4px;
+  line-height: 1.15em;
   font-weight: bold;
+  font-size: 0.75em;
 }
 
 .scenarios {
-  margin: 0;
+  margin: 3px 0 0 0;
   padding: 0;
 }
 
@@ -84,10 +93,10 @@ a.scenario-steps-link {
   background-repeat: no-repeat;
   background-position: 0px 4px;
   
-  &.unknown   .scenario-steps-link { color:#ccc;    border-color:#ccc;}
-  &.passed    .scenario-steps-link { color:green;   border-color:green; }
-  &.failed    .scenario-steps-link { color:red;     border-color:red; }
-  &.undefined .scenario-steps-link { color:#D8D000; border-color:#D8D000; }
+  &.unknown   .scenario-steps-link { color: #000;    border-color: #000;}
+  &.passed    .scenario-steps-link { color: green;   border-color: green; }
+  &.failed    .scenario-steps-link { color: red;     border-color: red; }
+  &.undefined .scenario-steps-link { color: #D8D000; border-color: #D8D000; }
   
   .icon {
     margin-left: 4px;
@@ -116,14 +125,19 @@ a.scenario-steps-link {
   }
   
   .scenario-step-term {
-    color: #a0a0a0;
+//    color: #a0a0a0;
+    background-color: #dfdfdf;
+    border-radius: 2px;
+    line-height: 1em;
+    padding: 2px 5px 2px 4px;
+    display: inline-block;
   }
   
   ul {
     margin: 0;
 //    padding: 0 0 0 32px;
     padding: 0;
-    color: #555;
+    color: #333;
     
     > li {
       list-style: none;
