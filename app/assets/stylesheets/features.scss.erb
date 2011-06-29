@@ -156,5 +156,17 @@ a.scenario-steps-link {
   &.tag-human { background-image: url('<%= "#{Rails.configuration.try(:relative_url_root)}#{asset_path("icons/user.png")}" %>'); }
   &.tag-javascript { background-image: url('<%= "#{Rails.configuration.try(:relative_url_root)}#{asset_path("icons/script_code.png")}" %>'); }
   &.tag-todo { background-image: url('<%= "#{Rails.configuration.try(:relative_url_root)}#{asset_path("icons/page_edit.png")}" %>'); }
+}
+
+table.step-table {
+  margin: 8px 0 8px 14px;
+  border-collapse: collapse;
+  color: #555;
+  
+  th { background-color: #dfdfdf; }
+  td { background-color: #f2f2f2; }
+  td, th {
+    border: 1px solid #cccccc;
+    padding: 2px 6px; }
   
 }

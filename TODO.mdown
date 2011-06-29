@@ -4,13 +4,8 @@
 
  - Add Devise for authentication
 
-### Bugs
-
- - Render tables in the Steps to Test blocks
-
 ### Editing
 
- - Implement rendering features for writing to files
  - Include FreightTrain and implement the editor that allows creation of new features
 
 ### Running tests

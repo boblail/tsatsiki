@@ -1,5 +1,9 @@
 
 
+Given /^this feature has a table:$/ do |table|
+  # Don't do anything: we're just testing parsing and rendering
+end
+
 When /^I load the feature "([^"]*)"$/ do |path|
   tsatsiki = Project.find_by_name "Tsatsiki"
   @feature = tsatsiki.find_feature "features/#{path}"

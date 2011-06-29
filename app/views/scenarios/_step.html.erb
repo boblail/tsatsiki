@@ -1,1 +1,20 @@
-<li><span class="scenario-step-term"><%= step[2] %></span> <%= colorize_step(step[3]) %></li>
+<li>
+  <span class="scenario-step-term"><%= step.term %></span> <%= colorize_step(step.text) %>
+<% if step.table %>
+  <table class="step-table">
+    <% step.table.rows[0].tap do |row| %>
+      <tr>
+        <% row.each do |cell| %>
+          <th><%= cell %></th>
+        <% end %>
+    <% end %>
+    <% step.table.rows[1..-1].each do |row| %>
+      <tr>
+        <% row.each do |cell| %>
+          <td><%= cell %></td>
+        <% end %>
+      </tr>
+    <% end %>
+  </table>
+<% end %>
+</li>
