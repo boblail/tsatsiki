@@ -1,3 +1,4 @@
+<% if @selected_scenario -%>
 <h3><%= @selected_scenario.name %></h3>
 <div class="scenario-steps">
   <h4>Steps to Test</h4>
@@ -10,3 +11,4 @@
     <%= render_tag(tag) %>
   <% end %>
 </div>
+<% end -%>
