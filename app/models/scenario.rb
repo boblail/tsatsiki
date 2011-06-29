@@ -59,7 +59,8 @@ private
     children.each do |child|
       if    tag?(child);      @tags << child[1]
       elsif step?(child);     @steps << Step.new(self, child)
-      else;                   raise("unrecognized sexp: #{sexp.first}")
+      elsif comment?(child);  # Do nothing
+      else;                   raise("unrecognized sexp: #{child.first}")
       end
     end
   end
@@ -70,6 +71,10 @@ private
   
   def step?(sexp)
     sexp.first == :step_invocation
+  end
+  
+  def comment?(sexp)
+    sexp.first == :comment
   end
   
   
