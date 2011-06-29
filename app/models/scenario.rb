@@ -21,9 +21,9 @@ class Scenario
   
   attr_reader :feature,
               :line,
-              :name,
               :tags,
               :steps
+  attr_accessor :name
   
   def path
     "/#{feature.relative_path}/#{line}"
@@ -35,7 +35,28 @@ class Scenario
   
   
   
+  def render
+    output = "\n\n"
+    tags.each do |tag|
+      output << "  #{tag}\n"
+    end
+    output << "  Scenario: #{name}\n"
+    steps.each do |step|
+      output << render_step(step)
+    end
+    output
+  end
+  
+  
+  
 private
+  
+  
+  
+  # !todo: move this to a step object
+  def render_step(step)
+    "    #{step[2]}#{step[3]}\n"
+  end
   
   
   

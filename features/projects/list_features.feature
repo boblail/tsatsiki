@@ -8,9 +8,13 @@ Feature: Show Project
     When I am on the Tsatsiki project page
     Then I the "Show Project" feature should be in the category "/projects"
 
-  @human
+  @wip
   Scenario: Features tagged @human should not be executed
     When I am on the Tsatsiki project page
     And I click "Test Features"
     Then this feature should not be executed
-    
+
+  @human
+  Scenario: This feature must be tested by a human
+    When I am using Tsatsiki
+    Then my life is all unicorns and rainbows :)

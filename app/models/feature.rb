@@ -29,6 +29,23 @@ class Feature
   
   
   
+  def write!
+    File.open(absolute_path, "w") do |f|
+      f << self.render
+    end
+  end
+  
+  def render
+    output = ""
+    output << "Feature: #{name}\n"
+    scenarios.each do |scenario|
+      output << scenario.render
+    end
+    output
+  end
+  
+  
+  
 private
   
   

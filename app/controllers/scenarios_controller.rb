@@ -10,7 +10,8 @@ class ScenariosController < ApplicationController
   
   
   def update
-    Rails.logger.info "[update] #{@selected_scenario.path}"
+    @selected_scenario.name = params[:name]
+    @feature.write!
     head :ok
   end
   
