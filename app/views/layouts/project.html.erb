@@ -96,7 +96,7 @@
              .blur(abortRename)
              .keyup(__onKeyUpInRename)
              .val(selectedItem.text())
-             .appendTo(caption)
+             .prependTo(caption)
              .select();
         selectedItem.addClass('being-renamed').hide();
       }
