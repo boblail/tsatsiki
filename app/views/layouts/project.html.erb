@@ -40,6 +40,12 @@
                               .pjax('#scenario')
                               .dblclick(renameSelectedItem);
     
+    $(document.body).keyup(function(e) {
+      if(selectedItem) {
+        (e.keyCode == 13) && renameSelectedItem();
+      }
+    })
+    
     
     
     var selectedItem = $('.scenario-steps-link.selected');
@@ -96,8 +102,14 @@
     }
     
     function __onKeyUpInRename(e) {
-      (e.keyCode == 13) && commitRename(); // Enter
-      (e.keyCode == 27) && abortRename(); // Escape
+      if(e.keyCode == 13) { // Enter
+        e.stopImmediatePropagation();
+        commitRename();
+      }
+      if(e.keyCode == 27) { // Escape
+        e.stopImmediatePropagation();
+        abortRename();
+      }
     }
     
     
