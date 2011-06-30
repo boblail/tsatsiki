@@ -1,13 +1,41 @@
+
 # TODO
 
-### Global
+### 0.1.0
 
- - Add Devise for authentication
+ - Tsatsiki adds a comment to every Scenario that contains its ID
+ - Tsatsiki parses and renders everything correctly
+    - Comments
+    - Background
+    - Multiline strings (""")
+    - Placeholders and examples
+    - Indent tables; consider right-aligning Given/When/Then/But/And
+ - Implement an interface for editing scenarios
+    - Is FreightTrain too cumbersome? (Don't want users to have to tab through too many controls.)
+ - Implement an interface for adding scenarios
+    - How does the user specify where they get added? (They have to be added to a feature...)
+      - Can users create and edit Categories and Features?
+    - Initially, one Steps to Test and then one Assertions block; can add pairs?
+      - All Givens at the top? Change any Givens after the first When or Then to Whens?
+      - Treat Givens like Whens?
+    - New scenarios are tagged @new
+ - Create Tsatsiki's logo
+ - Update tsatsiki.info
 
-### Editing
+### 0.2.0
 
- - Include FreightTrain and implement the editor that allows creation of new features
+ - Add Devise for authentication and a Users interface
+ - @human Scenarios have many Tests: [scenario, tester, datetime, results]
+ - Add a "Preflight" screen that shows only @human scenarios and their Test Logs
 
-### Running tests
+### Future
 
- - Work on stability
+ - Improve automatic test running
+ - Allow dragging and dropping scenarios in Feature Tree
+ - Have a real-time filter-box for scenarios above the Feature Tree
+ - Implement permissions
+
+### Suggestions
+
+ - Keep an audit log for scenarios (Snapshot of scenario AST + committer?)
+ - List tags on left side of Feature Tree: toggle on or off those scenarios
