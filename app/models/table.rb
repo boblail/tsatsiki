@@ -1,15 +1,15 @@
+# sexp Pattern
+#
+#   [:table, [
+#     [:row, 7, [:cell, "questions"], [:cell, "answers"]],
+#     [:row, 8, [:cell, "Does Tsatsiki taste good with spaghetti?"], [:cell, "No"]],
+#     [:row, 9, [:cell, "Does Tsatsiki taste good with gyros?"], [:cell, "Yes"]]
+#   ]]
+#
 class Table
   
   
   
-  # sexp Examples
-  #
-  #   [:table, [
-  #     [:row, 7, [:cell, "questions"], [:cell, "answers"]],
-  #     [:row, 8, [:cell, "Does Tsatsiki taste good with spaghetti?"], [:cell, "No"]],
-  #     [:row, 9, [:cell, "Does Tsatsiki taste good with gyros?"], [:cell, "Yes"]]
-  #   ]]
-  #
   def initialize(sexp)
     @rows = read_rows(sexp[1..-1])
   end

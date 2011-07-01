@@ -1,26 +1,23 @@
-
 # TODO
 
 ### 0.1.0
 
- - Tsatsiki adds a comment to every Scenario that contains its ID
  - Tsatsiki parses and renders everything correctly
-    - Comments
-    - Background
-    - Multiline strings (""")
     - Placeholders and examples
-    - Indent tables; consider right-aligning Given/When/Then/But/And
- - Implement an interface for editing scenarios
-    - Is FreightTrain too cumbersome? (Don't want users to have to tab through too many controls.)
+ - Tsatsiki adds a comment to every Scenario that contains its ID
+ - Implement a very basic interface for editing scenarios
  - Implement an interface for adding scenarios
-    - How does the user specify where they get added? (They have to be added to a feature...)
-      - Can users create and edit Categories and Features?
-    - Initially, one Steps to Test and then one Assertions block; can add pairs?
-      - All Givens at the top? Change any Givens after the first When or Then to Whens?
-      - Treat Givens like Whens?
+    - Add an "Add feature" button next to categories
+    - Clicking it places a "New Feature" placeholder in the Feature Tree and shows an editor
     - New scenarios are tagged @new
  - Create Tsatsiki's logo
  - Update tsatsiki.info
+
+### 0.1.5
+
+ - Improve the interface for editing scenarios
+    - Initially, one Steps to Test and then one Assertions block; can add pairs?
+    - All Givens at the top?
 
 ### 0.2.0
 
