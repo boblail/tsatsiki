@@ -1,4 +1,7 @@
 Feature: Writing Features
+  When I parse this file
+  The different kinds of nodes should be correctly identified
+  And preserved when the file is written
 
 
   @some-tag

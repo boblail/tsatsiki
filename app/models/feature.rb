@@ -1,3 +1,7 @@
+# sexp Pattern
+#
+#   [:feature, path, text, children]
+#
 class Feature
   
   
@@ -20,7 +24,13 @@ class Feature
   end
   
   def name
-    sexp[2][/.*$/]
+    parse_sexp
+    @name
+  end
+  
+  def background
+    parse_sexp
+    @background || ""
   end
   
   def scenarios
@@ -37,6 +47,9 @@ class Feature
   def render
     output = ""
     output << "Feature: #{name}\n"
+    background.split($/).each do |line|
+      output << "  #{line}\n"
+    end
     scenarios.each do |scenario|
       output << scenario.render
     end
@@ -47,6 +60,11 @@ class Feature
   
 private
   
+  
+  
+  def parse_sexp
+    @name, @background = sexp[2].split($/, 2) unless @name
+  end
   
   
   def scenario?(*scenario)
