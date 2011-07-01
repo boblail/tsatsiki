@@ -1,9 +1,11 @@
+# Comment on a feature
 Feature: Writing Features
   When I parse this file
   The different kinds of nodes should be correctly identified
   And preserved when the file is written
 
 
+  # Comment on a scenario
   @some-tag
   Scenario: If I parse and render this file, it should look just like this file
     Given this feature has a table:

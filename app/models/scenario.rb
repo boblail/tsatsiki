@@ -1,3 +1,7 @@
+# sexp Pattern
+#
+#   [:scenario, line, keyword, text, *children]
+#
 class Scenario
   
   
@@ -12,14 +16,14 @@ class Scenario
     @feature = feature
     @line = sexp[1]
     @name = sexp[3]
-    children = sexp[4..-1]
-    eval_children(children)
+    eval_children(sexp[4..-1])
   end
   
   
   
   attr_reader   :feature,
                 :line,
+                :comments,
                 :tags,
                 :steps
   attr_accessor :name
@@ -36,6 +40,9 @@ class Scenario
   
   def render
     output = "\n\n"
+    comments.each do |comment|
+      output << "  #{comment}\n"
+    end
     tags.each do |tag|
       output << "  #{tag}\n"
     end
@@ -53,13 +60,14 @@ private
   
   
   def eval_children(children)
-    @tags  = []
-    @steps = []
+    @tags     = []
+    @steps    = []
+    @comments = []
     
     children.each do |child|
       if    tag?(child);      @tags << child[1]
       elsif step?(child);     @steps << Step.new(self, child)
-      elsif comment?(child);  # Do nothing
+      elsif comment?(child);  @comments.concat child[1].split($/)
       else;                   raise("unrecognized sexp: #{child.first}")
       end
     end

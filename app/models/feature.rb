@@ -1,6 +1,6 @@
 # sexp Pattern
 #
-#   [:feature, path, text, children]
+#   [:feature, path, text, *children]
 #
 class Feature
   
@@ -21,6 +21,7 @@ class Feature
   
   def sexp
     @sexp ||= Cucumber::FeatureFile.new(self.absolute_path).parse([], {}).to_sexp
+    # p @sexp
   end
   
   def name
@@ -34,7 +35,13 @@ class Feature
   end
   
   def scenarios
-    @scenarios ||= sexp[3..-1].select(&method(:scenario?)).map {|scenario| Scenario.new(self, scenario)}
+    parse_sexp
+    @scenarios
+  end
+  
+  def comments
+    parse_sexp
+    @comments
   end
   
   
@@ -46,6 +53,9 @@ class Feature
   
   def render
     output = ""
+    comments.each do |comment|
+      output << "#{comment}\n"
+    end
     output << "Feature: #{name}\n"
     background.split($/).each do |line|
       output << "  #{line}\n"
@@ -63,12 +73,30 @@ private
   
   
   def parse_sexp
-    @name, @background = sexp[2].split($/, 2) unless @name
+    unless @name
+      @name, @background = sexp[2].split($/, 2)
+      eval_children(sexp[3..-1])
+    end
   end
   
+  def eval_children(children)
+    @scenarios = []
+    @comments = []
+    
+    children.each do |child|
+      if    scenario?(child);   @scenarios << Scenario.new(self, child)
+      elsif comment?(child);    @comments.concat child[1].split($/)
+      else;                     raise("unrecognized sexp: #{child.first}")
+      end
+    end
+  end
   
-  def scenario?(*scenario)
-    scenario.is_a?(Array) && (scenario.first == :scenario)
+  def scenario?(sexp)
+    sexp.first == :scenario
+  end
+  
+  def comment?(sexp)
+    sexp.first == :comment
   end
   
   
