@@ -24,7 +24,7 @@ class Table
     widths = calculate_column_widths
     output = ""
     rows.each do |row|
-      output << "    |"
+      output << "      |"
       row.each_with_index do |cell, i|
         output << " #{cell.ljust(widths[i])} |"
       end
