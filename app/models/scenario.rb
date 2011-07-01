@@ -6,12 +6,6 @@ class Scenario
   
   
   
-  # sexp Examples
-  #
-  #   Feature:  [:feature,         file,          text,         children]
-  #   Scenario: [:scenario,        line, keyword, text, (tags), children]
-  #   Step:     [:step_invocation, line, keyword, text          (table)]
-  #
   def initialize(feature, sexp)
     @feature = feature
     @line = sexp[1]

@@ -21,7 +21,6 @@ class Feature
   
   def sexp
     @sexp ||= Cucumber::FeatureFile.new(self.absolute_path).parse([], {}).to_sexp
-    # p @sexp
   end
   
   def name
