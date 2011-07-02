@@ -1,8 +1,15 @@
 <%= within_layout("application") do %>
 
-<p id="notice"><%= notice %></p>
+<% content_for :page_context do -%>
+  <p>
+    <span class="breadcrumbs">
+      <%= link_to "Projects", projects_path, :class => "breadcrumb" %>/<span class="breadcrumb current"><%= @project.name %></span>
+    </span>
+    <%= link_to 'Edit', edit_project_path(@project), :class => "button" %>
+  </p>
+<% end -%>
 
-<h2><%= link_to "Projects", projects_path %> » <%= @project.name %></h2>
+<p id="notice"><%= notice %></p>
 
 <div class="split-screen">
   <div class="left">
@@ -19,9 +26,6 @@
     </div>
   </div>
 </div>
-
-<%= link_to 'Edit', edit_project_path(@project) %> |
-<%= link_to 'Back', projects_path %>
 
 <p><%= image_tag "ajax-loader.gif", :id => "ajax_loader", :style => "display:none;" -%></p>
 
@@ -153,7 +157,7 @@
     });
     
     function resizeFeatures() {
-      $('#features').height($(window).height() - 200);
+      $('#features').height($(window).height() - 180);
     }
     $(window).resize(resizeFeatures);
     resizeFeatures();

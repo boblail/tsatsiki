@@ -1,5 +1,5 @@
-//$link-highlight: #446088;
-$link-highlight: #4be;
+$link-highlight: #beeb8b;
+$link-selected: #5bc350;
 
 .split-screen {
   overflow: hidden;
@@ -14,35 +14,22 @@ $link-highlight: #4be;
 }
 
 #features {
-  border: 1px solid #ccc;
-//  background-color: #efefef;
+  border: 1px solid #e0e0e0;
   margin-bottom: 2em;
   padding: 6px 8px;
   height: 400px;
-  overflow: scroll;
+  overflow-y: scroll;
 }
 
 #run_examples { display: none; }
 
 a.scenario-steps-link {
+  background-color: transparent;
   
-  &.natural {
-    background-color: transparent;
-//  border-width: 0 0 1px 0;
-//  border-style: dotted;
-//  padding-bottom: 0;
-    
-    &:hover {
-      color: $link-highlight;
-      border-color: $link-highlight;
-    }
-  }
-  
+  &:hover { color: white !important; }
   &.selected {
-    background-color: $link-highlight !important;
-    color: white              !important;
-//  border-style: none        !important;
-//  padding-bottom: 1px       !important;
+    background-color: $link-selected !important;
+    color: white !important;
   }
 }
 
@@ -73,7 +60,7 @@ a.scenario-steps-link {
 .feature > .caption {
   display: inline-block;
   border-radius: 2px;
-  background-color: #c4c4c4;
+  background-color: #656565; // #718468; // #3b9920; // #208215; // #c4c4c4;
   color: white;
   padding: 2px 4px;
   line-height: 1.15em;
@@ -110,8 +97,6 @@ a.scenario-steps-link {
 }
 
 .scenario-steps {
-  background-color: #eee;
-  padding: 12px 16px;
   
   h4 {
     color: auto;
@@ -177,6 +162,6 @@ table.step-table {
 }
 
 pre.step-heredoc {
-  margin: 8px 0 8px 14px;
+  margin: 8px 0;
   color: #555;
 }

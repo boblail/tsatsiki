@@ -8,7 +8,6 @@
     - Add an "Add feature" button next to categories
     - Clicking it places a "New Feature" placeholder in the Feature Tree and shows an editor
     - New scenarios are tagged @new
- - Create Tsatsiki's logo
  - Update tsatsiki.info
 
 ### 0.1.5

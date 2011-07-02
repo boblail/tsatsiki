@@ -9,12 +9,7 @@
 </head>
 <body>
 
-<div class="page-banner">
-  <h2 class="logo"><%= link_to(root_url) { image_tag "tsatsiki-60.png", :height => 60, :width => 229, :alt => "Tsatsiki" } %></h2>
-  <% if (page_context = yield :page_context) -%>
-    <div class="page-context"><%= page_context %></div>
-  <% end -%>
-</div>
+<h1 class="logo"><%= image_tag "tsatsiki-120.png", :height => 120, :width => 457, :alt => "Tsatsiki" %></h1>
 
 <%= yield %>
 

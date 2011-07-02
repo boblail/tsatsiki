@@ -1,3 +1,5 @@
+$link-highlight: #beeb8b; // #4be;
+
 body {
   background-color: #fff;
   color: #333;
@@ -13,9 +15,15 @@ body, p, ol, ul, td {
 th { text-align: left; }
 
 h1, h2, h3, h4 {
+  font-family: 'PT Sans', sans-serif;
+  font-weight: normal;
   line-height: 100%;
-  margin-bottom: 0.25em;
+  margin: 0.5em 0;
 }
+
+h1 { font-size: 2.5em; }
+h2 {}
+h3 { font-size: 1.33em; color: #48a33c; /*#656565;*/ }
 
 pre {
   background-color: #eee;
@@ -33,18 +41,25 @@ a {
   text-decoration: none;
   
   &:hover {
-    background-color: #4be; /* #333 */
+    background-color: $link-highlight;
     color: #fff;
   }
 }
 
-a.natural {
+a.natural,
+a.breadcrumb {
   background-color: transparent;
   color: auto;
   &:hover {
     background-color: transparent;
     color: auto;
   }
+}
+
+a.breadcrumb {
+  padding: 0;
+  display: inline;
+  &:hover { color: #333; };
 }
 
 div.field, div.actions {
@@ -87,5 +102,33 @@ div.field, div.actions {
 }
 
 #ajax_loader {
-  display:hidden;
+  display: hidden;
+}
+
+h1.logo { margin-bottom: 1em; }
+
+div.page-banner {
+  background: #efefef;
+  margin: -16px -16px 8px -16px;
+  padding: 4px 8px;
+  position: relative;
+  height: 66px;
+}
+
+div.page-context {
+  position: absolute;
+  padding: 4px;
+  bottom: 0;
+  p { margin: 4px; }
+}
+
+.breadcrumbs { font-size: 2em; }
+.breadcrumb.current  { font-weight: bold; }
+
+h2.logo {
+  position: absolute;
+  right: 16px;
+  margin: 0;
+  padding: 0;
+  a, a:hover { background: transparent; }
 }

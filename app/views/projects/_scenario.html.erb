@@ -2,5 +2,5 @@
                 :class => "collapsed #{scenario_class(scenario)}",
                 'data-index' => scenario.index,
                 'data-tags' => scenario_tags(scenario) do %>
-  <span class="caption"><%= link_to scenario.name, scenario_path(scenario), :class => "natural scenario-steps-link#{" selected" if (scenario == @selected_scenario)}" %></span>
+  <span class="caption"><%= link_to scenario.name, scenario_path(scenario), :class => "scenario-steps-link#{" selected" if (scenario == @selected_scenario)}" %></span>
 <% end %>
