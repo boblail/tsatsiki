@@ -19,7 +19,7 @@ var RunExamples = (function() {
       App.debug(data);
       var feature = $$('li[data-path="' + data.feature_file + '"]')[0];
       data.scenarios.__each(function(scenario) {
-        var li = feature.down('li[data-line="' + scenario.line + '"]');
+        var li = feature.down('li[data-index="' + scenario.index + '"]');
         li.className = 'scenario ' + scenario.status;
       });
     }

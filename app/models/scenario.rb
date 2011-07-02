@@ -6,25 +6,40 @@ class Scenario
   
   
   
-  def initialize(feature, sexp)
-    @feature = feature
-    @line = sexp[1]
-    @name = sexp[3]
-    eval_children(sexp[4..-1])
+  def initialize(feature, index, sexp)
+    @feature  = feature
+    @index    = index
+    @type     = sexp[0]
+    
+    sexp.delete_at(1) if scenario? # Disregard line
+    
+    @name     = sexp[2]
+    children  = sexp[3..-1]
+    
+    eval_children(children)
   end
   
   
   
   attr_reader   :feature,
+                :index,
+                :type,
                 :id,
-                :line,
                 :comments,
                 :tags,
                 :steps
   attr_accessor :name
   
+  def scenario?
+    type == :scenario
+  end
+  
+  def scenario_outline?
+    type == :scenario_outline
+  end
+  
   def path
-    "/#{feature.relative_path}/#{line}"
+    "/#{feature.relative_path}/#{index}"
   end
   
   def ==(other)

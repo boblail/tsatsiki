@@ -24,8 +24,8 @@ private
   def find_scenario
     @project           = Project.find(params[:project_id])
     @feature           = @project.find_feature(params[:feature])
-    line               = params[:line].to_i
-    @selected_scenario = @feature.scenarios.find {|scenario| scenario.line == line}
+    index              = params[:index].to_i - 1
+    @selected_scenario = @feature.scenarios[index]
   end
   
   

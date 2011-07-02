@@ -10,7 +10,7 @@ module UrlHelper
   
   
   def scenario_path(scenario, options={})
-    "#{root_url(options)}projects/#{scenario.feature.project.id}/features/#{scenario.feature.path}/#{scenario.line}"
+    "#{root_url(options)}projects/#{scenario.feature.project.id}/features/#{scenario.feature.path}/#{scenario.index}"
   end
   
   

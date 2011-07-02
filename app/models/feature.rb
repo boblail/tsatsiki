@@ -83,7 +83,7 @@ private
     @comments = []
     
     children.each do |child|
-      if    scenario?(child);   @scenarios << Scenario.new(self, child)
+      if    scenario?(child);   @scenarios << Scenario.new(self, @scenarios.length + 1, child)
       elsif comment?(child);    @comments.concat child[1].split($/)
       else;                     raise("unrecognized sexp: #{child.first}")
       end
