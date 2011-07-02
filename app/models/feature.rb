@@ -19,6 +19,10 @@ class Feature
               :relative_path
   alias :path :relative_path
   
+  def project_id
+    project.id
+  end
+  
   def sexp
     @sexp ||= Cucumber::FeatureFile.new(self.absolute_path).parse([], {}).to_sexp
   end
@@ -60,6 +64,7 @@ class Feature
       output << "  #{line}\n"
     end
     scenarios.each do |scenario|
+      output << "  \n  \n"
       output << scenario.render
     end
     output

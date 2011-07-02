@@ -1,0 +1,11 @@
+<%= form_tag scenario_path(@selected_scenario) do
+    fields_for :scenario, @selected_scenario do |f| %>
+<div class="scenario-title">
+  <h3><%= f.text_field :name %></h3>
+  <%= link_to "Cancel", scenario_path(@selected_scenario), :class => "button" %>
+</div>
+<div class="scenario-steps">
+  <textarea id="scenario_edit"><%= @selected_scenario.render_body.lines.map {|line| line[4..-1] }.join %></textarea>
+</div>
+<%  end
+   end %>

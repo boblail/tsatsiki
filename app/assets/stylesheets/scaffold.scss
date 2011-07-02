@@ -4,6 +4,7 @@ body {
   background-color: #fff;
   color: #333;
   padding: 16px;
+  margin: 0;
 }
 
 body, p, ol, ul, td {
@@ -23,7 +24,7 @@ h1, h2, h3, h4 {
 
 h1 { font-size: 2.5em; }
 h2 {}
-h3 { font-size: 1.33em; color: #48a33c; /*#656565;*/ }
+h3 { font-size: 1.33em; margin: 1em 0; color: black; } // #48a33c; /*#656565;*/ }
 
 pre {
   background-color: #eee;
@@ -113,6 +114,7 @@ div.page-banner {
   padding: 4px 8px;
   position: relative;
   height: 66px;
+  border-top: 6px solid #333;
 }
 
 div.page-context {

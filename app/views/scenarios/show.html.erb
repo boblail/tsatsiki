@@ -1,7 +1,9 @@
 <% if @selected_scenario -%>
-<h3><%= @selected_scenario.name %></h3>
+<div class="scenario-title">
+  <h3><%= @selected_scenario.name %></h3>
+  <%= link_to "Edit", edit_scenario_path(@selected_scenario), :class => "button" %>
+</div>
 <div class="scenario-steps">
-  <h4>Steps to Test</h4>
   <ul>
     <%= render :partial => "step", :collection => @selected_scenario.steps %>
     <% if @selected_scenario.examples -%>

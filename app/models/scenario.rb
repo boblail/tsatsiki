@@ -32,6 +32,9 @@ class Scenario
                 :examples
   attr_accessor :name
   
+  delegate      :project_id,
+                :to => :feature
+  
   def scenario?
     type == :scenario
   end
@@ -51,7 +54,7 @@ class Scenario
   
   
   def render
-    output = "  \n  \n"
+    output = ""
     comments.each do |comment|
       output << "  #{comment}\n"
     end
@@ -63,6 +66,12 @@ class Scenario
     end
     output << "  Scenario: #{name}\n" if scenario?
     output << "  Scenario Outline: #{name}\n" if scenario_outline?
+    output << render_body
+    output
+  end
+  
+  def render_body
+    output = ""
     steps.each do |step|
       output << step.render
     end

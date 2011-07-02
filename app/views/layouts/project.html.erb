@@ -27,7 +27,7 @@
   </div>
 </div>
 
-<p><%= image_tag "ajax-loader.gif", :id => "ajax_loader", :style => "display:none;" -%></p>
+<!-- <p><%= image_tag "ajax-loader.gif", :id => "ajax_loader", :style => "display:none;" -%></p> -->
 
 <script type="text/javascript">
   $(function() {
@@ -43,6 +43,8 @@
     $('a.scenario-steps-link').click(updateSelectedScenario)
                               .pjax('#scenario')
                               .dblclick(renameSelectedItem);
+    
+    $('.scenario-title a').pjax('#scenario');
     
     var selectedItem = $('.scenario-steps-link.selected');
     
@@ -67,16 +69,16 @@
     $(document.body).keyup(function(e) {
       if(selectedItem) {
         (e.keyCode == 13) && renameSelectedItem();
-        if(e.keyCode == 38) {
-          e.preventDefault();
-          e.stopImmediatePropagation();
-          selectPrevious();
-        }
-        if(e.keyCode == 40) {
-          e.preventDefault();
-          e.stopImmediatePropagation();
-          selectNext();
-        }
+        // if(e.keyCode == 38) {
+        //   e.preventDefault();
+        //   e.stopImmediatePropagation();
+        //   selectPrevious();
+        // }
+        // if(e.keyCode == 40) {
+        //   e.preventDefault();
+        //   e.stopImmediatePropagation();
+        //   selectNext();
+        // }
       }
     });
     
@@ -157,7 +159,7 @@
     });
     
     function resizeFeatures() {
-      $('#features').height($(window).height() - 180);
+      $('#features').height($(window).height() - 184);
     }
     $(window).resize(resizeFeatures);
     resizeFeatures();

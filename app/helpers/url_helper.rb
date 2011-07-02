@@ -10,7 +10,19 @@ module UrlHelper
   
   
   def scenario_path(scenario, options={})
-    "#{root_url(options)}projects/#{scenario.feature.project.id}/features/#{scenario.feature.path}/#{scenario.index}"
+    super(options.merge({
+      :project_id => scenario.project_id,
+      :feature    => scenario.feature.path,
+      :index      => scenario.index
+    }))
+  end
+  
+  def edit_scenario_path(scenario, options={})
+    super(options.merge({
+      :project_id => scenario.project_id,
+      :feature    => scenario.feature.path,
+      :index      => scenario.index
+    }))
   end
   
   

@@ -9,6 +9,12 @@ class ScenariosController < ApplicationController
   
   
   
+  def edit
+    render :layout => (request.xhr? ? false : "project")
+  end
+  
+  
+  
   def update
     @selected_scenario.name = params[:name]
     @feature.write!
