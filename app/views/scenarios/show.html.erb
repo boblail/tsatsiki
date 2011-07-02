@@ -4,6 +4,12 @@
   <h4>Steps to Test</h4>
   <ul>
     <%= render :partial => "step", :collection => @selected_scenario.steps %>
+    <% if @selected_scenario.examples -%>
+    <li>
+      <span class="scenario-step-term">Examples:</span>
+      <%= render :partial => "partials/table", :object => @selected_scenario.examples %>
+    </li>
+    <% end -%>
   </ul>
 </div>
 <div class="scenario-tags">

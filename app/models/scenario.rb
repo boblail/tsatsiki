@@ -1,6 +1,7 @@
 # sexp Pattern
 #
-#   [:scenario, line, keyword, text, *children]
+#   [:scenario, line,   keyword, text, *children]
+#   [:scenario_oultine, keyword, text, *children]
 #
 class Scenario
   
@@ -27,7 +28,8 @@ class Scenario
                 :id,
                 :comments,
                 :tags,
-                :steps
+                :steps,
+                :examples
   attr_accessor :name
   
   def scenario?
@@ -49,7 +51,7 @@ class Scenario
   
   
   def render
-    output = "\n\n"
+    output = "  \n  \n"
     comments.each do |comment|
       output << "  #{comment}\n"
     end
@@ -59,9 +61,14 @@ class Scenario
     tags.each do |tag|
       output << "  #{tag}\n"
     end
-    output << "  Scenario: #{name}\n"
+    output << "  Scenario: #{name}\n" if scenario?
+    output << "  Scenario Outline: #{name}\n" if scenario_outline?
     steps.each do |step|
       output << step.render
+    end
+    if examples
+      output << "    Examples:\n"
+      output << examples.render
     end
     output
   end
@@ -76,11 +83,13 @@ private
     @tags     = []
     @steps    = []
     @comments = []
+    @examples = nil
     
     children.each do |child|
       if    tag?(child);      @tags << child[1]
       elsif step?(child);     @steps << Step.new(self, child)
       elsif comment?(child);  child[1].split($/).each(&method(:eval_comment))
+      elsif examples?(child); @examples = Table.new(child[3])
       else;                   raise("unrecognized sexp: #{child.first}")
       end
     end
@@ -91,11 +100,15 @@ private
   end
   
   def step?(sexp)
-    sexp.first == :step_invocation
+    (sexp.first == :step_invocation) || (sexp.first == :step)
   end
   
   def comment?(sexp)
     sexp.first == :comment
+  end
+  
+  def examples?(sexp)
+    sexp.first == :examples
   end
   
   

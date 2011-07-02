@@ -1,10 +1,14 @@
 
 
-Given /^this feature has a table:$/ do |table|
+Given /^a table:$/ do |table|
   # Don't do anything: we're just testing parsing and rendering
 end
 
-Given /^this feature has a multiline string:$/ do |string|
+Given /^a multiline string:$/ do |string|
+  # Don't do anything: we're just testing parsing and rendering
+end
+
+Given /^a placeholder for an .*$/ do
   # Don't do anything: we're just testing parsing and rendering
 end
 

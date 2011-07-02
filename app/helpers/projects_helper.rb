@@ -35,7 +35,10 @@ module ProjectsHelper
   end
   
   def colorize_step(step)
-    step.gsub(/("[^"]*?")/, '<em>\1</em>').html_safe
+    table_for_escape = {'&' => '&amp;', '<' => '&lt;', '>' => '&gt;'}
+    step.gsub(/[&<>]/) {|match| table_for_escape[match]} \
+        .gsub(/("[^"]*?")/, '<em>\1</em>') \
+        .html_safe
   end
   
   # def render_steps(steps)

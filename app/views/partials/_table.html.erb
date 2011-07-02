@@ -1,0 +1,15 @@
+<table class="step-table">
+  <% table.rows[0].tap do |row| %>
+    <tr>
+      <% row.each do |cell| %>
+        <th><%= cell %></th>
+      <% end %>
+  <% end %>
+  <% table.rows[1..-1].each do |row| %>
+    <tr>
+      <% row.each do |cell| %>
+        <td><%= cell %></td>
+      <% end %>
+    </tr>
+  <% end %>
+</table>

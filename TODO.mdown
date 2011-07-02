@@ -2,8 +2,6 @@
 
 ### 0.1.0
 
- - Tsatsiki parses and renders everything correctly
-    - Placeholders and examples
  - Tsatsiki adds a comment to every Scenario that contains its ID
  - Implement a very basic interface for editing scenarios
  - Implement an interface for adding scenarios

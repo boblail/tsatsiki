@@ -91,7 +91,7 @@ private
   end
   
   def scenario?(sexp)
-    sexp.first == :scenario
+    (sexp.first == :scenario) || (sexp.first == :scenario_outline)
   end
   
   def comment?(sexp)
