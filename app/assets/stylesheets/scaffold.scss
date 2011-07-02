@@ -106,14 +106,21 @@ div.field, div.actions {
   display: hidden;
 }
 
-h1.logo { margin-bottom: 1em; }
+h1.logo {
+  margin: -16px -16px 0 -16px;
+  border-top: 6px solid #333;
+  border-bottom: 2px solid #333;
+  padding: 1em;
+  background: #efefef;
+  margin-bottom: 1em;
+}
 
 div.page-banner {
   background: #efefef;
-  margin: -16px -16px 8px -16px;
+  margin: -16px -16px 0 -16px;
   padding: 4px 8px;
   position: relative;
-  height: 66px;
+  height: 70px;
   border-top: 6px solid #333;
 }
 
