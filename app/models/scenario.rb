@@ -17,6 +17,10 @@ class Scenario
     @name     = sexp[2]
     children  = sexp[3..-1]
     
+    @tags     = []
+    @steps    = []
+    @comments = []
+    @examples = nil
     eval_children(children)
   end
   
@@ -43,12 +47,39 @@ class Scenario
     type == :scenario_outline
   end
   
+  def body
+    render_body.lines.map {|line| line[4..-1] }.join
+  end
+  
+  def body=(body)
+    sexp      = Scenario.parse_body!(body)
+    @steps    = []
+    @examples = nil
+    eval_children(sexp)
+  end
+  
+  def self.parse_body!(body)
+    sexp = Feature.parse!("Feature: Context\nScenario: Context\n#{body}")
+    sexp[3][4..-1]
+  end
+  
   def path
     "/#{feature.relative_path}/#{index}"
   end
   
   def ==(other)
     other && self.path == other.path
+  end
+  
+  
+  
+  def update_attributes!(attributes)
+    attributes.each {|key, value| send("#{key}=", value) }
+    save!
+  end
+  
+  def save!
+    feature.write!
   end
   
   
@@ -89,11 +120,6 @@ private
   
   
   def eval_children(children)
-    @tags     = []
-    @steps    = []
-    @comments = []
-    @examples = nil
-    
     children.each do |child|
       if    tag?(child);      @tags << child[1]
       elsif step?(child);     @steps << Step.new(self, child)

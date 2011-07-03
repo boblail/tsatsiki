@@ -2,8 +2,6 @@
 
 ### 0.1.0
 
- - Tsatsiki adds a comment to every Scenario that contains its ID
- - Implement a very basic interface for editing scenarios
  - Implement an interface for adding scenarios
     - Add an "Add feature" button next to categories
     - Clicking it places a "New Feature" placeholder in the Feature Tree and shows an editor
@@ -18,6 +16,8 @@
 ### 0.2.0
 
  - Add Devise for authentication and a Users interface
+ - Tsatsiki adds a comment to every Scenario that contains its ID
+ - Tests have comments
  - @human Scenarios have many Tests: [scenario, tester, datetime, results]
  - Add a "Preflight" screen that shows only @human scenarios and their Test Logs
 

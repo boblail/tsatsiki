@@ -1,5 +1,6 @@
 class ScenariosController < ApplicationController
   before_filter :find_scenario
+  include UrlHelper
   
   
   
@@ -16,9 +17,20 @@ class ScenariosController < ApplicationController
   
   
   def update
-    @selected_scenario.name = params[:name]
-    @feature.write!
-    head :ok
+    @selected_scenario.update_attributes!(params[:scenario])
+    if request.xhr?
+      head :ok
+    else
+      redirect_to scenario_path(@selected_scenario)
+    end
+  rescue
+    Rails.logger.error $!.to_s
+    if request.xhr?
+      head :unprocessable_entity
+    else
+      flash[:error] = $!.to_s
+      redirect_to edit_scenario_path(@selected_scenario)
+    end
   end
   
   

@@ -23,8 +23,16 @@ class Feature
     project.id
   end
   
+  def self.parse_file!(path)
+    parse!(nil, path)
+  end
+  
+  def self.parse!(source, path=nil)
+    Cucumber::FeatureFile.new(path, source).parse([], {}).to_sexp
+  end
+  
   def sexp
-    @sexp ||= Cucumber::FeatureFile.new(self.absolute_path).parse([], {}).to_sexp
+    @sexp ||= Feature.parse_file!(self.absolute_path)
   end
   
   def name

@@ -1,11 +1,14 @@
-<%= form_tag scenario_path(@selected_scenario) do
+<%= flash_message :error %>
+
+<%= form_tag scenario_path(@selected_scenario), :method => :put do
     fields_for :scenario, @selected_scenario do |f| %>
 <div class="scenario-title">
   <h3><%= f.text_field :name %></h3>
-  <%= link_to "Cancel", scenario_path(@selected_scenario), :class => "button" %>
+  <%= submit_tag "Save Changes" -%>
+  <%= link_to "Cancel", scenario_path(@selected_scenario), :class => "button" -%>
 </div>
 <div class="scenario-steps">
-  <textarea id="scenario_edit" wrap="off"><%= @selected_scenario.render_body.lines.map {|line| line[4..-1] }.join %></textarea>
+  <textarea name="scenario[body]" id="scenario_body" wrap="off"><%= @selected_scenario.render_body.lines.map {|line| line[4..-1] }.join %></textarea>
 </div>
 <%  end
    end %>
