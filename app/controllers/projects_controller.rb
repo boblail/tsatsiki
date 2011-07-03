@@ -3,8 +3,7 @@ class ProjectsController < ApplicationController
   
   
   def index
-    @projects = Project.all
-    respond_with(@projects, :layout => "home")
+    redirect_to root_url
   end
   
   
