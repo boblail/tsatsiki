@@ -5,7 +5,7 @@
   <%= link_to "Cancel", scenario_path(@selected_scenario), :class => "button" %>
 </div>
 <div class="scenario-steps">
-  <textarea id="scenario_edit"><%= @selected_scenario.render_body.lines.map {|line| line[4..-1] }.join %></textarea>
+  <textarea id="scenario_edit" wrap="off"><%= @selected_scenario.render_body.lines.map {|line| line[4..-1] }.join %></textarea>
 </div>
 <%  end
    end %>
