@@ -12,10 +12,11 @@ textarea {
 input[type="text"] { border: $control-border; }
 
 .split-screen {
-  overflow: hidden;
-  
   .left {
-    float: left;
+    position: fixed;
+    left: 16px;
+    top: 78px;
+    bottom: 0;
     width: 500px;
     padding: 1em 16px 0 0;
     border-right: 3px solid #efefef;
@@ -31,7 +32,11 @@ input[type="text"] { border: $control-border; }
   border: $control-border;
   padding: $control-padding;
   overflow-y: scroll;
-  height: 400px;
+  position: absolute;
+  left: 0;
+  right: 16px;
+  top: 72px;
+  bottom: 16px;
 }
 
 #run_examples { display: none; }

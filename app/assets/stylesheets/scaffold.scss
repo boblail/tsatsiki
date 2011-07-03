@@ -7,6 +7,10 @@ body {
   margin: 0;
 }
 
+body#interior {
+  padding-top: 82px;
+}
+
 body, p, ol, ul, td {
   font-family: arial, helvetica, sans-serif;
   font-size:   15px;
@@ -122,9 +126,13 @@ h1.logo {
 
 div.page-banner {
   background: #efefef;
-  margin: -16px -16px 0 -16px;
+//  margin: -16px -16px 0 -16px;
   padding: 4px 8px;
-  position: relative;
+//  position: relative;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
   height: 70px;
   border-top: 6px solid #333;
 }
