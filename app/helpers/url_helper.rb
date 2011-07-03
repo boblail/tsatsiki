@@ -26,5 +26,20 @@ module UrlHelper
   end
   
   
+  def new_scenario_path(feature, options={})
+    super(options.merge({
+      :project_id => feature.project_id,
+      :feature    => feature.path
+    }))
+  end
+  
+  def scenarios_path(feature, options={})
+    super(options.merge({
+      :project_id => feature.project_id,
+      :feature    => feature.path
+    }))
+  end
+  
+  
   
 end

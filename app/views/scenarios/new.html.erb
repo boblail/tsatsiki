@@ -1,5 +1,5 @@
 <%= flash_message :error %>
 
-<%= form_tag scenario_path(@selected_scenario), :method => :put do %>
+<%= form_tag scenarios_path(@feature), :method => :post do %>
   <%= render :partial => "form" %>
 <% end -%>

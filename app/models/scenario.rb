@@ -7,7 +7,8 @@ class Scenario
   
   
   
-  def initialize(feature, index, sexp)
+  def initialize(feature, index=nil, sexp=nil)
+    sexp    ||= [:scenario, nil, "Scenario", "New Feature", [:tag, "@new"]]
     @feature  = feature
     @index    = index
     @type     = sexp[0]
@@ -47,6 +48,10 @@ class Scenario
     type == :scenario_outline
   end
   
+  def new_record?
+    index.nil?
+  end
+  
   def body
     render_body.lines.map {|line| line[4..-1] }.join
   end
@@ -79,6 +84,10 @@ class Scenario
   end
   
   def save!
+    if new_record?
+      feature.scenarios << self
+      @index = feature.scenarios.length
+    end
     feature.write!
   end
   

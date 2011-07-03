@@ -1,6 +1,6 @@
 Feature: Manage projects
-
-
+  
+  
   Scenario: Register new project
     Given I am on the new project page
     When I fill in "Name" with "name 1"

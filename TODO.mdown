@@ -2,10 +2,7 @@
 
 ### 0.1.0
 
- - Implement an interface for adding scenarios
-    - Add an "Add feature" button next to categories
-    - Clicking it places a "New Feature" placeholder in the Feature Tree and shows an editor
-    - New scenarios are tagged @new
+ - Use pjax for Add feature functionality
 
 ### 0.1.5
 

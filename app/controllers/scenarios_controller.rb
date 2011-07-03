@@ -8,10 +8,31 @@ class ScenariosController < ApplicationController
     render :layout => (request.xhr? ? false : "project")
   end
   
-  
+  def new
+    render :layout => (request.xhr? ? false : "project")
+  end
   
   def edit
     render :layout => (request.xhr? ? false : "project")
+  end
+  
+  
+  
+  def create
+    @selected_scenario.update_attributes!(params[:scenario])
+    if request.xhr?
+      head :ok
+    else
+      redirect_to scenario_path(@selected_scenario)
+    end
+  rescue
+    Rails.logger.error $!.to_s
+    if request.xhr?
+      head :unprocessable_entity
+    else
+      flash[:error] = $!.to_s
+      redirect_to new_scenario_path(@feature)
+    end
   end
   
   
@@ -43,7 +64,7 @@ private
     @project           = Project.find(params[:project_id])
     @feature           = @project.find_feature(params[:feature])
     index              = params[:index].to_i - 1
-    @selected_scenario = @feature.scenarios[index]
+    @selected_scenario = (index < 0) ? Scenario.new(@feature) : @feature.scenarios[index]
   end
   
   

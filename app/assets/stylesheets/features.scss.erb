@@ -2,6 +2,7 @@ $link-highlight: #beeb8b;
 $link-selected: #5bc350;
 $control-border: 1px solid #e0e0e0;
 $control-padding: 6px 8px;
+$accent-color: #d37122;
 
 
 textarea {
@@ -72,8 +73,12 @@ a.scenario-steps-link {
 .feature > .caption {
   display: inline-block;
   border-radius: 2px;
-  background-color: #656565; // #718468; // #3b9920; // #208215; // #c4c4c4;
+  background-color: #656565;
   color: white;
+}
+
+.feature > .caption,
+a.feature-new-scenario {
   padding: 2px 4px;
   line-height: 1.15em;
   font-weight: bold;
@@ -200,4 +205,20 @@ form .scenario-title h3 {
 #scenario_body {
   white-space: pre;
   overflow: auto;
+}
+
+a.feature-new-scenario.on {
+  background-color: $accent-color;
+  color: white;
+}
+
+.new-feature-placeholder {
+  background-color: $accent-color;
+  color: white;
+  
+  margin: 1px 0 1px 16px;
+  border-radius: 2px;
+  display: inline-block;
+  padding: 2px 6px 2px 4px;
+  line-height: 1em;
 }

@@ -55,6 +55,10 @@ class Feature
     @comments
   end
   
+  def ==(other)
+    other.is_a?(Feature) && self.absolute_path == other.absolute_path
+  end
+  
   
   
   def write!
