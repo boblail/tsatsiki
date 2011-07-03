@@ -9,9 +9,13 @@
 </head>
 <body>
 
-<h1 class="logo"><%= image_tag "tsatsiki-120.png", :height => 120, :width => 457, :alt => "Tsatsiki" %></h1>
+<h1 class="logo">
+  <div class="container">
+    <%= image_tag "tsatsiki-120.png", :height => 120, :width => 457, :alt => "Tsatsiki" %>
+  </div>
+</h1>
 
-<%= yield %>
+<div class="container"><%= yield %></div>
 
 </body>
 </html>
