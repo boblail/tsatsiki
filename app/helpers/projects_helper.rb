@@ -25,13 +25,17 @@ module ProjectsHelper
       "<p class=\"scenario-tag tag-human\">This feature must be tested manually</p>".html_safe
     when "javascript"
       "<p class=\"scenario-tag tag-javascript\">This feature requires JavaScript</p>".html_safe
-    when "wip", "todo"
+    when "new"
+      "<p class=\"scenario-tag tag-new\">This is a new feature</p>".html_safe
+    when "todo"
       "<p class=\"scenario-tag tag-todo\">This feature is not yet implemented</p>".html_safe
+    when "wip"
+      "<p class=\"scenario-tag tag-wip\">This feature is a work-in-progress</p>".html_safe
     end
   end
   
   def known_tag?(tag)
-    %w{human javascript}.member?(tag)
+    %w{human javascript new}.member?(tag)
   end
   
   def colorize_step(step)
