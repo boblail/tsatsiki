@@ -5,15 +5,15 @@ class ScenariosController < ApplicationController
   
   
   def show
-    render :layout => (request.xhr? ? false : "project")
+    render :layout => (!pjax? && "project")
   end
   
   def new
-    render :layout => (request.xhr? ? false : "project")
+    render :layout => (!pjax? && "project")
   end
   
   def edit
-    render :layout => (request.xhr? ? false : "project")
+    render :layout => (!pjax? && "project")
   end
   
   

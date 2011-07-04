@@ -10,7 +10,7 @@ class ProjectsController < ApplicationController
   
   def show
     @project = Project.find(params[:id])
-    respond_with(@project, :layout => "project")
+    respond_with(@project, :layout => (!pjax? && "project"))
   end
   
   

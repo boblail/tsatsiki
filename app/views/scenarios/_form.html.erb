@@ -2,7 +2,11 @@
   <div class="scenario-title">
     <h3><%= f.text_field :name %></h3>
     <%= submit_tag "Save Changes" -%>
-    <%= link_to "Cancel", @selected_scenario.new_record? ? :back : scenario_path(@selected_scenario), :class => "button" -%>
+  <% if @selected_scenario.new_record? -%>
+    <%= link_to "Cancel", project_path(@project), :class => "button", :id => "cancel_new_scenario" -%>
+  <% else -%>
+    <%= link_to "Cancel", scenario_path(@selected_scenario), :class => "button" -%>
+  <% end -%>
   </div>
   <div class="scenario-steps">
     <%= f.text_area :body, :wrap => "off" -%>
