@@ -1,29 +1,32 @@
 # TODO
 
-### 0.1.0
-
- - Use pjax for Add feature functionality
-
 ### 0.1.5
+
+ - Add Devise for authentication and a Users interface
+ - Tsatsiki adds a comment to every Scenario that contains its ID
+ - Tests have comments
+ - Feature Tree indicates how many comments for each scenario
+
+### 0.2.0
 
  - Improve the interface for editing scenarios
     - Initially, one Steps to Test and then one Assertions block; can add pairs?
     - All Givens at the top?
 
-### 0.2.0
+### 0.2.5
 
- - Add Devise for authentication and a Users interface
- - Tsatsiki adds a comment to every Scenario that contains its ID
- - Tests have comments
  - @human Scenarios have many Tests: [scenario, tester, datetime, results]
- - Add a "Preflight" screen that shows only @human scenarios and their Test Logs
+ - @human Scenarios indicate test status on page load
 
 ### Future
 
+ - Show a completion indicator above the Feature Tree (how many features are @todo?, @wip?)
+ - Add a "Preflight" screen that shows only @human scenarios and their Test Logs
  - Improve automatic test running
  - Allow dragging and dropping scenarios in Feature Tree
  - Have a real-time filter-box for scenarios above the Feature Tree
  - Implement permissions
+ - Make split screen drag-resizable
 
 ### Suggestions
 
