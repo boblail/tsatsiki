@@ -9,9 +9,14 @@
   </p>
 <% end -%>
 
+<%# Where is the best place for these? %>
+<%= flash_message :notice %>
+<%= flash_message :error %>
+
 <div class="split-screen">
   <div class="left">
     <h3><%= @project.feature_count %> Features <button id="run_examples">Test Features</button></h3>
+    
     <div id="features">
       <ul class="tree">
         <%= render :partial => "projects/feature", :collection => @project.features -%>

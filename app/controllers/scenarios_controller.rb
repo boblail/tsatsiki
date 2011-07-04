@@ -65,6 +65,11 @@ private
     @feature           = @project.find_feature(params[:feature])
     index              = params[:index].to_i - 1
     @selected_scenario = (index < 0) ? Scenario.new(@feature) : @feature.scenarios[index]
+    
+    unless @selected_scenario
+      flash[:notice] = "The feature you were looking for could not be found."
+      redirect_to project_url(@project)
+    end
   end
   
   
