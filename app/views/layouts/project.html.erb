@@ -99,7 +99,14 @@
     
     
     
-    $(document.body).keyup(function(e) {
+    $(document.body).delegate('textarea', 'keyup', function(e) {
+      if(e.keyCode == 13 && e.ctrlKey) {
+        $(e.target).closest('form').submit();
+      }
+    });
+    
+    
+    
     // !todo: these don't work unless the feature tree is focusable
     $('#features').keyup(function(e) {
       if(selectedItem) {
