@@ -93,6 +93,13 @@ class Scenario
   
   
   
+  def destroy!
+    feature.scenarios.delete_at((index-1))
+    feature.write!
+  end
+  
+  
+  
   def render
     output = ""
     comments.each do |comment|

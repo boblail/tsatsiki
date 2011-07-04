@@ -56,6 +56,15 @@ class ScenariosController < ApplicationController
   
   
   
+  def destroy
+    @selected_scenario.destroy!
+    
+    flash[:notice] = "The feature \"#{@selected_scenario.name}\" was removed."
+    redirect_to project_path(@project)
+  end
+  
+  
+  
 private
   
   

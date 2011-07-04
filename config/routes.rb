@@ -9,6 +9,7 @@ Tsatsiki::Application.routes.draw do
     match '/projects/:project_id/features/*feature/:index/edit' => 'scenarios#edit', :via => :get, :as => :edit_scenario
     match '/projects/:project_id/features/*feature/:index' => 'scenarios#show', :via => :get, :as => :scenario
     match '/projects/:project_id/features/*feature/:index' => 'scenarios#update', :via => :put
+    match '/projects/:project_id/features/*feature/:index' => 'scenarios#destroy', :via => :delete
     match '/projects/:project_id/features/*feature' => 'scenarios#create', :via => :post, :as => :scenarios, :format => false
   end
   
