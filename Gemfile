@@ -16,7 +16,9 @@ gem 'uglifier'
 
 gem 'jquery-rails'
 
-# gem 'gherkin', '2.3.2' # an API change post-2.3.2 breaks cucumber's GherkinFormatterAdapter
+# gem 'devise'
+# gem 'devise-invitable'
+
 gem 'cucumber'
 gem 'websocket-rack', '0.3.0'
 gem 'childprocess'
