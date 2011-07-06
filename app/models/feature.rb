@@ -52,6 +52,10 @@ class Feature
     @scenarios
   end
   
+  def all_scenarios
+    self.features.inject([]) {|all, feature| all.concat(feature.all_scenarios)} + scenarios
+  end
+  
   def comments
     parse_sexp
     @comments

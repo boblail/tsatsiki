@@ -40,8 +40,8 @@ class Category
               :features,
               :name
   
-  def scenarios
-    self.features.inject([]) {|all, feature| all.concat(feature.scenarios)}
+  def all_scenarios
+    self.features.inject([]) {|all, feature| all.concat(feature.all_scenarios)}
   end
   
 end

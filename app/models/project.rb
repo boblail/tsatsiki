@@ -11,7 +11,7 @@ class Project < ActiveRecord::Base
   end
   
   def scenarios
-    @scenarios ||= features.inject([]) {|all, feature| all.concat(feature.scenarios)}
+    @scenarios ||= features.inject([]) {|all, feature| all.concat(feature.all_scenarios)}
   end
   
   def find_feature(relative_path)
