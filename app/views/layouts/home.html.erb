@@ -8,14 +8,21 @@
   <%= csrf_meta_tags %>
 </head>
 <body id="home">
-
-<h1 class="logo">
-  <div class="container">
-    <%= image_tag "tsatsiki-120.png", :height => 120, :width => 457, :alt => "Tsatsiki" %>
+  
+  <div class="logo">
+    <div class="container">
+      <%= image_tag "tsatsiki-120.png", :height => 120, :width => 457, :alt => "Tsatsiki" %>
+    </div>
+    
+    <%= render :partial => "layouts/authentication" %>
   </div>
-</h1>
-
-<div class="container"><%= yield %></div>
-
+  
+  <div class="container">
+    <%= flash_message :notice %>
+    <%= flash_message :error %>
+    <%= flash_message :alert %>
+    <%= yield %>
+  </div>
+  
 </body>
 </html>

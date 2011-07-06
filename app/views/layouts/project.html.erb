@@ -5,7 +5,7 @@
     <span class="breadcrumbs">
       <%= link_to "Projects", projects_path, :class => "breadcrumb" %>/<%= link_to @project.name, project_path(@project), :class => "breadcrumb current" %>
     </span>
-    <%= link_to 'Edit', edit_project_path(@project), :class => "button" %>
+    <%= link_to('Edit', edit_project_path(@project), :class => "button") if can?(:edit, @project) %>
   </p>
 <% end -%>
 

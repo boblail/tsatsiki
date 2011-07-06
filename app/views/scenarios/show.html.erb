@@ -1,6 +1,6 @@
 <div class="scenario-title">
   <h3><%= @selected_scenario.name %></h3>
-  <%= link_to "Edit", edit_scenario_path(@selected_scenario), :class => "button" %>
+  <%= link_to("Edit", edit_scenario_path(@selected_scenario), :class => "button") if can?(:edit, @feature) %>
 </div>
 <div class="scenario-steps">
   <ul>

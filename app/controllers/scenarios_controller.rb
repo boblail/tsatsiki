@@ -1,4 +1,6 @@
 class ScenariosController < ApplicationController
+  load_and_authorize_resource
+  check_authorization
   before_filter :find_scenario
   include UrlHelper
   

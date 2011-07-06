@@ -1,6 +1,6 @@
 source 'http://rubygems.org'
 
-gem 'rails', '3.1.0.rc3'
+gem 'rails', '3.1.0.rc4'
 
 # Bundle edge Rails instead:
 # gem 'rails',     :git => 'git://github.com/rails/rails.git'
@@ -14,10 +14,13 @@ gem 'coffee-script'
 gem 'therubyracer', '0.8.1'
 gem 'uglifier'
 
+gem 'mongrel'
+
 gem 'jquery-rails'
 
-# gem 'devise'
-# gem 'devise-invitable'
+gem 'devise'
+gem 'devise_invitable'
+gem 'cancan'
 
 gem 'cucumber'
 gem 'websocket-rack', '0.3.0'

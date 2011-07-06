@@ -1,11 +1,13 @@
 <li class="feature <%= feature.class.name.downcase %>" data-path="<%= feature.relative_path %>">
   <span class="caption"><%= feature.name %></span>
-  <% if feature.is_a?(Feature) # !todo implement for categories as well -%>
-    <% if @selected_scenario && @selected_scenario.new_record? && @selected_scenario.feature == feature -%>
-      <%= link_to "Add Feature", project_path(feature.project), :class => "feature-new-scenario on", "data-href" => new_scenario_path(feature) %>
-    <% else %>
-      <%= link_to "Add Feature", new_scenario_path(feature), :class => "feature-new-scenario", "data-href" => new_scenario_path(feature) %>
-    <% end %>
+  <% if can?(:create, :feature) %>
+    <% if feature.is_a?(Feature) # !todo implement for categories as well -%>
+      <% if @selected_scenario && @selected_scenario.new_record? && @selected_scenario.feature == feature -%>
+        <%= link_to "Add Feature", project_path(feature.project), :class => "feature-new-scenario on", "data-href" => new_scenario_path(feature) %>
+      <% else %>
+        <%= link_to "Add Feature", new_scenario_path(feature), :class => "feature-new-scenario", "data-href" => new_scenario_path(feature) %>
+      <% end %>
+    <% end -%>
   <% end -%>
   
   <%= feature.is_a?(Category) ? render_features(feature.features) : render_scenarios(feature.scenarios) %>
