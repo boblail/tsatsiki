@@ -7,7 +7,12 @@ class ScenariosController < ApplicationController
   
   
   def show
-    render :layout => (!pjax? && "project")
+    if @selected_scenario
+      render :layout => (!pjax? && "project")
+    else
+      flash[:notice] = "The feature you were looking for was not found"
+      redirect_to project_path(@project)
+    end
   end
   
   def new
@@ -75,7 +80,7 @@ private
     @project           = Project.find(params[:project_id])
     @feature           = @project.find_feature(params[:feature])
     index              = params[:index].to_i - 1
-    @selected_scenario = (index < 0) ? Scenario.new(@feature) : @feature.scenarios[index]
+    @selected_scenario = (index < 0) ? Scenario.new(@feature) : @feature.scenarios[index] if @feature
     
     unless @selected_scenario
       flash[:notice] = "The feature you were looking for could not be found."
