@@ -100,6 +100,28 @@ class Scenario
   
   
   
+  def new?
+    tags.member?("@new")
+  end
+  
+  def todo?
+    tags.member?("@todo")
+  end
+  
+  def wip?
+    tags.member?("@wip")
+  end
+  
+  def human?
+    tags.member?("@human")
+  end
+  
+  def completed?
+    !(new? || todo? || wip?)
+  end
+  
+  
+  
   def render
     output = ""
     comments.each do |comment|

@@ -10,8 +10,8 @@ class Project < ActiveRecord::Base
     @features ||= Category.get_features(self, self.path_to_features)
   end
   
-  def feature_count
-    @feature_count = features.inject(0) {|sum, feature| sum + feature.scenarios.count}
+  def scenarios
+    @scenarios ||= features.inject([]) {|all, feature| all.concat(feature.scenarios)}
   end
   
   def find_feature(relative_path)
