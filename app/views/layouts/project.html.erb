@@ -20,15 +20,15 @@
         <td><%= @project.scenarios.count %></td>
         <td><%= @project.scenarios.select(&:completed?).count %></td>
         <td><%= @project.scenarios.select(&:wip?).count %></td>
-        <td><%= @project.scenarios.select(&:todo?).count %></td>
+        <td><%= @project.scenarios.select(&:new?).count %></td>
         <td><%= @project.scenarios.select(&:boundary?).count %></td>
         <td><%= @project.scenarios.select(&:human?).count %></td>
       </tr>
       <tr>
         <th>Features</th>
         <th>Completed</th>
-        <th>Working</th>
-        <th>New</th>
+        <th>Started</th>
+        <th>Proposed</th>
         <th>Boundaries</th>
         <th>Human</th>
       </tr>
