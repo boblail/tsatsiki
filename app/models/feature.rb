@@ -8,6 +8,7 @@ class Feature
   
   def initialize(project, absolute_path)
     @project = project
+    @features = []
     @absolute_path = absolute_path
     @relative_path = Pathname.new(absolute_path).relative_path_from(Pathname.new(@project.path))
   end
@@ -16,6 +17,7 @@ class Feature
   
   attr_reader :project,
               :absolute_path,
+              :features,
               :relative_path
   alias :path :relative_path
   
