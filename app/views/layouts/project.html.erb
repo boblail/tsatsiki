@@ -21,15 +21,20 @@
         <td><%= @project.scenarios.select(&:completed?).count %></td>
         <td><%= @project.scenarios.select(&:wip?).count %></td>
         <td><%= @project.scenarios.select(&:todo?).count %></td>
-        <td rowspan="2"><input type="text" id="feature_filter" size="10" /></td>
+        <td><%= @project.scenarios.select(&:boundary?).count %></td>
+        <td><%= @project.scenarios.select(&:human?).count %></td>
       </tr>
       <tr>
         <th>Features</th>
         <th>Completed</th>
-        <th>In Progress</th>
+        <th>Working</th>
         <th>New</th>
+        <th>Boundaries</th>
+        <th>Human</th>
       </tr>
     </table>
+    
+    <input type="text" id="feature_filter" />
       
     <button id="run_examples">Test Features</button>
     

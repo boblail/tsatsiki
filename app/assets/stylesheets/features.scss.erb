@@ -29,6 +29,37 @@ input[type="text"] { border: $control-border; }
   }
 }
 
+
+
+table.stats {
+  font-family: 'PT Sans', sans-serif;
+  border-collapse: collapse;
+  position: relative;
+  top: 2px;
+  
+  td, th {
+    text-align: right;
+    padding: 0 16px 0 0;
+    width: 90px;
+    white-space: nowrap;
+    font-weight: normal;
+  }
+  
+  td {
+    font-size: 2em;
+    line-height: 0.8em;
+  }
+}
+
+
+#run_examples { display: none; }
+
+#feature_filter {
+  font-size: 1em;
+  width: 496px;
+  margin: 6px 0 0 0;
+}
+
 #features {
   border: $control-border;
   padding: $control-padding;
@@ -36,11 +67,15 @@ input[type="text"] { border: $control-border; }
   position: absolute;
   left: 0;
   right: 16px;
-  top: 72px;
+  top: 86px;
   bottom: 16px;
 }
 
-#run_examples { display: none; }
+#feature_list {
+  display: none;
+  margin: 0;
+  padding: 0;
+}
 
 a.scenario-steps-link {
   background-color: transparent;
@@ -233,34 +268,4 @@ a.feature-new-scenario.on {
   display: inline-block;
   padding: 2px 6px 2px 4px;
   line-height: 1em;
-}
-
-table.stats {
-  font-family: 'PT Sans', sans-serif;
-  border-collapse: collapse;
-  position: relative;
-  top: 2px;
-}
-
-table.stats td {
-  font-weight: normal;
-  font-size: 2em;
-  text-align: right;
-  padding: 0 16px 0 0;
-  line-height: 0.8em;
-}
-
-table.stats th {
-  font-weight: normal;
-  padding: 0 16px 0 0;
-}
-
-#feature_filter {
-  font-size: 1em;
-}
-
-#feature_list {
-  display: none;
-  margin: 0;
-  padding: 0;
 }

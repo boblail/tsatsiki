@@ -116,6 +116,10 @@ class Scenario
     tags.member?("@human")
   end
   
+  def boundary?
+    tags.member?("@boundary")
+  end
+  
   def completed?
     !(new? || todo? || wip?)
   end
