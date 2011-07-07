@@ -47,26 +47,19 @@ a {
   line-height: 1em;
   text-decoration: none;
   
-  &:hover {
-    background-color: $link-highlight;
-    color: #fff;
-  }
+  &:hover { background-color: $link-highlight; }
 }
 
 a.natural,
 a.breadcrumb {
   background-color: transparent;
-  color: auto;
-  &:hover {
-    background-color: transparent;
-    color: auto;
-  }
+  
+  &:hover { background-color: transparent; }
 }
 
 a.breadcrumb {
   padding: 0;
   display: inline;
-  &:hover { color: #333; };
 }
 
 .field, .actions {
