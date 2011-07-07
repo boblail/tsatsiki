@@ -104,6 +104,23 @@ class Scenario
     true
   end
   
+  def boundary?
+    tags.member?("@boundary")
+  end
+  
+  def completed?
+    !(new? || todo? || wip?) && !undefined?
+  end
+  
+  def empty?
+    steps.empty?
+  end
+  alias :undefined? :empty?
+  
+  def human?
+    tags.member?("@human")
+  end
+  
   def new?
     tags.member?("@new")
   end
@@ -117,18 +134,6 @@ class Scenario
     tags.member?("@wip")
   end
   alias :started? :wip?
-  
-  def human?
-    tags.member?("@human")
-  end
-  
-  def boundary?
-    tags.member?("@boundary")
-  end
-  
-  def completed?
-    !(new? || todo? || wip?)
-  end
   
   
   

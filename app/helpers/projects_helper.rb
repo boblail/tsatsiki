@@ -21,7 +21,8 @@ module ProjectsHelper
   def scenario_class(scenario)
     css = %w{scenario unknown}
     css.concat scenario.tags.map {|tag| "tag-#{tag[1..-1]}"}
-    css.push("tag-completed") if scenario.completed?
+    css.push("completed") if scenario.completed?
+    css.push("empty") if scenario.empty?
     css.join(' ')
   end
   
