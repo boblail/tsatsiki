@@ -87,6 +87,15 @@
           scenario.addClass('filtered-by-tag');
         }
       });
+      
+      $('.feature').each(function() {
+        var feature = $(this);
+        if(feature.find('.scenario:not(.filtered-by-tag)').length > 0) {
+          feature.show();
+        } else {
+          feature.hide();
+        }
+      });
     }
     
     
