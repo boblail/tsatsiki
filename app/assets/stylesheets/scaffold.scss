@@ -1,5 +1,6 @@
 $link-highlight: #beeb8b; // #4be;
 $bottom-border: #777;
+$link-background: #efefef;
 
 body {
   background-color: #fff;
@@ -39,7 +40,7 @@ pre {
 
 a {
   color: #000;
-  background-color: #efefef;
+  background-color: $link-background;
   border-radius: 2px;
   display: inline-block;
   padding: 2px 6px 2px 4px;

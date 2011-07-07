@@ -15,24 +15,9 @@
 
 <div class="split-screen">
   <div class="left">
-    <table class="stats">
-      <tr>
-        <td><%= @project.scenarios.count %></td>
-        <td><%= @project.scenarios.select(&:completed?).count %></td>
-        <td><%= @project.scenarios.select(&:wip?).count %></td>
-        <td><%= @project.scenarios.select(&:new?).count %></td>
-        <td><%= @project.scenarios.select(&:boundary?).count %></td>
-        <td><%= @project.scenarios.select(&:human?).count %></td>
-      </tr>
-      <tr>
-        <th>Features</th>
-        <th>Completed</th>
-        <th>Started</th>
-        <th>Proposed</th>
-        <th>Boundaries</th>
-        <th>Human</th>
-      </tr>
-    </table>
+    <ol class="project-statistics">
+      <%= project_statistics :features, :completed, :started, :proposed, :boundaries, :human %>
+    </ol>
     
     <input type="text" id="feature_filter" />
       
@@ -64,6 +49,38 @@
       project_id: <%= @project.id %>
     });
     new Collapsable('#feature_tree');
+    
+    
+    
+    var hash = window.location.hash || '#features';
+    if(hash) {
+      $('a[href="' + hash + '"]').addClass('selected');
+      applySelectedTagFilter(hash.substr(1));
+    }
+    
+    $('a.project-statistic-button').click(function() {
+      $('a.project-statistic-button.selected').removeClass('selected');
+      $(this).addClass('selected');
+      applySelectedTagFilter($(this).attr('href').substr(1));
+    });
+    
+    function applySelectedTagFilter(tag) {
+      var css = "tag-" + tag;
+      switch(css) {
+        case 'tag-features':    css = 'scenario';     break;
+        case 'tag-proposed':    css = 'tag-new';      break;
+        case 'tag-started':     css = 'tag-wip';      break;
+      }
+      
+      $('.scenario').each(function() {
+        var scenario = $(this);
+        if(scenario.hasClass(css)) {
+          scenario.removeClass('filtered-by-tag');
+        } else {
+          scenario.addClass('filtered-by-tag');
+        }
+      });
+    }
     
     
     
@@ -244,9 +261,9 @@
         var li = $(this),
             text = li.text();
         if(rx.test(li.text())) {
-          li.show();
+          li.removeClass('filtered-by-text');
         } else {
-          li.hide();
+          li.addClass('filtered-by-text');
         }
       });
     }

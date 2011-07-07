@@ -100,9 +100,14 @@ class Scenario
   
   
   
+  def feature?
+    true
+  end
+  
   def new?
     tags.member?("@new")
   end
+  alias :proposed? :new?
   
   def todo?
     tags.member?("@todo")
@@ -111,6 +116,7 @@ class Scenario
   def wip?
     tags.member?("@wip")
   end
+  alias :started? :wip?
   
   def human?
     tags.member?("@human")

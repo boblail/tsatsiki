@@ -1,4 +1,5 @@
 $link-highlight: #beeb8b;
+$link-background: #efefef;
 $link-selected: #5bc350;
 $control-border: 1px solid #e0e0e0;
 $control-padding: 6px 8px;
@@ -31,23 +32,43 @@ input[type="text"] { border: $control-border; }
 
 
 
-table.stats {
+.project-statistics {
   font-family: 'PT Sans', sans-serif;
-  border-collapse: collapse;
   position: relative;
   top: 2px;
+  overflow: hidden;
+  padding: 0;
+  margin: 0;
   
-  td, th {
+  li {
+    display: inline-block;
     text-align: right;
-    padding: 0 16px 0 0;
-    width: 90px;
+    padding: 0;
+    margin: 0;
     white-space: nowrap;
     font-weight: normal;
-  }
-  
-  td {
-    font-size: 2em;
-    line-height: 0.8em;
+    
+    a {
+      width: 70px;
+      background-color: transparent;
+      padding-top: 4px;
+      padding-bottom: 4px;
+      
+      &:hover { background-color: $link-highlight; }
+      &.selected {
+        background-color: $link-background;
+        color: #333;
+      }
+    }
+    
+    span {
+      display: block;
+      
+      &.project-statistic-count {
+        font-size: 2em;
+        line-height: 0.85em;
+      }
+    }
   }
 }
 
@@ -269,3 +290,6 @@ a.feature-new-scenario.on {
   padding: 2px 6px 2px 4px;
   line-height: 1em;
 }
+
+.filtered-by-tag { display: none; }
+.filtered-by-text { display: none; }

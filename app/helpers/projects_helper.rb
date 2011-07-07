@@ -1,8 +1,27 @@
 module ProjectsHelper
   
+  def project_statistics(*names)
+    names.map(&method(:project_statistic)).join.html_safe
+  end
+  
+  def project_statistic(name)
+    predicate = "#{name.to_s.singularize}?".to_sym
+    html = \
+    <<-HTML
+    <li class="project-statistic">
+      <a href="##{name}" class="project-statistic-button">
+        <span class="project-statistic-count">#{@project.scenarios.select(&predicate).count}</span>
+        <span class="project-statistic-label">#{name.to_s.titleize}</span>
+      </a>
+    </li>
+    HTML
+    html.html_safe
+  end
+  
   def scenario_class(scenario)
     css = %w{scenario unknown}
     css.concat scenario.tags.map {|tag| "tag-#{tag[1..-1]}"}
+    css.push("tag-completed") if scenario.completed?
     css.join(' ')
   end
   
