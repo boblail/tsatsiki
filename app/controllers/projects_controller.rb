@@ -1,6 +1,7 @@
 class ProjectsController < ApplicationController
   load_and_authorize_resource
   check_authorization
+  layout "application"
   
   
   
@@ -11,8 +12,7 @@ class ProjectsController < ApplicationController
   
   
   def show
-    @project = Project.find(params[:id])
-    respond_with(@project, :layout => (!pjax? && "project"))
+    redirect_to project_features_path(:project_id => params[:id])
   end
   
   
@@ -26,7 +26,7 @@ class ProjectsController < ApplicationController
   
   def edit
     @project = Project.find(params[:id])
-    respond_with(@project)
+    respond_with(@project, :layout => "project")
   end
   
   

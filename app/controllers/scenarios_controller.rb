@@ -8,19 +8,19 @@ class ScenariosController < ApplicationController
   
   def show
     if @selected_scenario
-      render :layout => (!pjax? && "project")
+      render :layout => (!pjax? && "features")
     else
       flash[:notice] = "The feature you were looking for was not found"
-      redirect_to project_path(@project)
+      redirect_to scenarios_path(@project)
     end
   end
   
   def new
-    render :layout => (!pjax? && "project")
+    render :layout => (!pjax? && "features")
   end
   
   def edit
-    render :layout => (!pjax? && "project")
+    render :layout => (!pjax? && "features")
   end
   
   

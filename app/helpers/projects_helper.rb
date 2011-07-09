@@ -9,7 +9,7 @@ module ProjectsHelper
     html = \
     <<-HTML
     <li class="project-statistic">
-      <a href="##{name}" class="project-statistic-button">
+      <a href="##{name}" class="toggle project-statistic-button">
         <span class="project-statistic-count">#{@project.scenarios.select(&predicate).count}</span>
         <span class="project-statistic-label">#{name.to_s.titleize}</span>
       </a>
@@ -63,6 +63,14 @@ module ProjectsHelper
     step.gsub(/[&<>]/) {|match| table_for_escape[match]} \
         .gsub(/("[^"]*?")/, '<em>\1</em>') \
         .html_safe
+  end
+  
+  def project_features_class
+    (request.path =~ /projects\/\d+\/features/) && "selected"
+  end
+  
+  def edit_project_class
+    (request.path =~ /projects\/\d+\/edit/) && "selected"
   end
   
   # def render_steps(steps)

@@ -1,0 +1,291 @@
+<%= within_layout("project") do %>
+
+<div class="split-screen">
+  <div class="left">
+    <ol class="project-statistics">
+      <%= project_statistics :features, :completed, :started, :proposed, :boundaries, :undefined %>
+    </ol>
+    
+    <ol class="project-statistics extras">
+      <%= project_statistics :human %>
+    </ol>
+    
+    <input type="text" id="feature_filter" />
+    
+    <button id="run_examples">Test Features</button>
+    
+    <div id="features">
+      <ul id="feature_tree" class="tree">
+        <%= render :partial => "projects/feature", :collection => @project.features -%>
+      </ul>
+      <ol id="feature_list">
+        <%= render_scenarios(@project.scenarios) %>
+      </ol>
+    </div>
+  </div>
+  <div class="right">
+    <div id="scenario">
+      <%= yield %>
+    </div>
+  </div>
+</div>
+
+<!-- <p><%= image_tag "ajax-loader.gif", :id => "ajax_loader", :style => "display:none;" -%></p> -->
+
+<script type="text/javascript">
+  $(function() {
+    App.debug('loaded');
+    RunExamples.init({
+      socket_url: '<%= socket_url %>',
+      project_id: <%= @project.id %>
+    });
+    new Collapsable('#feature_tree');
+    
+    
+    
+    var hash = window.location.hash || '#features';
+    if(hash) {
+      $('a[href="' + hash + '"]').addClass('selected');
+      applySelectedTagFilter(hash.substr(1));
+    }
+    
+    $('a.project-statistic-button').click(function() {
+      $('a.project-statistic-button.selected').removeClass('selected');
+      $(this).addClass('selected');
+      applySelectedTagFilter($(this).attr('href').substr(1));
+    });
+    
+    function applySelectedTagFilter(tag) {
+      var css = "tag-" + tag;
+      switch(css) {
+        case 'tag-features':    css = 'scenario';     break;
+        case 'tag-proposed':    css = 'tag-new';      break;
+        case 'tag-started':     css = 'tag-wip';      break;
+        case 'tag-completed':   css = 'completed';    break;
+        case 'tag-undefined':   css = 'empty';        break;
+        case 'tag-boundaries':  css = 'tag-boundary'; break;
+      }
+      
+      $('.scenario').each(function() {
+        var scenario = $(this);
+        if(scenario.hasClass(css)) {
+          scenario.removeClass('filtered-by-tag');
+        } else {
+          scenario.addClass('filtered-by-tag');
+        }
+      });
+      
+      $('.feature').each(function() {
+        var feature = $(this);
+        if(feature.find('.scenario:not(.filtered-by-tag)').length > 0) {
+          feature.show();
+        } else {
+          feature.hide();
+        }
+      });
+    }
+    
+    
+    
+    $('a.scenario-steps-link').click(updateSelectedScenario)
+                              .pjax('#scenario')
+                              .dblclick(renameSelectedItem);
+    
+    $('.scenario-title a').pjax('#scenario');
+    
+    $('a.feature-new-scenario').click(showOrHideNewScenario)
+                               .pjax('#scenario');
+    
+    $('#scenario').delegate('a#cancel_new_scenario', 'click', function(event) {
+      hideNewScenario(event);
+    });
+    
+    
+    function showOrHideNewScenario(event) {
+      var a = $(this);
+      if(a.hasClass('on')) {
+        hideNewScenario(event);
+      } else {
+        showNewScenario(a);
+      }
+    }
+    
+    function hideNewScenario(event) {
+      $('.feature-new-scenario').removeClass('on');
+      
+      $('.new-feature-placeholder').remove();
+      
+      // !fix! PJAX loads this link twice
+      $('#scenario').html('');
+      event.preventDefault();
+      event.stopPropagation();
+    }
+    
+    function showNewScenario(a) {
+      selectScenario(null);
+      a.addClass('on')
+       .parent().append('<p class="new-feature-placeholder">New Feature</p>');
+    }
+    
+    
+    var selectedItem = $('.scenario-steps-link.selected');
+    
+    function updateSelectedScenario(e) {
+      var a = $(this);
+      if(a.hasClass('selected')) {
+        e.preventDefault();
+        e.stopImmediatePropagation();
+      } else {
+        selectScenario(a);
+      }
+    }
+    
+    function selectScenario(a) {
+      selectedItem && selectedItem.removeClass('selected');
+      selectedItem = a;
+      selectedItem && selectedItem.addClass('selected');
+    }
+    
+    
+    
+    $(document.body).delegate('textarea', 'keyup', function(e) {
+      if(e.keyCode == 13 && e.ctrlKey) {
+        $(e.target).closest('form').submit();
+      }
+    });
+    
+    
+    
+    // !todo: these don't work unless the feature tree is focusable
+    $('#features').keyup(function(e) {
+      if(selectedItem) {
+        (e.keyCode == 13) && renameSelectedItem();
+        if(e.keyCode == 38) {
+          e.preventDefault();
+          e.stopImmediatePropagation();
+          selectPrevious();
+        }
+        if(e.keyCode == 40) {
+          e.preventDefault();
+          e.stopImmediatePropagation();
+          selectNext();
+        }
+      }
+    });
+    
+    function selectPrevious() {
+      selectedItem && selectedItem.up('a.scenario-steps-link').click();
+    }
+    
+    function selectNext() {
+      selectedItem && selectedItem.down('a.scenario-steps-link').click();
+    }
+    
+    
+    
+    function renameSelectedItem() {
+      if(selectedItem) {
+        var caption = selectedItem.parent(),
+            input = $(document.createElement('input'));
+        
+        input.attr('type', 'text')
+             .addClass('renamer')
+             .blur(abortRename)
+             .keyup(__onKeyUpInRename)
+             .val(selectedItem.text())
+             .prependTo(caption)
+             .select();
+        selectedItem.addClass('being-renamed').hide();
+      }
+    }
+    
+    function commitRename() {
+      if(selectedItem) {
+        var input = $('.renamer'),
+            name  = input.val();
+        if(name) {
+          selectedItem.html(name);
+          saveName(selectedItem.attr('href'), name);
+        }
+      }
+      __endRename();
+    }
+    
+    function abortRename() {
+      __endRename();
+    }
+    
+    function __endRename() {
+      $('.renamer').remove();
+      $('.being-renamed').show();
+    }
+    
+    function __onKeyUpInRename(e) {
+      if(e.keyCode == 13) { // Enter
+        e.stopImmediatePropagation();
+        commitRename();
+      }
+      if(e.keyCode == 27) { // Escape
+        e.stopImmediatePropagation();
+        abortRename();
+      }
+    }
+    
+    
+    
+    function saveName(url, name) {
+      $.put(url, {scenario: {name: name}});
+    }
+    
+    
+    
+    var feature_filter = $('#feature_filter'),
+        feature_tree = $('#feature_tree'),
+        feature_list = $('#feature_list');
+    feature_filter.keyup(function(event) {
+      applyFilter(feature_filter.val());
+    });
+    
+    function applyFilter(filter) {
+      if(filter.length > 0) {
+        feature_tree.hide();
+        feature_list.show();
+        
+        performFilter(filter);
+      } else {
+        feature_tree.show();
+        feature_list.hide();
+      }
+    }
+    
+    function performFilter(filter) {
+      var rx = new RegExp(filter, 'i');
+      feature_list.find('li').each(function() {
+        var li = $(this),
+            text = li.text();
+        if(rx.test(li.text())) {
+          li.removeClass('filtered-by-text');
+        } else {
+          li.addClass('filtered-by-text');
+        }
+      });
+    }
+    
+    
+    
+    $('.scenario').each(function() {
+      var li = $(this);
+      if(li.hasClass('tag-human')) {
+        li.find('a').append('<img width="14" height="14" class="icon" src="<%= asset_path("icons/user.png") %>" title="This feature must be tested manually." />');
+      }
+      if(li.hasClass('tag-wip')) {
+        li.find('a').append('<img width="14" height="14" class="icon" src="<%= asset_path("icons/page_white_edit.png") %>" title="This feature is not yet implemented" />');
+      }
+      if(li.hasClass('tag-new') || li.hasClass('tag-todo')) {
+        li.find('a').append('<img width="14" height="14" class="icon" src="<%= asset_path("icons/page_white.png") %>" title="This feature is not yet implemented" />');
+      }
+    });
+  });
+</script>
+
+<% end %>

@@ -1,0 +1,12 @@
+.scenario-tag {
+  &.tag-human { background-image: url('<%= "#{Rails.configuration.try(:relative_url_root)}#{asset_path("icons/user.png")}" %>'); }
+  &.tag-javascript { background-image: url('<%= "#{Rails.configuration.try(:relative_url_root)}#{asset_path("icons/script_code.png")}" %>'); }
+  &.tag-wip,
+  &.tag-todo { background-image: url('<%= "#{Rails.configuration.try(:relative_url_root)}#{asset_path("icons/page_white_edit.png")}" %>'); }
+  &.tag-new { background-image: url('<%= "#{Rails.configuration.try(:relative_url_root)}#{asset_path("icons/page_white.png")}" %>'); }
+}
+
+.tree {
+  > li { background-image: url('<%= "#{Rails.configuration.try(:relative_url_root)}#{asset_path("tree-expanded.png")}" %>'); }
+  > li.collapsed { background-image: url('<%= "#{Rails.configuration.try(:relative_url_root)}#{asset_path("tree-collapsed.png")}" %>'); }
+}

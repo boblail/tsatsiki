@@ -1,35 +1,10 @@
-$link-highlight: #beeb8b;
-$link-background: #efefef;
-$link-selected: #5bc350;
-$control-border: 1px solid #e0e0e0;
-$control-padding: 6px 8px;
-$accent-color: #d37122;
-$tree-indent: 14px;
-
+@import "partials/definitions";
 
 textarea {
   border: $control-border;
   padding: $control-padding;
 }
 input[type="text"] { border: $control-border; }
-
-.split-screen {
-  .left {
-    position: fixed;
-    left: 16px;
-    top: 84px;
-    bottom: 0;
-    width: 500px;
-    padding: 1em 16px 0 0;
-    border-right: 3px solid #efefef;
-  }
-  .right {
-    padding-top: 1em;
-    margin-left: 516px;
-    padding-left: 16px;
-  }
-}
-
 
 
 .project-statistics {
@@ -52,15 +27,8 @@ input[type="text"] { border: $control-border; }
     
     a {
       width: 70px;
-      background-color: transparent;
       padding-top: 4px;
       padding-bottom: 4px;
-      
-      &:hover { background-color: $link-highlight; }
-      &.selected {
-        background-color: $link-background;
-        color: #333;
-      }
     }
     
     span {
@@ -100,22 +68,12 @@ input[type="text"] { border: $control-border; }
   padding: 0;
 }
 
-a.scenario-steps-link {
-  background-color: transparent;
-  
-  &.selected {
-    background-color: $link-selected !important;
-    color: white !important;
-  }
-}
-
 .tree {
   margin: 0;
   padding: 0;
   
   > li {
     list-style: none;
-    background-image: url('<%= "#{Rails.configuration.try(:relative_url_root)}#{asset_path("tree-expanded.png")}" %>');
     background-repeat: no-repeat;
     background-position: 0px 5px;
     padding: 1px 0 1px $tree-indent;
@@ -124,7 +82,6 @@ a.scenario-steps-link {
   }
   
   > li.collapsed {
-    background-image: url('<%= "#{Rails.configuration.try(:relative_url_root)}#{asset_path("tree-collapsed.png")}" %>');
     background-position: 1px 5px;
     > ul { display: none; }
     > .caption {
@@ -169,10 +126,6 @@ a.feature-new-scenario {
     position: relative;
     top: 2px;
   }
-  
-//  &.tag-human {
-//    background-image: url('<%= "#{Rails.configuration.try(:relative_url_root)}#{asset_path("icons/user.png")}" %>');
-//  }
 }
 
 .tree .scenario {
@@ -193,7 +146,6 @@ a.feature-new-scenario {
   }
   
   .scenario-step-term {
-//    color: #a0a0a0;
     background-color: #dfdfdf;
     border-radius: 2px;
     line-height: 1em;
@@ -203,15 +155,12 @@ a.feature-new-scenario {
   
   ul {
     margin: 0;
-//    padding: 0 0 0 32px;
     padding: 0;
     color: #333;
     
     > li {
       list-style: none;
-//      list-style: square;
       margin: 2px 0;
-
     }
   }
   
@@ -233,12 +182,6 @@ input[type="text"].renamer {
   padding: 0 0 0 22px;
   background-repeat: no-repeat;
   background-position: 0px 0px;
-  
-  &.tag-human { background-image: url('<%= "#{Rails.configuration.try(:relative_url_root)}#{asset_path("icons/user.png")}" %>'); }
-  &.tag-javascript { background-image: url('<%= "#{Rails.configuration.try(:relative_url_root)}#{asset_path("icons/script_code.png")}" %>'); }
-  &.tag-wip,
-  &.tag-todo { background-image: url('<%= "#{Rails.configuration.try(:relative_url_root)}#{asset_path("icons/page_white_edit.png")}" %>'); }
-  &.tag-new { background-image: url('<%= "#{Rails.configuration.try(:relative_url_root)}#{asset_path("icons/page_white.png")}" %>'); }
 }
 
 table.step-table {
@@ -250,8 +193,8 @@ table.step-table {
   td { background-color: #f2f2f2; }
   td, th {
     border: 1px solid #cccccc;
-    padding: 2px 6px; }
-  
+    padding: 2px 6px;
+  }
 }
 
 pre.step-heredoc {

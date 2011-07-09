@@ -1,0 +1,33 @@
+// Palette
+$cucumber-skin:           #60933E;
+$cucumber-zest:           #beeb8b;
+$cucumber-seeds:          #ddeece;
+$cucumber-flesh:          #eff8e9;
+$light-gray:              #efefef;
+$orange:                  #d37122;
+
+// Colors
+$link-background:         $light-gray;
+$link-highlight:          $cucumber-zest;
+$toggle-link-background:  transparent;
+$toggle-link-highlight:   $light-gray;
+$toggle-link-selected:    $cucumber-zest;
+
+$bottom-border: #777;
+$control-border: 1px solid #d0d0d0;
+$control-padding: 6px 8px;
+
+$accent-color: $orange;
+$tree-indent: 14px;
+
+// Shortcuts
+@mixin gradient-background($col1, $col2, $fallback-col) {
+  background: $fallback-col; /* Old browsers */
+  background: -moz-linear-gradient(top, $col1 0%, $col2 100%); /* FF3.6+ */
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,$col1), color-stop(100%,$col2)); /* Chrome,Safari4+ */
+  background: -webkit-linear-gradient(top, $col1 0%,$col2 100%); /* Chrome10+,Safari5.1+ */
+  background: -o-linear-gradient(top, $col1 0%,$col2 100%); /* Opera11.10+ */
+  background: -ms-linear-gradient(top, $col1 0%,$col2 100%); /* IE10+ */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='$col1', endColorstr='$col2',GradientType=0 ); /* IE6-9 */
+  background: linear-gradient(top, $col1 0%,$col2 100%); /* W3C */  
+}

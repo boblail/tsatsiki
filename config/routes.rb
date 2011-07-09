@@ -13,6 +13,8 @@ Tsatsiki::Application.routes.draw do
     match '/projects/:project_id/features/*feature/:index' => 'scenarios#update', :via => :put
     match '/projects/:project_id/features/*feature/:index' => 'scenarios#destroy', :via => :delete
     match '/projects/:project_id/features/*feature' => 'scenarios#create', :via => :post, :as => :scenarios, :format => false
+    
+    match '/projects/:project_id/features' => 'project_features#index', :via => :get, :as => :project_features
   end
   
   mount WebsocketApp, :at => '/socket'
