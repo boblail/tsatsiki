@@ -12,25 +12,25 @@
 
 ### Upcoming
 
- - Comments
-    - How does Tsatsiki get a unique ID for each Scenario? (Are Scenarios mapped to DB objects?)
-    - The Feature Tree indicates how many comments each scenario has (?)
- - Milestones
-   - Milestones are recorded as special tags by their version (e.g. @milestone:0.1.0)
-   - How are milestones associated with scenarios?
-   - How can you see just the scenarios for a milestone?
- - Test Log
-   - @human Scenarios have many Tests: [scenario, tester, datetime, result, notes]
-   - Feature Tree indicate last test result for @human Scenarios on page load
+ * Feature Tree Improvements
+    - Allow dragging and dropping scenarios in Feature Tree
+    - Make split screen drag-resizable
+ * Automatic Test Improvements
+    - Extract pub/sub to a separate process?
+    - Make sure pretty solid
+ * Milestones
+    - Milestones are recorded as special tags by their version (e.g. @milestone:0.1.0)
+    - How are milestones associated with scenarios?
+    - How can you see just the scenarios for a milestone?
  - Edit Scenario Improvements
     - Initially, one Steps to Test and then one Assertions block; can add pairs?
     - All Givens at the top?
- - Automatic Test Improvements
-    - Extract pub/sub to a separate process?
-    - Make sure pretty solid
- - Feature Tree Improvements
-    - Allow dragging and dropping scenarios in Feature Tree
-    - Make split screen drag-resizable
+ - Comments
+    - How does Tsatsiki get a unique ID for each Scenario? (Are Scenarios mapped to DB objects?)
+    - The Feature Tree indicates how many comments each scenario has (?)
+ - Test Log
+   - @human Scenarios have many Tests: [scenario, tester, datetime, result, notes]
+   - Feature Tree indicate last test result for @human Scenarios on page load
 
 ### Ideas
 
