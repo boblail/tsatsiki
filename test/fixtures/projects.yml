@@ -1,5 +1,0 @@
-# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
-
-tsatsiki:
-  name: Tsatsiki
-  path: <%= Rails.root.to_s %>

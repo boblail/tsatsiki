@@ -24,6 +24,7 @@ class User < ActiveRecord::Base
   
   
   validates_presence_of :username
+  validates_format_of :username, :with => /\A[a-z0-9]+\Z/i
   
   
   
