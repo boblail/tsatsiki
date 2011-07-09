@@ -10,13 +10,42 @@ class Feature
     @project = project
     @features = []
     @absolute_path = absolute_path
-    @relative_path = Pathname.new(absolute_path).relative_path_from(Pathname.new(@project.path))
+    @relative_path = Pathname.new(absolute_path).relative_path_from(Pathname.new(@project.path)).to_s
+    @subfeature_path = absolute_path[/(.*?)\.feature/, 1]
+    
+    # If there is a path with the same name as the feature,
+    # then the features within that path belong to this feature
+    @features = Feature.get_features(project, subfeature_path) if File.exist?(subfeature_path)
+  end
+  
+  
+  
+  def self.get_features(project, absolute_path)
+    features = []
+    
+    Dir.glob(File.join(absolute_path, '*.feature')).each do |path|
+      features << Feature.new(project, path)
+    end
+    
+    Dir.glob(File.join(absolute_path, '*/')).each do |path|
+      
+      # Create a placeholder feature for paths that exist
+      # and contain features
+      # but are not paired with features
+      unless features.find {|feature| feature.subfeature_path == path }
+        feature = Feature.new(project, path.gsub(/\/$/, ".feature"))
+        features << feature unless feature.features.empty?
+      end
+    end
+    
+    features
   end
   
   
   
   attr_reader :project,
               :absolute_path,
+              :subfeature_path,
               :features,
               :relative_path
   alias :path :relative_path
@@ -30,6 +59,7 @@ class Feature
   end
   
   def self.parse!(source, path=nil)
+    return empty_feature_sexp(path) if source.nil? && !File.exist?(path)
     Cucumber::FeatureFile.new(path, source).parse([], {}).to_sexp
   end
   
@@ -119,6 +149,12 @@ private
   
   def comment?(sexp)
     sexp.first == :comment
+  end
+  
+  
+  
+  def self.empty_feature_sexp(path)
+    [:feature, path, File.basename(path, ".feature").titleize]
   end
   
   

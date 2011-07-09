@@ -7,7 +7,7 @@ class Project < ActiveRecord::Base
   end
   
   def features
-    @features ||= Category.get_features(self, self.path_to_features)
+    @features ||= Feature.get_features(self, self.path_to_features)
   end
   
   def scenarios
@@ -15,8 +15,22 @@ class Project < ActiveRecord::Base
   end
   
   def find_feature(relative_path)
-    absolute_path = File.join(self.path, relative_path)
-    File.exists?(absolute_path) ? Feature.new(self, absolute_path) : nil
+    find_feature_in_array(features, relative_path)
+  end
+  
+  
+  
+private
+  
+  
+  
+  def find_feature_in_array(features, relative_path)
+    features.each do |feature|
+      return feature if feature.relative_path == relative_path
+      subfeature = find_feature_in_array(feature.features, relative_path)
+      return subfeature if subfeature
+    end
+    nil
   end
   
   

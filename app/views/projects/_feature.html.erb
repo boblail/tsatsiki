@@ -10,7 +10,7 @@
     <% end -%>
   <% end -%>
   
-  <%= render_scenarios(feature.scenarios) if feature.is_a?(Feature) %>
+  <%= render_scenarios(feature.scenarios) %>
   <%= render_features(feature.features) unless feature.features.empty? %>
   
   <% if @selected_scenario && @selected_scenario.new_record? && @selected_scenario.feature == feature -%>
