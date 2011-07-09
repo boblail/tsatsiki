@@ -28,4 +28,11 @@ class User < ActiveRecord::Base
   
   
   
+  def self.find_for_database_authentication(conditions={})
+    where(:username => conditions[:email]).limit(1).first ||
+    where(:email => conditions[:email]).limit(1).first
+  end
+  
+  
+  
 end
