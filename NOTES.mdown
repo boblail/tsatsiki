@@ -6,6 +6,7 @@
  - [Courgette](http://21croissants.github.com/courgette/)
  - [Relish](http://relishapp.com/)
  - [Viewcumber](https://github.com/versapay/viewcumber) &mdash; a custom formatter
+ - [Gherkin Editor](https://github.com/cucumber/gherkin-editor) &mdash; A Gherkin editor based on Ace and node.js
 
 ### Cucumber help
 
@@ -23,6 +24,10 @@
  - [rails3-faye](https://github.com/jcoglan/rails3-faye)
  - [socky-example](https://github.com/socky/socky-example)
  - [websocket-rack](https://github.com/imanel/websocket-rack)
+
+### CanCan
+
+ - [Complex Abilities](https://github.com/ryanb/cancan/wiki/Defining-Abilities-with-Blocks)
 
 ### Cucumber
 
