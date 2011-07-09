@@ -13,13 +13,15 @@
 ActiveRecord::Schema.define(:version => 20110704213838) do
 
   create_table "projects", :force => true do |t|
-    t.string   "name"
-    t.string   "path"
+    t.integer  "user_id",    :null => false
+    t.string   "name",       :null => false
+    t.string   "path",       :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   create_table "users", :force => true do |t|
+    t.string   "username",                                              :null => false
     t.string   "email",                                 :default => "", :null => false
     t.string   "encrypted_password",     :limit => 128, :default => ""
     t.string   "reset_password_token"

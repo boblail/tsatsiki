@@ -2,6 +2,14 @@ class Project < ActiveRecord::Base
   
   
   
+  belongs_to :user
+  
+  
+  
+  validates_presence_of :user_id
+  
+  
+  
   def path_to_features
     File.join(self.path, 'features')
   end
