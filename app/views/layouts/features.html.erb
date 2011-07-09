@@ -124,7 +124,7 @@
     function showNewScenario(a) {
       selectScenario(null);
       a.addClass('on')
-       .parent().append('<p class="new-feature-placeholder">New Feature</p>');
+       .next('.scenarios').append('<li class="new-feature-placeholder">New Feature</li>');
     }
     
     
