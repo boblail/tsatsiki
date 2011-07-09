@@ -11,11 +11,11 @@
   
   <div class="banner">
     <div class="container">
-      <%= image_tag "tsatsiki-120.png", :height => 120, :width => 457, :alt => "Tsatsiki" %>
+      <%= link_to(root_url, :class => "natural") { image_tag "tsatsiki-120.png", :height => 120, :width => 457, :alt => "Tsatsiki" } %>
     </div>
-    
-    <%= render :partial => "layouts/authentication" %>
   </div>
+  
+  <%= render :partial => "layouts/authentication" unless devise_controller? %>
   
   <div class="container">
     <%= flash_message :notice %>

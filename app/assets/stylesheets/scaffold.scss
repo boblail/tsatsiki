@@ -1,5 +1,7 @@
 @import "partials/definitions";
 
+
+
 body {
   background-color: #fff;
   color: #333;
@@ -62,6 +64,15 @@ a.breadcrumb {
   display: inline;
 }
 
+textarea {
+  border: $control-border;
+  padding: $control-padding;
+}
+
+input[type="text"],
+input[type="password"] { border: $control-border; }
+
+
 .field, .actions {
   margin-bottom: 10px;
 }
@@ -99,6 +110,8 @@ a.breadcrumb {
 #home .banner {
   padding: 1em;
   margin-bottom: 1em;
+  
+  a { padding: 0; }
 }
 
 .authentication {
