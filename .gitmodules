@@ -1,3 +1,6 @@
 [submodule "vendor/plugins/lail_extensions"]
 	path = vendor/plugins/lail_extensions
 	url = git://github.com/boblail/lail_extensions
+[submodule "vendor/plugins/freight_train"]
+	path = vendor/plugins/freight_train
+	url = git://github.com/boblail/freight_train.git

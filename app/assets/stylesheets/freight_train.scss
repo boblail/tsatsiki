@@ -1,0 +1,16 @@
+
+.freight_train {
+  ol { display: block; }
+  .row {
+    display: block;
+    
+    &.in-edit { display: none; }
+    
+    div {
+      display: inline-block;
+      
+      &.milestone-version { width: 100px; }
+      &.milestone-name { width: 300px; }
+    }
+  }
+}

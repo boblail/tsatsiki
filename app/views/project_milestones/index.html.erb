@@ -1,0 +1,18 @@
+
+<%= list :milestones, :path => project_milestones_path(@project) do |m| %>
+  <%= m.header do %>
+    <div class="milestone-version">Version</div>
+    <div class="milestone-name">Name</div>
+  <% end %>
+  <%= m.creator do |f| %>
+    <div class="milestone-version"><%= f.text_field :version %></div>
+    <div class="milestone-name"><%= f.text_field :name, :size => 50 %></div>
+  <% if can? :create, Milestone %>
+    <div class="milestone-buttons"><%= f.submit "Add Milestone" %></div>
+  <% end %>
+  <% end %>
+  <%= m.editor do |f| %>
+    <div class="milestone-version"><%= f.text_field :version %></span></div>
+    <div class="milestone-name"><%= f.text_field :name, :size => 50 %></div>
+  <% end %>
+<% end %>

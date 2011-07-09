@@ -6,6 +6,7 @@
   </p>
   <p class="tabs">
     <%= link_to("Features", project_features_path(@project), :class => project_features_class) if can?(:read, :features) -%>
+    <%= link_to("Milestones", project_milestones_path(@project), :class => project_milestones_class) if can?(:read, :milestones) -%>
     <%= link_to("Settings", edit_project_path(@project), :class => edit_project_class) -%>
   </p>
 <% end -%>
