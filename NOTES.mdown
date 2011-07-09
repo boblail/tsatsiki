@@ -1,3 +1,5 @@
+# Notes
+
 ### Similar projects
 
  - [Cucumber FM](http://demo.cucumber.fm/documentation/features)
@@ -21,3 +23,16 @@
  - [rails3-faye](https://github.com/jcoglan/rails3-faye)
  - [socky-example](https://github.com/socky/socky-example)
  - [websocket-rack](https://github.com/imanel/websocket-rack)
+
+### Cucumber
+
+ - Cucumber allows a large number of characters in tags. Here are some examples:
+    @some-tag
+    @some.tag
+    @some=tag
+    @some=
+    @some.
+    @some:tag
+    @some(tag)
+    @some[tag]
+    @some/tag
