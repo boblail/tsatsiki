@@ -5,3 +5,27 @@
 #
 #   cities = City.create([{ :name => 'Chicago' }, { :name => 'Copenhagen' }])
 #   Mayor.create(:name => 'Daley', :city => cities.first)
+
+user = User.create({
+  :username => "admin",
+  :password => "password",
+  :password_confirmation => "password",
+  :email => "admin@example.com"
+})
+
+project = Project.create({
+  :user_id => user.id,
+  :path => Rails.root.to_s,
+  :name => "Tsatsiki"
+})
+
+puts "",
+     "===================================================================",
+     "Welcome to Tsatsiki",
+     "",
+     "An account was created with the following information:",
+     "   Email: #{user.email}",
+     "   Username: #{user.username}",
+     "   Password: #{user.password}",
+     "",
+     "==================================================================="
