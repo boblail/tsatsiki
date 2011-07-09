@@ -1,0 +1,15 @@
+# Change Log
+
+### 0.1.0
+
+ - Allows seeing, creating, and editing projects
+ - Shows a project's features
+ - Organizes a project's features by their path
+ - Can read all parts of Cucumber's syntax and render them correctly
+ - Allows editing and creating scenarios for a feature
+
+### 0.2.0 @wip
+
+ - Allows filtering features in real time by typing in a text box
+ - Allows filtering features by toggling categories
+ - Allows signing in and signing out

@@ -1,34 +1,43 @@
 # TODO
 
-### 0.1.5
-
- - Add Devise for authentication and a Users interface
- - Tsatsiki adds a comment to every Scenario that contains its ID
- - Tests have comments
- - Feature Tree indicates how many comments for each scenario
-
 ### 0.2.0
 
- - Improve the interface for editing scenarios
+ - Add a way of associating users with projects
+ - Implement permissions (vis-a-vis individual projects)
+ - Make sure Tsatsiki has Cucumber features to represent 0.1.0 and 0.2.0 features
+ - Users can change their password through a settings page
+ - Simplify models by merging Feature and Category
+    - Users can add features to "Categories"
+    - Tsatsiki creates the files it needs
+
+### Upcoming
+
+ - Comments
+    - How does Tsatsiki get a unique ID for each Scenario? (Are Scenarios mapped to DB objects?)
+    - The Feature Tree indicates how many comments each scenario has (?)
+ - Milestones
+   - Milestones are recorded as special tags by their version (e.g. @milestone:0.1.0)
+   - How are milestones associated with scenarios?
+   - How can you see just the scenarios for a milestone?
+ - Test Log
+   - @human Scenarios have many Tests: [scenario, tester, datetime, result, notes]
+   - Feature Tree indicate last test result for @human Scenarios on page load
+ - Edit Scenario Improvements
     - Initially, one Steps to Test and then one Assertions block; can add pairs?
     - All Givens at the top?
+ - Automatic Test Improvements
+    - Extract pub/sub to a separate process?
+    - Make sure pretty solid
+ - Feature Tree Improvements
+    - Allow dragging and dropping scenarios in Feature Tree
+    - Make split screen drag-resizable
 
-### 0.2.5
+### Ideas
 
- - @human Scenarios have many Tests: [scenario, tester, datetime, results]
- - @human Scenarios indicate test status on page load
-
-### Future
-
- - Show a completion indicator above the Feature Tree (how many features are @todo?, @wip?)
+ - Ideas
+    - An idea can be converted into a feature and the other way around
  - Add a "Preflight" screen that shows only @human scenarios and their Test Logs
- - Improve automatic test running
- - Allow dragging and dropping scenarios in Feature Tree
- - Have a real-time filter-box for scenarios above the Feature Tree
- - Implement permissions
- - Make split screen drag-resizable
-
-### Suggestions
-
+ - Show a completion indicator above the Feature Tree
  - Keep an audit log for scenarios (Snapshot of scenario AST + committer?)
  - List tags on left side of Feature Tree: toggle on or off those scenarios
+ - Let comments have attachments
