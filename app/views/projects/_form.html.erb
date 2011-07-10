@@ -2,7 +2,7 @@
   <% if @project.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@project.errors.count, "error") %> prohibited this project from being saved:</h2>
-
+      
       <ul>
       <% @project.errors.full_messages.each do |msg| %>
         <li><%= msg %></li>
@@ -10,15 +10,15 @@
       </ul>
     </div>
   <% end %>
-
-  <div class="field">
-    <%= f.label :name %><br />
-    <%= f.text_field :name %>
-  </div>
-  <div class="field">
-    <%= f.label :path %><br />
-    <%= f.text_field :path %>
-  </div>
+  
+  <dl class="form">
+    <dt><%= f.label :name %></dt>
+    <dd><%= f.text_field :name %></dd>
+    
+    <dt><%= f.label :path %></dt>
+    <dd><%= f.text_field :path %></dd>
+  </dl>
+  
   <div class="actions">
     <%= f.submit %>
   </div>

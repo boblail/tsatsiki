@@ -70,7 +70,18 @@ textarea {
 }
 
 input[type="text"],
-input[type="password"] { border: $control-border; }
+input[type="password"],
+input[type="email"] { border: $control-border; }
+
+
+// Devise forms, and Edit/New project forms look like this
+dl.form {
+  dd {
+    margin: 0 0 1em 0;
+    
+    input { font-size:1.5em; }
+  }
+}
 
 
 .field, .actions {

@@ -2,7 +2,7 @@
 
 <%= form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
 
-  <dl>
+  <dl class="form">
     <dt><%= f.label :email, "Email Address or Username" %></dt>
     <dd><%= f.text_field :email %></dd>
     
