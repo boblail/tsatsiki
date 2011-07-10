@@ -2,7 +2,6 @@
 
 ### 0.2.0
 
- - Add a way of associating users with projects
  - Implement permissions (vis-a-vis individual projects)
  - Make sure Tsatsiki has Cucumber features to represent 0.1.0 and 0.2.0 features
 

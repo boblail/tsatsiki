@@ -3,10 +3,15 @@ class Project < ActiveRecord::Base
   
   
   belongs_to :user
+  has_many :authorized_users, :class_name => "AuthorizedProject"
   
   
   
   validates_presence_of :user_id
+  
+  
+  
+  after_create :give_owner_admin_privileges
   
   
   
@@ -29,6 +34,14 @@ class Project < ActiveRecord::Base
   
   
 private
+  
+  
+  
+  def give_owner_admin_privileges
+    authorized_user = authorized_users.build(:user => user, :project => self)
+    authorized_user.privileges.for_project = :manage
+    authorized_user.save!
+  end
   
   
   

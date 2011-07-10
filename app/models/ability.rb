@@ -25,11 +25,25 @@ class Ability
     #
     # See the wiki for details: https://github.com/ryanb/cancan/wiki/Defining-Abilities
     
-    # user ||= User.new # guest user (not logged in)
-    if user
-      can :manage,  :all
-    else
-      can :read,    :all
+    # All users (including Guests) can see everything
+    can :read, :all
+    
+    if user && user.admin?
+      
+      # The superuser can manage everything
+      can :manage, :all
+      
+    elsif user
+      
+      # General users abilities depend on AuthorizedProject records
+      user.authorized_projects.each do |authorized_project|
+        privilege = authorized_project.privileges
+        project_id = authorized_project.project_id
+        
+        can privilege.for_project,  Project,  :id => project_id
+        can privilege.for_features, Feature,  :project_id => project_id
+        can privilege.for_features, Scenario, :project_id => project_id
+      end
     end
     
   end

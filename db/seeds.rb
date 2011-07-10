@@ -6,12 +6,14 @@
 #   cities = City.create([{ :name => 'Chicago' }, { :name => 'Copenhagen' }])
 #   Mayor.create(:name => 'Daley', :city => cities.first)
 
-user = User.create({
+user = User.new({
   :username => "admin",
   :password => "password",
   :password_confirmation => "password",
   :email => "admin@example.com"
 })
+user.admin = true
+user.save
 
 project = Project.create({
   :user_id => user.id,
