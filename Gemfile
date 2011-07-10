@@ -22,6 +22,8 @@ gem 'devise'
 gem 'devise_invitable'
 gem 'cancan'
 
+gem 'tlsmail' # Required in order to send mail via Gmail.
+
 gem 'cucumber'
 gem 'websocket-rack', '0.3.0'
 gem 'childprocess'

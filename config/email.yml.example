@@ -1,0 +1,30 @@
+# The settings defined in this file
+# are used to configure ActionMailer.
+# 
+# You can set any property of
+# `config.action_mailer` in this file.
+# 
+# For more information on configuring
+# ActionMailer, see the Rails Guide:
+# http://guides.rubyonrails.org/action_mailer_basics.html
+#
+# In this example, the development
+# environment is configured to send
+# email using the developer's Gmail
+# account.
+
+
+development:
+  delivery_method: :smtp
+  smtp_settings:
+    enable_starttls_auto: true
+    address: smtp.gmail.com
+    port: 587
+    authentication: :plain
+    domain: gmail.com
+    user_name: FULL_EMAIL_ADDRESS
+    password: SECRET_PASSWORD
+    tls: true
+  default_url_options:
+    host: localhost
+    port: 3000

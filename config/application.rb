@@ -6,6 +6,17 @@ require 'rails/all'
 # you've limited to :test, :development, or :production.
 Bundler.require(:default, Rails.env) if defined?(Bundler)
 
+class Hash
+  def recursive_symbolize_keys!
+    symbolize_keys!
+    # symbolize each hash in .values
+    values.each{|h| h.recursive_symbolize_keys! if h.is_a?(Hash) }
+    # symbolize each hash inside an array in .values
+    values.select{|v| v.is_a?(Array) }.flatten.each{|h| h.recursive_symbolize_keys! if h.is_a?(Hash) }
+    self
+  end
+end
+
 module Tsatsiki
   class Application < Rails::Application
     # Settings in config/environments/* take precedence over those specified here.
@@ -45,5 +56,25 @@ module Tsatsiki
 
     # Enable the asset pipeline
     config.assets.enabled = true
+    
+    # Configure email
+    unless Rails.env.test?
+      email_yml = "#{Rails.root.to_s}/config/email.yml"
+      unless File.exists?(email_yml)
+        puts "====================================================================",
+             "Tsatsiki doesn't know how to send email on your server.",
+             "Please copy email.yml.example to email.yml and edit the",
+             "file so that it contains the appropriate settings. ",
+             "===================================================================="
+      else
+        require 'tlsmail'
+        Net::SMTP.enable_tls(OpenSSL::SSL::VERIFY_NONE)
+        email_settings = YAML::load(File.open(email_yml)).recursive_symbolize_keys!
+        email_settings = email_settings[Rails.env.to_sym] || {}
+        email_settings.each do |key, value|
+          config.action_mailer[key] = value
+        end
+      end
+    end
   end
 end

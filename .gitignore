@@ -6,3 +6,5 @@ tmp/
 
 Capfile
 config/deploy.rb
+
+config/email.yml

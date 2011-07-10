@@ -4,21 +4,32 @@ Tsatsiki is a Project Management tool that uses Cucumber Features for tickets.
 
 ## Getting Started
 
-Check out the repo
+Check out the repo:
 
     git clone git://github.com/boblail/tsatsiki.git
     cd tsatsiki
 
-Install the bundle
+Install the bundle:
 
     bundle install
 
-Run migrations and (optionally) Seed the site with the Project data for Tsatsiki
+Run migrations and seed the site with an administrator account and the Project data for Tsatsiki:
 
-    rake db:create db:migrate db:fixtures:load
+    rake db:setup
 
-Finally run tsatsiki:
+In order for [Devise](https://github.com/plataformatec/devise) to send a Password Reset email and 
+for [Devise Invitable](https://github.com/scambra/devise_invitable) to send invitations, Tsatsiki 
+needs to know how to send emails from your computer.
+
+To configure Tsatsiki, rename the `email.yml.example` file to `email.yml` and set its properties 
+as you would [ActionMailer's](http://guides.rubyonrails.org/action_mailer_basics.html).
+
+Finally run Tsatsiki. You can either create a new account or log in with the username **admin** 
+and the password **password**.
+
+Note: if you would like Tsatsiki to be able to execute Cucumber against your features in real time, 
+it needs to be run with [EventMachine](http://rubyeventmachine.com/) so that the server can take 
+advantage of [websocket-rack](https://github.com/imanel/websocket-rack) to communicate test results 
+to the client:
 
     thin-websocket start
-
-(Currently, Tsatsiki uses [websocket-rack](https://github.com/imanel/websocket-rack) to render test progress in real time. This relies on EventMachine and requires that a patched version of Thin be used to serve the app.)
