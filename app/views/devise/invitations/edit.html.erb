@@ -1,0 +1,19 @@
+<h1>Set your password</h1>
+
+<%= form_for resource, :as => resource_name, :url => invitation_path(resource_name), :html => { :method => :put } do |f| %>
+  <%= devise_error_messages! %>
+  <%= f.hidden_field :invitation_token %>
+  
+  <dl class="form">
+    <dt><%= f.label :username %></dt>
+    <dd><%= f.text_field :username %></dd>
+    
+    <dt><%= f.label :password %></dt>
+    <dd><%= f.password_field :password %></dd>
+    
+    <dt><%= f.label :password_confirmation %></dt>
+    <dd><%= f.password_field :password_confirmation %></dd>
+  </dl>
+  
+  <p><%= f.submit "Set my password" %></p>
+<% end %>

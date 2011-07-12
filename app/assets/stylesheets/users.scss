@@ -1,0 +1,45 @@
+@import "partials/definitions";
+
+.freight_train {
+  
+  .row.user {
+    border-radius: 2px;
+    background-color: $link-background;
+    
+    margin-bottom: 4px;
+    padding: 5px 8px 3px 8px;
+    
+    &.in-edit {
+      display: block;
+      margin-bottom: 0;
+    }
+    
+    .user-username {
+      display: block;
+      font-size: 1.5em;
+      line-height: 1em;
+    }
+    .user-email {
+      font-size: 0.85em;
+    }
+    .user-permissions { 
+      display: none;
+    }
+  }
+}
+
+.editor dl.form {
+  overflow: hidden;
+  margin: 0 0 5px 0;
+  padding: 0;
+  
+  dt {
+    float: left;
+    clear: left;
+    margin: 4px 4px 4px 0;
+  }
+  dd {
+    float: left;
+    margin: 4px 0;
+  }
+}

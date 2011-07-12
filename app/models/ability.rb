@@ -1,6 +1,6 @@
 class Ability
   include CanCan::Ability
-
+  
   def initialize(user)
     # Define abilities for the passed in user here. For example:
     #
@@ -35,6 +35,8 @@ class Ability
       
     elsif user
       
+      can :create, Project
+      
       # General users abilities depend on AuthorizedProject records
       user.authorized_projects.each do |authorized_project|
         privilege = authorized_project.privileges
@@ -42,6 +44,7 @@ class Ability
         
         can privilege.for_project,  Project,  :id => project_id
         can privilege.for_features, Feature,  :project_id => project_id
+        can :create,                Feature,  :project_id => project_id if privilege.for_features == :update
         can privilege.for_features, Scenario, :project_id => project_id
       end
     end

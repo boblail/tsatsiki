@@ -1,6 +1,6 @@
 <li class="feature <%= feature.class.name.downcase %>" data-path="<%= feature.relative_path %>">
   <span class="caption"><%= feature.name %></span>
-  <% if can?(:create, :feature) %>
+  <% if can?(:create, @project => Feature) %>
     <% if feature.is_a?(Feature) # !todo implement for categories as well -%>
       <% if @selected_scenario && @selected_scenario.new_record? && @selected_scenario.feature == feature -%>
         <%= link_to "Add Feature", project_path(feature.project), :class => "feature-new-scenario on", "data-href" => new_scenario_path(feature) %>

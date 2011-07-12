@@ -35,7 +35,7 @@ pre {
   font-size: 11px;
 }
 
-a {
+a[href] {
   color: #000;
   background-color: $link-background;
   border-radius: 2px;
@@ -45,6 +45,14 @@ a {
   text-decoration: none;
   
   &:hover { background-color: $link-highlight; }
+}
+
+a[href^="mailto"] { 
+  padding: 0;
+  display: inline;
+  background: transparent;
+  text-decoration: underline;
+//  color: $cucumber-skin;
 }
 
 a.toggle {

@@ -6,13 +6,9 @@
   </p>
   <p class="tabs">
     <%= link_to("Features", project_features_path(@project), :class => project_features_class) if can?(:read, :features) -%>
-    <%= link_to("Settings", edit_project_path(@project), :class => edit_project_class) -%>
+    <%= link_to("Settings", edit_project_path(@project), :class => edit_project_class) if can?(:update, @project)-%>
   </p>
 <% end -%>
-
-<%# Where is the best place for these? %>
-<%= flash_message :notice %>
-<%= flash_message :error %>
 
 <%= yield %>
 

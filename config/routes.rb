@@ -4,7 +4,9 @@ Tsatsiki::Application.routes.draw do
   
   root :to => 'home#index'
   
-  resources :projects
+  resources :projects do
+    resources :users, :controller => "project_users"
+  end
   
   constraints :project_id => /\d+/, :index => /\d+/ do
     match '/projects/:project_id/features/*feature/new' => 'scenarios#new', :via => :get, :as => :new_scenario

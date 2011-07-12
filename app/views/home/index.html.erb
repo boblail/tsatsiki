@@ -6,7 +6,7 @@
     <%= link_to project.name, project %>
   </li>
 <% end %>
-<% if can?(:create, :project) %>
+<% if can?(:create, Project) %>
   <li class="project new">
     <%= link_to 'New Project', new_project_path %>
   </li>

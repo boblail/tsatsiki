@@ -18,7 +18,12 @@
     <%= render :partial => "layouts/authentication" unless devise_controller? -%>
   </div>
   
+  <%# Where is the best place for these? %>
+  <%= flash_message :notice %>
+  <%= flash_message :error %>
+  
   <%= yield %>
   
+  <%= include_freight_train :adapter => :jquery %>
 </body>
 </html>

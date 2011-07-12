@@ -1,0 +1,10 @@
+<%= row_for user, :editable => can?(:manage, @project) do |row| %>
+  <div class="identity">
+    <span class="user-username"><%= user.invited? ? "<em>Invited</em>".html_safe : user.username %></span>
+    <span class="user-email"><%= mail_to user.email %></span>
+  </div>
+  <div class="user-permissions">
+    <span attr="user[privileges][project]"><%= user.privileges_for(@project).project %></span>
+    <span attr="user[privileges][features]"><%= user.privileges_for(@project).features %></span>
+  </div>
+<% end %>

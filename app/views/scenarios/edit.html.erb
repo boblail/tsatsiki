@@ -4,4 +4,6 @@
   <%= render :partial => "form" %>
 <% end -%>
 
-<%= link_to 'Destroy', scenario_path(@selected_scenario), :confirm => 'Are you sure?', :method => :delete, :class => "button" -%>
+<% if can?(:manage, @project => Scenario) %>
+  <%= link_to 'Destroy', scenario_path(@selected_scenario), :confirm => 'Are you sure?', :method => :delete, :class => "button" -%>
+<% end %>

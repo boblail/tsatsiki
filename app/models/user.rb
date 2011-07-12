@@ -29,6 +29,13 @@ class User < ActiveRecord::Base
   
   
   
+  def privileges_for(project)
+    authorized_project = authorized_projects.where(:project_id => project.id).limit(1).first
+    (authorized_project || AuthorizedProject.new).privileges
+  end
+  
+  
+  
   def self.find_for_database_authentication(conditions={})
     where(:username => conditions[:email]).limit(1).first ||
     where(:email => conditions[:email]).limit(1).first

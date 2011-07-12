@@ -1,0 +1,15 @@
+.freight_train {
+  
+  ol {
+    display: block;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .row {
+    display: block;
+    
+    &.in-edit { display: none; }
+    div { display: inline-block; }
+  }
+}
