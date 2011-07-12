@@ -11,7 +11,7 @@ class Feature
     @features = []
     @absolute_path = absolute_path
     @relative_path = Pathname.new(absolute_path).relative_path_from(Pathname.new(@project.path)).to_s
-    @subfeature_path = absolute_path[/(.*?)\.feature/, 1]
+    @subfeature_path = absolute_path.gsub(/\.feature$/, "/")
     
     # If there is a path with the same name as the feature,
     # then the features within that path belong to this feature
@@ -32,6 +32,7 @@ class Feature
       # Create a placeholder feature for paths that exist
       # and contain features
       # but are not paired with features
+      
       unless features.find {|feature| feature.subfeature_path == path }
         feature = Feature.new(project, path.gsub(/\/$/, ".feature"))
         features << feature unless feature.features.empty?
