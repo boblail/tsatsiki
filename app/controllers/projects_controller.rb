@@ -33,7 +33,7 @@ class ProjectsController < ApplicationController
   
   
   def create
-    @project = Project.new(params[:project])
+    @project = current_user.projects.build(params[:project])
     @project.save
     respond_with(@project)
   end
