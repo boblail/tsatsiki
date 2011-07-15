@@ -1,11 +1,11 @@
-<%= fields_for :scenario, @selected_scenario do |f| -%>
+<%= fields_for :scenario, @scenario do |f| -%>
   <div class="scenario-title">
     <h3><%= f.text_field :name %></h3>
     <%= submit_tag "Save Changes" -%>
-  <% if @selected_scenario.new_record? -%>
+  <% if @scenario.new_record? -%>
     <%= link_to "Cancel", project_path(@project), :class => "button", :id => "cancel_new_scenario" -%>
   <% else -%>
-    <%= link_to "Cancel", scenario_path(@selected_scenario), :class => "button" -%>
+    <%= link_to "Cancel", scenario_path(@scenario), :class => "button" -%>
   <% end -%>
   </div>
   <div class="scenario-steps">

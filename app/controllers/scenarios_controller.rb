@@ -1,13 +1,13 @@
 class ScenariosController < ApplicationController
+  before_filter :find_scenario
   load_and_authorize_resource
   check_authorization
-  before_filter :find_scenario
   include UrlHelper
   
   
   
   def show
-    if @selected_scenario
+    if @scenario
       render :layout => (!pjax? && "features")
     else
       flash[:notice] = "The feature you were looking for was not found"
@@ -26,11 +26,11 @@ class ScenariosController < ApplicationController
   
   
   def create
-    @selected_scenario.update_attributes!(params[:scenario])
+    @scenario.update_attributes!(params[:scenario])
     if request.xhr?
       head :ok
     else
-      redirect_to scenario_path(@selected_scenario)
+      redirect_to scenario_path(@scenario)
     end
   rescue
     Rails.logger.error $!.to_s
@@ -45,11 +45,11 @@ class ScenariosController < ApplicationController
   
   
   def update
-    @selected_scenario.update_attributes!(params[:scenario])
+    @scenario.update_attributes!(params[:scenario])
     if request.xhr?
       head :ok
     else
-      redirect_to scenario_path(@selected_scenario)
+      redirect_to scenario_path(@scenario)
     end
   rescue
     Rails.logger.error $!.to_s
@@ -57,16 +57,16 @@ class ScenariosController < ApplicationController
       head :unprocessable_entity
     else
       flash[:error] = $!.to_s
-      redirect_to edit_scenario_path(@selected_scenario)
+      redirect_to edit_scenario_path(@scenario)
     end
   end
   
   
   
   def destroy
-    @selected_scenario.destroy!
+    @scenario.destroy!
     
-    flash[:notice] = "The feature \"#{@selected_scenario.name}\" was removed."
+    flash[:notice] = "The feature \"#{@scenario.name}\" was removed."
     redirect_to project_path(@project)
   end
   
@@ -77,12 +77,12 @@ private
   
   
   def find_scenario
-    @project           = Project.find(params[:project_id])
-    @feature           = @project.find_feature(params[:feature])
-    index              = params[:index].to_i - 1
-    @selected_scenario = (index < 0) ? Scenario.new(@feature) : @feature.scenarios[index] if @feature
+    @project  = Project.find(params[:project_id])
+    @feature  = @project.find_feature(params[:feature])
+    index     = params[:index].to_i - 1
+    @scenario = (index < 0) ? Scenario.new(@feature) : @feature.scenarios[index] if @feature
     
-    unless @selected_scenario
+    unless @scenario
       flash[:notice] = "The feature you were looking for could not be found."
       redirect_to project_url(@project)
     end

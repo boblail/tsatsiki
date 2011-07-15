@@ -1,10 +1,10 @@
 <% if scenario.new_record? %>
-  <%= content_tag :li, @selected_scenario.name, :class => "new-feature-placeholder" %>
+  <%= content_tag :li, @scenario.name, :class => "new-feature-placeholder" %>
 <% else %>
   <%= content_tag :li,
                   :class => scenario_class(scenario),
                   'data-index' => scenario.index,
                   'data-tags' => scenario_tags(scenario) do %>
-    <span class="caption"><%= link_to scenario.name, scenario_path(scenario), :class => "toggle scenario-steps-link#{" selected" if (scenario == @selected_scenario)}" %></span>
+    <span class="caption"><%= link_to scenario.name, scenario_path(scenario), :class => "toggle scenario-steps-link#{" selected" if (scenario == @scenario)}" %></span>
   <% end %>
 <% end %>

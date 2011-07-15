@@ -1,20 +1,20 @@
 <div class="scenario-title">
-  <h3><%= @selected_scenario.name %></h3>
-  <%= link_to("Edit", edit_scenario_path(@selected_scenario), :class => "button") if can?(:edit, @project => Scenario) %>
+  <h3><%= @scenario.name %></h3>
+  <%= link_to("Edit", edit_scenario_path(@scenario), :class => "button") if can?(:edit, @project => Scenario) %>
 </div>
 <div class="scenario-steps">
   <ul>
-    <%= render :partial => "step", :collection => @selected_scenario.steps %>
-    <% if @selected_scenario.examples -%>
+    <%= render :partial => "step", :collection => @scenario.steps %>
+    <% if @scenario.examples -%>
     <li>
       <span class="scenario-step-term">Examples:</span>
-      <%= render :partial => "partials/table", :object => @selected_scenario.examples %>
+      <%= render :partial => "partials/table", :object => @scenario.examples %>
     </li>
     <% end -%>
   </ul>
 </div>
 <div class="scenario-tags">
-  <% @selected_scenario.tags.each do |tag| %>
+  <% @scenario.tags.each do |tag| %>
     <%= render_tag(tag) %>
   <% end %>
 </div>

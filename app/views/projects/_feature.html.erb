@@ -2,7 +2,7 @@
   <span class="caption"><%= feature.name %></span>
   <% if can?(:create, @project => Feature) %>
     <% if feature.is_a?(Feature) # !todo implement for categories as well -%>
-      <% if @selected_scenario && @selected_scenario.new_record? && @selected_scenario.feature == feature -%>
+      <% if @scenario && @scenario.new_record? && @scenario.feature == feature -%>
         <%= link_to "Add Feature", project_path(feature.project), :class => "feature-new-scenario on", "data-href" => new_scenario_path(feature) %>
       <% else %>
         <%= link_to "Add Feature", new_scenario_path(feature), :class => "feature-new-scenario", "data-href" => new_scenario_path(feature) %>
@@ -12,8 +12,8 @@
   
   <%
     scenarios = feature.scenarios
-    if @selected_scenario && @selected_scenario.new_record? && @selected_scenario.feature == feature
-      scenarios << @selected_scenario
+    if @scenario && @scenario.new_record? && @scenario.feature == feature
+      scenarios << @scenario
     end
   %>
   <%= render_scenarios(scenarios) %>

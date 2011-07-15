@@ -1,4 +1,6 @@
 module NavigationHelpers
+  include UrlHelper
+  
   # Maps a name to a path. Used by the
   #
   #   When /^I go to (.+)$/ do |page_name|
@@ -10,17 +12,31 @@ module NavigationHelpers
       
     when /the home\s?page/
       '/'
+      
     when /the new project page/
       new_project_path
+      
     when /the (.*) project page/i
       project_path(Project.find_by_name($1))
       
-    # Add more mappings here.
-    # Here is an example that pulls values out of the Regexp:
-    #
-    #   when /^(.*)'s profile page$/i
-    #     user_profile_path(User.find_by_login($1))
-
+    when /the project's page/i
+      project_path(@project)
+      
+    when /the project's settings page/i
+      edit_project_path(@project)
+      
+    when /the page for one of the project's scenarios/i
+      scenario = @project.scenarios.first
+      scenario_path(scenario)
+      
+    when /the edit page for one of the project's scenarios/i
+      scenario = @project.scenarios.first
+      edit_scenario_path(scenario)
+      
+    when /the new scenario page for one of the project's features/i
+      feature = @project.features.first
+      new_scenario_path(feature)
+      
     else
       begin
         page_name =~ /the (.*) page/

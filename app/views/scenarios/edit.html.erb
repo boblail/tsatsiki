@@ -1,9 +1,9 @@
 <%= flash_message :error %>
 
-<%= form_tag scenario_path(@selected_scenario), :method => :put do %>
+<%= form_tag scenario_path(@scenario), :method => :put do %>
   <%= render :partial => "form" %>
 <% end -%>
 
 <% if can?(:manage, @project => Scenario) %>
-  <%= link_to 'Destroy', scenario_path(@selected_scenario), :confirm => 'Are you sure?', :method => :delete, :class => "button" -%>
+  <%= link_to 'Destroy', scenario_path(@scenario), :confirm => 'Are you sure?', :method => :delete, :class => "button" -%>
 <% end %>
