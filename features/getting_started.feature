@@ -8,4 +8,5 @@ Feature: Getting Started
   #
   @human
   @boundary
+  @milestone=0.1.0
   Scenario: I can seamlessly bring an existing project into Tsatsiki

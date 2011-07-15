@@ -1,7 +1,8 @@
 Feature: Manage projects
   
   
-  Scenario: Register new project
+  @milestone=0.1.0
+  Scenario: I can create a new project
     Given I am logged in
     And I am on the new project page
     When I fill in "Name" with "name 1"
