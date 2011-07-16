@@ -127,7 +127,7 @@ class Scenario
   alias :proposed? :new?
   
   def todo?
-    tags.member?("@todo")
+    tags.member?("@todo") || wip?
   end
   
   def wip?

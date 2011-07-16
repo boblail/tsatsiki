@@ -3,11 +3,11 @@
 <div class="split-screen">
   <div class="left">
     <ol class="project-statistics">
-      <%= project_statistics :features, :completed, :started, :proposed, :boundaries, :undefined %>
+      <%= project_statistics :features, :completed, :todo, :proposed, :boundaries, :undefined %>
     </ol>
     
     <ol class="project-statistics extras">
-      <%= project_statistics :human %>
+      <%= project_statistics :started, :human %>
     </ol>
     
     <input type="text" id="feature_filter" />
@@ -56,19 +56,22 @@
     });
     
     function applySelectedTagFilter(tag) {
-      var css = "tag-" + tag;
+      var css = ".tag-" + tag,
+          scenario,
+          feature;
       switch(css) {
-        case 'tag-features':    css = 'scenario';     break;
-        case 'tag-proposed':    css = 'tag-new';      break;
-        case 'tag-started':     css = 'tag-wip';      break;
-        case 'tag-completed':   css = 'completed';    break;
-        case 'tag-undefined':   css = 'empty';        break;
-        case 'tag-boundaries':  css = 'tag-boundary'; break;
+        case '.tag-features':    css = '.scenario';           break;
+        case '.tag-proposed':    css = '.tag-new';            break;
+        case '.tag-started':     css = '.tag-wip';            break;
+        case '.tag-completed':   css = '.completed';          break;
+        case '.tag-undefined':   css = '.empty';              break;
+        case '.tag-boundaries':  css = '.tag-boundary';       break;
+        case '.tag-todo':        css = '.tag-todo, .tag-wip'; break;
       }
       
       $('.scenario').each(function() {
-        var scenario = $(this);
-        if(scenario.hasClass(css)) {
+        scenario = $(this);
+        if(scenario.is(css)) {
           scenario.removeClass('filtered-by-tag');
         } else {
           scenario.addClass('filtered-by-tag');
@@ -76,7 +79,7 @@
       });
       
       $('.feature').each(function() {
-        var feature = $(this);
+        feature = $(this);
         if(feature.find('.scenario:not(.filtered-by-tag)').length > 0) {
           feature.show();
         } else {
