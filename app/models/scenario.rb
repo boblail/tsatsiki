@@ -35,7 +35,8 @@ class Scenario
                 :tags,
                 :steps,
                 :examples
-  attr_accessor :name
+  attr_accessor :name,
+                :milestone_version
   
   delegate      :project_id,
                 :to => :feature
@@ -152,6 +153,7 @@ class Scenario
     tags.each do |tag|
       output << "  #{tag}\n"
     end
+    output << "  @milestone=#{milestone_version}\n" if milestone_version
     output << "  Scenario: #{name}\n" if scenario?
     output << "  Scenario Outline: #{name}\n" if scenario_outline?
     output << render_body
@@ -178,7 +180,7 @@ private
   
   def eval_children(children)
     children.each do |child|
-      if    tag?(child);      @tags << child[1]
+      if    tag?(child);      eval_tag(child[1])
       elsif step?(child);     @steps << Step.new(self, child)
       elsif comment?(child);  child[1].split($/).each(&method(:eval_comment))
       elsif examples?(child); @examples = Table.new(child[3])
@@ -201,6 +203,15 @@ private
   
   def examples?(sexp)
     sexp.first == :examples
+  end
+  
+  
+  
+  def eval_tag(tag)
+    case tag
+    when /^@milestone=(.*)$/;     @milestone_version = $1
+    else;                         @tags << tag
+    end
   end
   
   
