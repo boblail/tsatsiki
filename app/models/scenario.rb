@@ -121,6 +121,10 @@ class Scenario
     tags.member?("@human")
   end
   
+  def ignore?
+    tags.member?("@ignore")
+  end
+  
   def new?
     tags.member?("@new")
   end

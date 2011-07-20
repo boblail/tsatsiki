@@ -137,7 +137,7 @@ private
     @comments = []
     
     children.each do |child|
-      if    scenario?(child);   @scenarios << Scenario.new(self, @scenarios.length + 1, child)
+      if    scenario?(child);   eval_scenario(child)
       elsif comment?(child);    @comments.concat child[1].split($/)
       else;                     raise("unrecognized sexp: #{child.first}")
       end
@@ -150,6 +150,13 @@ private
   
   def comment?(sexp)
     sexp.first == :comment
+  end
+  
+  
+  
+  def eval_scenario(child)
+    scenario = Scenario.new(self, @scenarios.length + 1, child)
+    @scenarios << scenario unless scenario.ignore?
   end
   
   
