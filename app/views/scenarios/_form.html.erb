@@ -1,6 +1,6 @@
 <%= fields_for :scenario, @scenario do |f| -%>
   <div class="scenario-title">
-    <h3><%= f.text_field :name %></h3>
+    <h3><%= f.label :name, :class => "hidden" %><%= f.text_field :name %></h3>
     <%= submit_tag "Save Changes" -%>
   <% if @scenario.new_record? -%>
     <%= link_to "Cancel", project_path(@project), :class => "button", :id => "cancel_new_scenario" -%>

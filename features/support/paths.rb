@@ -33,8 +33,18 @@ module NavigationHelpers
       scenario = @project.scenarios.first
       edit_scenario_path(scenario)
       
+    when /the edit page for the first scenario in this feature/i
+      project = Project.find_by_name('Tsatsiki')
+      feature = Feature.new(project, @this_feature_path)
+      edit_scenario_path(feature.scenarios.first)
+      
     when /the new scenario page for one of the project's features/i
       feature = @project.features.first
+      new_scenario_path(feature)
+      
+    when /the new scenario page for this feature/i
+      project = Project.find_by_name('Tsatsiki')
+      feature = Feature.new(project, @this_feature_path)
       new_scenario_path(feature)
       
     else

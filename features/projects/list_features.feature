@@ -5,7 +5,7 @@ Feature: Show Project
   @milestone=0.1.0
   Scenario: Features tagged @human should not be executed
     When I am on the Tsatsiki project page
-    And I click "Test Features"
+    And I press "Test Features"
     Then this feature should not be executed
   
   

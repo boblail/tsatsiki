@@ -1,9 +1,5 @@
 # TODO
 
-### 0.2.0
-
- - Make sure Tsatsiki has Cucumber features to represent 0.1.0 and 0.2.0 features
-
 ### Upcoming
 
  * Feature Tree Improvements
