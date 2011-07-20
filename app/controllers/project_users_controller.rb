@@ -1,7 +1,5 @@
-class ProjectUsersController < ApplicationController
+class ProjectUsersController < ProjectResourceController
   uses_freight_train
-  
-  before_filter :find_project
   
   # load_and_authorize_resource, :class => "User"
   # check_authorization
@@ -35,16 +33,6 @@ class ProjectUsersController < ApplicationController
     else
       show_errors_for(authorized_user)
     end
-  end
-  
-  
-  
-private
-  
-  
-  
-  def find_project
-    @project = Project.find(params[:project_id])
   end
   
   
