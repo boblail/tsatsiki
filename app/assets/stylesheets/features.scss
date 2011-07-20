@@ -3,7 +3,8 @@
 
 
 .project-statistics {
-  font-family: 'PT Sans', sans-serif;
+  @include tsatsiki-font;
+  
   position: relative;
   top: 2px;
   overflow: hidden;
@@ -203,7 +204,7 @@ form .scenario-title h3 {
   margin: 0.75em 0 0.5em;
   
   input {
-    font-family: 'PT Sans', sans-serif;
+    @include tsatsiki-font;
     font-size: 1em;
   }
 }

@@ -19,7 +19,7 @@ body {
 th { text-align: left; }
 
 h1, h2, h3, h4 {
-  font-family: 'PT Sans', sans-serif;
+  @include tsatsiki-font;
   font-weight: normal;
   line-height: 100%;
   margin: 0.5em 0;
@@ -120,8 +120,8 @@ label.hidden {
   
   border-bottom: 1px solid #333;
   box-shadow: 0 0 7px #888;
-  font-family: 'PT Sans';
   
+  @include tsatsiki-font;
   @include gradient-background(#777, #555, #666);
 }
 
