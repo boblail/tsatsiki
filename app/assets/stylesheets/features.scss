@@ -73,7 +73,7 @@
     background-position: 0px 5px;
     padding: 1px 0 1px $tree-indent;
     margin: 0;
-    cursor: pointer;
+    > .caption { cursor: pointer; }
   }
   
   > li.collapsed {
