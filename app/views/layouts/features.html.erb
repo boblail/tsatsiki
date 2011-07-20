@@ -15,12 +15,8 @@
     <button id="run_examples">Test Features</button>
     
     <div id="features">
-      <ul id="feature_tree" class="tree">
-        <%= render :partial => "projects/feature", :collection => @project.features -%>
-      </ul>
-      <ol id="feature_list">
-        <%= render_scenarios(@project.scenarios) %>
-      </ol>
+      <%= render_features(@project.features, :id => "feature_tree") %>
+      <%= render_scenarios(@project.scenarios, :id => "feature_list") %>
     </div>
   </div>
   <div class="right">

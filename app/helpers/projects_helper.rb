@@ -30,12 +30,22 @@ module ProjectsHelper
     scenario.tags.empty? ? nil : scenario.tags.join(' ')
   end
   
-  def render_scenarios(scenarios)
-    "<ul class=\"scenarios\">#{render(:partial => "projects/scenario", :collection => scenarios)}</ul>".html_safe
+  def render_scenarios(scenarios, options={})
+    return "" if scenarios.empty?
+    
+    ul_options = options.pick(:id).merge(:class => "scenarios")
+    content_tag(:ul, ul_options) do
+      render(:partial => "projects/scenario", :collection => scenarios, :locals => {:options => options})
+    end
   end
   
-  def render_features(features)
-    "<ul class=\"tree features\">#{render(:partial => "projects/feature", :collection => features)}</ul>".html_safe
+  def render_features(features, options={})
+    return "" if features.empty?
+    
+    ul_options = options.pick(:id).merge(:class => "tree features")
+    content_tag(:ul, ul_options) do
+      render(:partial => "projects/feature", :collection => features, :locals => {:options => options})
+    end
   end
   
   def render_tag(tag)

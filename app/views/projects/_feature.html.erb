@@ -16,6 +16,6 @@
       scenarios << @scenario
     end
   %>
-  <%= render_scenarios(scenarios) %>
-  <%= render_features(feature.features) unless feature.features.empty? %>
+  <%= render_scenarios(scenarios, options) %>
+  <%= render_features(feature.features, options) %>
 </li>
