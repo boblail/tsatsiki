@@ -271,19 +271,6 @@
     }
     
     
-    
-    $('.scenario').each(function() {
-      var li = $(this);
-      if(li.hasClass('tag-human')) {
-        li.find('a').append('<img width="14" height="14" class="icon" src="<%= asset_path("icons/user.png") %>" title="This feature must be tested manually." />');
-      }
-      if(li.hasClass('tag-wip')) {
-        li.find('a').append('<img width="14" height="14" class="icon" src="<%= asset_path("icons/page_white_edit.png") %>" title="This feature is not yet implemented" />');
-      }
-      if(li.hasClass('tag-new') || li.hasClass('tag-todo')) {
-        li.find('a').append('<img width="14" height="14" class="icon" src="<%= asset_path("icons/page_white.png") %>" title="This feature is not yet implemented" />');
-      }
-    });
   });
 </script>
 

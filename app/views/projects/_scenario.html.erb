@@ -5,6 +5,10 @@
                   :class => scenario_class(scenario),
                   'data-index' => scenario.index,
                   'data-tags' => scenario_tags(scenario) do %>
-    <span class="caption"><%= link_to scenario.name, scenario_path(scenario), :class => "toggle scenario-steps-link#{" selected" if (scenario == @scenario)}" %></span>
+    <span class="caption">
+      <%= link_to scenario_path(scenario), :class => "toggle scenario-steps-link#{" selected" if (scenario == @scenario)}" do -%>
+        <%= scenario.name %><%= scenario_icons(scenario) %>
+      <% end -%>
+    </span>
   <% end %>
 <% end %>

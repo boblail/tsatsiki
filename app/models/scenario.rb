@@ -106,7 +106,7 @@ class Scenario
   end
   
   def boundary?
-    tags.member?("@boundary")
+    tags.member?("boundary")
   end
   
   def completed?
@@ -119,24 +119,24 @@ class Scenario
   alias :undefined? :empty?
   
   def human?
-    tags.member?("@human")
+    tags.member?("human")
   end
   
   def ignore?
-    tags.member?("@ignore")
+    tags.member?("ignore")
   end
   
   def new?
-    tags.member?("@new")
+    tags.member?("new")
   end
   alias :proposed? :new?
   
   def todo?
-    tags.member?("@todo") || wip?
+    tags.member?("todo") || wip?
   end
   
   def wip?
-    tags.member?("@wip")
+    tags.member?("wip")
   end
   alias :started? :wip?
   
@@ -151,7 +151,7 @@ class Scenario
       output << "  #{comment}\n"
     end
     tags.each do |tag|
-      output << "  #{tag}\n"
+      output << "  @#{tag}\n"
     end
     output << "  @milestone=#{milestone_version}\n" if milestone_version
     output << "  Scenario: #{name}\n" if scenario?
@@ -210,7 +210,7 @@ private
   def eval_tag(tag)
     case tag
     when /^@milestone=(.*)$/;     @milestone_version = $1
-    else;                         @tags << tag
+    else;                         @tags << tag[1..-1] # remove the '@'
     end
   end
   
