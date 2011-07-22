@@ -34,3 +34,8 @@ $tree-indent: 14px;
 @mixin tsatsiki-font {
   font-family: 'PT Sans' sans-serif;
 }
+@mixin border-radius($radius) {
+  -webkit-border-radius: $radius;
+  -mox-border-radius: $radius;
+  border-radius: $radius;
+}

@@ -1,0 +1,61 @@
+@import "partials/definitions";
+
+
+
+body#interior { padding: 82px 16px 16px 16px; }
+
+.container {
+  position: relative;
+  margin: 0 auto;
+  width: 700px;
+}
+
+
+
+.banner {
+  border-top: 6px solid #333;
+  border-bottom: 1px solid $bottom-border;
+  
+  border-bottom: 1px solid #333;
+  box-shadow: 0 0 7px #888;
+  
+  @include tsatsiki-font;
+  @include gradient-background(#777, #555, #666);
+}
+
+#interior .banner {
+  padding: 4px 8px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 70px;
+}
+
+#home .banner {
+  padding: 1em;
+  margin-bottom: 1em;
+  
+  a { padding: 0; }
+}
+
+
+
+.authentication {
+  position: absolute;
+  border: 1px solid #555;
+  border-top-color: #333;
+  right: 1em;
+  padding: 2px 8px 4px 8px;
+  border-bottom-left-radius: 6px;
+  border-bottom-right-radius: 6px;
+  background-color: #888;
+  
+  a { background-color: #888; }
+  a:hover { background-color: $link-highlight; }
+}
+
+#home .authentication { top: 160px; }
+
+#interior .authentication { top: 77px; }
+
