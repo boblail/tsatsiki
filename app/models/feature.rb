@@ -156,7 +156,7 @@ private
   
   def eval_scenario(child)
     scenario = Scenario.new(self, @scenarios.length + 1, child)
-    @scenarios << scenario unless scenario.ignore?
+    @scenarios << scenario
   end
   
   

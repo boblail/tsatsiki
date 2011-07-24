@@ -16,7 +16,7 @@
     
     <div id="features">
       <%= render_features(@project.features, :id => "feature_tree") %>
-      <%= render_scenarios(@project.scenarios, :id => "feature_list") %>
+      <%= render_scenarios(@project.scenarios.reject(&:ignore?), :id => "feature_list") %>
     </div>
   </div>
   <div class="right">

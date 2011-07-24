@@ -12,7 +12,7 @@ module ProjectsHelper
     <<-HTML
     <li class="project-statistic">
       <a href="##{name}" class="toggle project-statistic-button">
-        <span class="project-statistic-count">#{@project.scenarios.select(&predicate).count}</span>
+        <span class="project-statistic-count">#{@project.scenarios.reject(&:ignore?).select(&predicate).count}</span>
         <span class="project-statistic-label">#{name.to_s.titleize}</span>
       </a>
     </li>

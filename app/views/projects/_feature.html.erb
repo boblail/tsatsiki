@@ -11,7 +11,7 @@
   <% end -%>
   
   <%
-    scenarios = feature.scenarios
+    scenarios = feature.scenarios.reject(&:ignore?)
     if @scenario && @scenario.new_record? && @scenario.feature == feature
       scenarios << @scenario
     end

@@ -123,7 +123,7 @@ class Scenario
   end
   
   def ignore?
-    tags.member?("ignore")
+    tags.member?("tsatsiki-ignore")
   end
   
   def new?

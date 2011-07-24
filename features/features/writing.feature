@@ -44,3 +44,7 @@ Feature: Parsing and writing Cucumber features
       | for example       |
       | e.g.              |
       | as in the case of |
+  
+  
+  @tsatsiki-ignore
+  Scenario: This scenario is ignored by Tsatsiki

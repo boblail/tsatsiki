@@ -1,7 +1,7 @@
 Feature: Deleting Features
   
   
-  @ignore
+  @tsatsiki-ignore
   Scenario: This scenario will be deleted
   
   
