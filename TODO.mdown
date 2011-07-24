@@ -2,19 +2,18 @@
 
 ### 0.2.1
 
+ - Test feature execution
+ - Allow configuration of WebSocket URL
+
+### 0.2.2
+
  - Allow dragging and dropping scenarios in Feature Tree
  - Allow renaming and creating categories
  - Improve the New Feature process
 
-### 0.2.2
-
- * Automatic Test Improvements
-    - Extract pub/sub to a separate process?
-    - Make sure pretty solid
-
 ### Upcoming
 
- * Milestones
+ - Milestones
  - Features: Make split screen drag-resizable
  - Edit Scenario Improvements
     - Initially, one Steps to Test and then one Assertions block; can add pairs?

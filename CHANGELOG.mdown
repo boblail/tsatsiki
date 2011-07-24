@@ -14,3 +14,10 @@
  - Allows filtering features by toggling categories
  - Allows signing in and signing out
  - Allows setting project-specific permissions for users
+
+### 0.2.1 @wip
+
+ - Allows running Cucumber features from Tsatsiki
+   - Removes requirement that Tsatsiki be run with thin-websocket
+   - Removes requirement that projects use bundler
+   - Removes requirement that projects include tsatsiki-cucumber-formatter
