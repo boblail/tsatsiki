@@ -3,8 +3,9 @@ module UrlHelper
   
   
   def socket_url(options={})
-    options[:protocol] = "ws"
-    "#{root_url(options)}socket"
+    # options[:protocol] = "ws"
+    # "#{root_url(options)}socket"
+    "ws://localhost:8080"
   end
   
   

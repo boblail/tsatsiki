@@ -12,11 +12,16 @@
     
     <input type="text" id="feature_filter" />
     
-    <button id="run_examples">Test Features</button>
-    
     <div id="features">
       <%= render_features(@project.features, :id => "feature_tree") %>
       <%= render_scenarios(@project.scenarios.reject(&:ignore?), :id => "feature_list") %>
+    </div>
+    
+    <div id="controls">
+      <button id="run_examples">Test Features</button>
+      <div id="examples_running_message"></div>
+      <a href="#reset" id="reset_tests">Reset</a>
+      <!-- <p><%= image_tag "ajax-loader.gif", :id => "ajax_loader", :style => "display:none;" -%></p> -->
     </div>
   </div>
   <div class="right">
@@ -25,8 +30,6 @@
     </div>
   </div>
 </div>
-
-<!-- <p><%= image_tag "ajax-loader.gif", :id => "ajax_loader", :style => "display:none;" -%></p> -->
 
 <script type="text/javascript">
   $(function() {

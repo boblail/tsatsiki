@@ -5,6 +5,7 @@ $cucumber-seeds:          #ddeece;
 $cucumber-flesh:          #eff8e9;
 $light-gray:              #efefef;
 $orange:                  #d37122;
+$yellow:                  #c0d000;
 
 // Colors
 $link-background:         $light-gray;
@@ -16,6 +17,11 @@ $toggle-link-selected:    $cucumber-zest;
 $bottom-border: #777;
 $control-border: 1px solid #d0d0d0;
 $control-padding: 6px 8px;
+
+$test-running-color:      #aaa;
+$test-passed-color:       $cucumber-skin;
+$test-failed-color:       $orange;
+$test-undefined-color:    $yellow;
 
 $accent-color: $orange;
 $tree-indent: 14px;
@@ -30,6 +36,9 @@ $tree-indent: 14px;
   background: -ms-linear-gradient(top, $col1 0%,$col2 100%); /* IE10+ */
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='$col1', endColorstr='$col2',GradientType=0 ); /* IE6-9 */
   background: linear-gradient(top, $col1 0%,$col2 100%); /* W3C */  
+}
+@mixin global-font {
+  font-family: arial, helvetica, sans-serif;
 }
 @mixin tsatsiki-font {
   font-family: 'PT Sans' sans-serif;

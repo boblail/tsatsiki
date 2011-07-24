@@ -19,6 +19,4 @@ Tsatsiki::Application.routes.draw do
     match '/projects/:project_id/features' => 'project_features#index', :via => :get, :as => :project_features
   end
   
-  mount WebsocketApp, :at => '/socket'
-  
 end

@@ -1,0 +1,89 @@
+@import "partials/definitions";
+
+
+
+.scenario-steps {
+  
+  h4 {
+    color: auto;
+    margin: 0 0 0.5em 0;
+    padding: 0;
+  }
+  
+  em {
+    font-style: normal;
+    font-weight: bold;
+  }
+  
+  .scenario-step-term {
+    background-color: #dfdfdf;
+    border-radius: 2px;
+    line-height: 1em;
+    padding: 2px 5px 2px 4px;
+    display: inline-block;
+  }
+  
+  ul {
+    margin: 0;
+    padding: 0;
+    color: #333;
+    
+    > li {
+      list-style: none;
+      margin: 2px 0;
+    }
+  }
+  
+  textarea {
+    width: 500px;
+    min-height: 300px;
+    font-size: 1em;
+    font-family: 'Consolas', 'Courier New', fixed;
+  }
+  
+}
+
+input[type="text"].renamer {
+  font-size: 1em;
+  width: 300px;
+}
+
+.scenario-tag {
+  padding: 0 0 0 22px;
+  background-repeat: no-repeat;
+  background-position: 0px 0px;
+}
+
+table.step-table {
+  margin: 8px 0 8px 14px;
+  border-collapse: collapse;
+  color: #555;
+  
+  th { background-color: #dfdfdf; }
+  td { background-color: #f2f2f2; }
+  td, th {
+    border: 1px solid #cccccc;
+    padding: 2px 6px;
+  }
+}
+
+pre.step-heredoc {
+  margin: 8px 0;
+  color: #555;
+}
+
+.scenario-title h3 { display: inline-block; }
+
+form .scenario-title h3 {
+  margin: 0.75em 0 0.5em;
+  
+  input {
+    @include tsatsiki-font;
+    font-size: 1em;
+  }
+}
+
+#scenario_body {
+  white-space: pre;
+  overflow: auto;
+}

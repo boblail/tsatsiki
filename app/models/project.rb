@@ -33,6 +33,16 @@ class Project < ActiveRecord::Base
   
   
   
+  def execute_javascript_scenarios?
+    true
+  end
+  
+  def uses_bundler?
+    @uses_bundler ||= File.exists?(File.join(self.path, "Gemfile"))
+  end
+  
+  
+  
 private
   
   

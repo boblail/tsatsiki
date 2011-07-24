@@ -1,7 +1,7 @@
 # sexp Pattern
 #
 #   [:scenario, line,   keyword, text, *children]
-#   [:scenario_oultine, keyword, text, *children]
+#   [:scenario_outline, keyword, text, *children]
 #
 class Scenario
   
