@@ -10,9 +10,6 @@ gem 'rails', '3.1.0.rc4'
 # DB
 gem 'sqlite3'
 
-# Server
-gem 'mongrel'
-
 # JS
 gem 'jquery-rails'
 
@@ -41,11 +38,10 @@ gem 'childprocess'
 
 # The prerelease of Bundler fails to install rbx-require-relative
 # on any version of Ruby < 1.9.2. Comment out these lines until fixed
-#
-# group :development do
-#   gem "ruby-debug", :platforms => :mri_18
-#   gem "ruby-debug19", :platforms => :mri_19
-# end
+group :development do
+  gem "ruby-debug19", :platforms => :mri_19
+  gem 'mongrel', '1.2.0.pre2', :platforms => :mri_19
+end
 
 # We'd be hypocrites if we didn't use cucumber for integration testing :)
 group :development, :test do

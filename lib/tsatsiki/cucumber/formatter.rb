@@ -106,8 +106,8 @@ module Tsatsiki
         return :undefined if element.try(:raw_steps).empty? # [Cucumber::Ast::Step]
         
         case element
-        when ::Cucumber::Ast::Scenario:           get_status_of_scenario(element)
-        when ::Cucumber::Ast::ScenarioOutline:    get_status_of_scenario_outline(element)
+        when ::Cucumber::Ast::Scenario;           get_status_of_scenario(element)
+        when ::Cucumber::Ast::ScenarioOutline;    get_status_of_scenario_outline(element)
         else
           raise("unexpected feature element: #{element.class.name}")
         end
