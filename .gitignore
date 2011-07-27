@@ -8,3 +8,5 @@ Capfile
 config/deploy.rb
 
 config/email.yml
+
+.rvmrc
