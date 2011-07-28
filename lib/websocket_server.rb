@@ -5,6 +5,8 @@ require 'timeout'
 
 class WebsocketServer
   
+  class FailedToStart < RuntimeError; end
+  
   def start!
     unless self.process || is_port_open?("127.0.0.1", 8080)
       puts "[tsatsiki] starting websocket server..."
@@ -12,7 +14,7 @@ class WebsocketServer
       self.process.io.inherit!
       self.process.start
       sleep 0.5
-      raise("Not Running!") unless self.process.alive?
+      raise(FailedToStart) unless self.process.alive?
     end
   end
   
