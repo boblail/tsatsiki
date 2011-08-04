@@ -125,6 +125,8 @@ cd tsatsiki</code></pre>
 
     <pre><code>rake db:setup</code></pre>
 
+    <h3 id="configuring_tsatsiki">Configuring Tsatsiki</h3>
+
     <p>In order for <a href="https://github.com/plataformatec/devise">Devise</a> to send a Password Reset email and 
     for <a href="https://github.com/scambra/devise_invitable">Devise Invitable</a> to send invitations, Tsatsiki 
     needs to know how to send emails from your computer.</p>
@@ -134,14 +136,12 @@ cd tsatsiki</code></pre>
 
     <p>Finally run Tsatsiki. You can either create a new account or log in with the username <strong>admin</strong> 
     and the password <strong>password</strong>.</p>
-
-    <p>Note: if you would like Tsatsiki to be able to execute Cucumber against your features in real time, 
-    it needs to be run with <a href="http://rubyeventmachine.com/">EventMachine</a> so that the server can take 
-    advantage of <a href="https://github.com/imanel/websocket-rack">websocket-rack</a> to communicate test results 
-    to the client:</p>
-
-    <pre><code>thin-websocket start
-    </code></pre>
+    
+    <h3 id="screenshot">Screenshot</h3>
+    
+    <div style="border:1px solid #999; padding:2px">
+      <img src="images/tsatsiki-screenshot.png" width="694" height="424" />
+    </div>
     
     <a href="http://github.com/boblail" class="frame">
       <img src="http://www.gravatar.com/avatar/85142d7e8f91af4c3b82175d513fbb0f.png" width="48" height="48">
