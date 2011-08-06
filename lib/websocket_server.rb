@@ -23,6 +23,7 @@ class WebsocketServer
     EM.run do
       @channel = EM::Channel.new
       @tsatsiki_url = "http://#{host}:#{port}"
+      @cucumber_processes = []
       params = {:host => host, :port => port}
       
       EM::WebSocket.start(params) do |ws|
@@ -70,7 +71,7 @@ class WebsocketServer
             
             case message
             when 'execute'
-              ws.on_execute(@tsatsiki_url, data)
+              ws.on_execute(@cucumber_processes, @tsatsiki_url, data)
             when 'hello', 'started', 'finished', 'result'
               @channel.push(raw_message)
             else
@@ -82,7 +83,7 @@ class WebsocketServer
         
         
         
-        def ws.on_execute(tsatsiki_url, params)
+        def ws.on_execute(cucumber_processes, tsatsiki_url, params)
           puts "[execute] #{params.inspect}"
           
           formatter_path = File.join(RAILS_ROOT, "lib", "tsatsiki", "cucumber")
@@ -119,13 +120,40 @@ class WebsocketServer
           command = "cd #{project.path} && #{command}"
           
           puts "[execute] #{command}"
-          fork { Bundler.clean_exec(command) }
+          pid = fork { Bundler.clean_exec(command) }
+          Process.detach(pid)
+          cucumber_processes << {
+            :project_id => project.id,
+            :pid => pid
+          }
         end
         
         
+        # Make sure that when the process dies, the client gets notified
+        EM.add_periodic_timer(1) do
+          @cucumber_processes.dup.each do |process|
+            unless process_running?(process[:pid])
+              puts "dead!"
+              @cucumber_processes.delete(process)
+              ws.send_message('finished', {:project_id => process[:project_id]})
+            end
+          end
+        end
+        
         
       end
+      
+      
     end
+  end
+  
+  
+  
+  def self.process_running?(pid)
+    Process.kill 0, pid
+    true
+  rescue Errno::ESRCH
+    false
   end
   
   
