@@ -29,3 +29,4 @@
  - Keep an audit log for scenarios (Snapshot of scenario AST + committer?)
  - List tags on left side of Feature Tree: toggle on or off those scenarios
  - Let comments have attachments
+ - Allow Tsatsiki to log the status of test runs and to trigger test runs on events (like Git hooks)
