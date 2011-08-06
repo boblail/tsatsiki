@@ -46,8 +46,8 @@
     h3 { font-size: 1.33em; margin: 1em 0; color: black; }
     
     pre {
-      background: #efefef;
-      color: #333333;
+      background: #555;
+      color: #efefef;
       padding: 10px 15px;}
     
     .container a[href] {
@@ -110,7 +110,7 @@
     
     <p>Tsatsiki is a Project Management tool that uses Cucumber Features for tickets.</p>
 
-    <h2 id="getting_started">Getting Started</h2>
+    <h3 id="getting_started">Getting Started</h3>
 
     <p>Check out the repo:</p>
 
@@ -125,17 +125,31 @@ cd tsatsiki</code></pre>
 
     <pre><code>rake db:setup</code></pre>
 
-    <h3 id="configuring_tsatsiki">Configuring Tsatsiki</h3>
-
-    <p>In order for <a href="https://github.com/plataformatec/devise">Devise</a> to send a Password Reset email and 
-    for <a href="https://github.com/scambra/devise_invitable">Devise Invitable</a> to send invitations, Tsatsiki 
-    needs to know how to send emails from your computer.</p>
-
-    <p>To configure Tsatsiki, rename the <code>email.yml.example</code> file to <code>email.yml</code> and set its properties 
-    as you would <a href="http://guides.rubyonrails.org/action_mailer_basics.html">ActionMailer&#8217;s</a>.</p>
-
     <p>Finally run Tsatsiki. You can either create a new account or log in with the username <strong>admin</strong> 
     and the password <strong>password</strong>.</p>
+
+    <pre><code>rails s</code></pre>
+
+    <h3 id="configuring_tsatsiki_to_send_emails">Configuring Tsatsiki to Send Emails</h3>
+
+    <p>In order for <a href="https://github.com/plataformatec/devise">Devise</a> to send password reset emails and 
+    for <a href="https://github.com/scambra/devise_invitable">Devise Invitable</a> to send invitations, Tsatsiki 
+    needs to know how to send email from your computer.</p>
+
+    <p>To configure Tsatsiki to send email, rename the <code>email.yml.example</code> file to <code>email.yml</code> and set
+    its properties as you would <a href="http://guides.rubyonrails.org/action_mailer_basics.html">ActionMailer&#8217;s</a>.</p>
+
+    <h3 id="running_cucumber_from_the_browser">Running Cucumber from the Browser</h3>
+
+    <p>Tsatsiki can execute Cucumber on a project&#8217;s features. As tests are completed, their results are
+    relayed back to the client through a WebSocket server. The server is run automatically when
+    Tsatsiki is started (see <code>config/initializers/start_websocket_server.rb</code>), but you can also run
+    the server manually, check its status, stop, or restart it from the command line by running:</p>
+
+    <pre><code>script/websocket-server</code></pre>
+
+    <p>By default the server runs on host <strong>127.0.0.1</strong> and port <strong>8080</strong>. You can change these settings
+    by editing <code>config/websocket.yml</code>.</p>
     
     <h3 id="screenshot">Screenshot</h3>
     
