@@ -1,3 +1,3 @@
 fork do
-  Kernel.exec "#{Rails.root.join('script', 'ws')} start"
+  Kernel.exec "#{Rails.root.join('script', 'websocket-server')} start"
 end
