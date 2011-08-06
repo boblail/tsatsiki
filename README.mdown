@@ -23,8 +23,17 @@ In order for [Devise](https://github.com/plataformatec/devise) to send a Passwor
 for [Devise Invitable](https://github.com/scambra/devise_invitable) to send invitations, Tsatsiki 
 needs to know how to send emails from your computer.
 
-To configure Tsatsiki, rename the `email.yml.example` file to `email.yml` and set its properties 
-as you would [ActionMailer's](http://guides.rubyonrails.org/action_mailer_basics.html).
+To configure Tsatsiki to send email, rename the `email.yml.example` file to `email.yml` and set
+its properties as you would [ActionMailer's](http://guides.rubyonrails.org/action_mailer_basics.html).
 
 Finally run Tsatsiki. You can either create a new account or log in with the username **admin** 
 and the password **password**.
+
+## Running Cucumber from the Browser
+
+Tsatsiki can execute Cucumber on a project's features. As tests are completed, their results are
+relayed back to the client through a WebSocket server. The server is run automatically when
+Tsatsiki is started (see `config/initializers/start_websocket_server.rb`), but you can also run
+the server manually, check its status, stop, or restart it from the command line by running:
+
+    script/websocket-server
