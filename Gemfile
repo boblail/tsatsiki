@@ -28,6 +28,7 @@ gem 'tlsmail'
 gem 'cucumber'
 
 # Run cucumber in the background and stream results to the web page
+gem 'daemons'
 gem 'eventmachine', '1.0.0.beta.3'
 gem 'em-websocket'
 gem 'childprocess'

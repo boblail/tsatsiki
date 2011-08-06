@@ -12,33 +12,37 @@
 # c.f. https://github.com/carlhuda/bundler/issues/900
 # c.f. http://spectator.in/2011/01/28/bundler-in-subshells/
 
+
 module Bundler
-  
-  
-  
-  def with_original_env
-    bundled_env = ENV.to_hash
-    ENV.replace(ORIGINAL_ENV)
-    yield
-  ensure
-    ENV.replace(bundled_env.to_hash)
-  end
-  
-  def with_clean_env
-    with_original_env do
-      ENV.delete_if { |k,_| k[0,7] == 'BUNDLE_' }
+  class << self
+    
+    
+    def with_original_env
+      bundled_env = ENV.to_hash
+      ENV.replace(::Bundler::ORIGINAL_ENV)
       yield
+    ensure
+      ENV.replace(bundled_env.to_hash)
     end
+    
+    
+    def with_clean_env
+      with_original_env do
+        ENV.delete_if { |k,_| k[0,7] == 'BUNDLE_' }
+        yield
+      end
+    end
+    
+    
+    def clean_system(*args)
+      with_clean_env { Kernel.system(*args) }
+    end
+    
+    
+    def clean_exec(*args)
+      with_clean_env { Kernel.exec(*args) }
+    end
+    
+    
   end
-  
-  def clean_system(*args)
-    with_clean_env { Kernel.system(*args) }
-  end
-  
-  def clean_exec(*args)
-    with_clean_env { Kernel.exec(*args) }
-  end
-  
-  
-  
 end
