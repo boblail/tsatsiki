@@ -1,7 +1,6 @@
 source 'http://rubygems.org'
 
-gem 'rails', '3.1.0.rc4'
-gem 'sprockets', '2.0.0.beta.10' # newer versions don't work with rails 3.1.0.rc4
+gem 'rails', '3.1.0.rc5'
 
 # DB
 gem 'sqlite3'
@@ -9,12 +8,13 @@ gem 'sqlite3'
 # JS
 gem 'jquery-rails'
 
-# Asset template engines
-gem 'json'
-gem 'sass'
-gem 'coffee-script'
-gem 'therubyracer', '0.8.1'
-gem 'uglifier'
+# Gems used only for assets and not required
+# in production environments by default.
+group :assets do
+  gem 'sass-rails', "~> 3.1.0.rc"
+  gem 'coffee-rails', "~> 3.1.0.rc"
+  gem 'uglifier'
+end
 
 # Authentication and Authorization
 gem 'devise'
@@ -44,4 +44,7 @@ group :development, :test do
   gem 'capybara'
   gem 'database_cleaner'
   gem 'launchy'
+  
+  # Pretty printed test output
+  gem 'turn', :require => false
 end
