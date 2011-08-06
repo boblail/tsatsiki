@@ -2,7 +2,7 @@
 
 Tsatsiki is a Project Management tool that uses Cucumber Features for tickets.
 
-## Getting Started
+### Getting Started
 
 Check out the repo:
 
@@ -17,19 +17,22 @@ Run migrations and seed the site with an administrator account and the Project d
 
     rake db:setup
 
-#### Configuring Tsatsiki
+Finally run Tsatsiki. You can either create a new account or log in with the username **admin** 
+and the password **password**.
 
-In order for [Devise](https://github.com/plataformatec/devise) to send a Password Reset email and 
+    rails s
+
+### Configuring Tsatsiki to Send Emails
+
+In order for [Devise](https://github.com/plataformatec/devise) to send password reset emails and 
 for [Devise Invitable](https://github.com/scambra/devise_invitable) to send invitations, Tsatsiki 
-needs to know how to send emails from your computer.
+needs to know how to send email from your computer.
 
 To configure Tsatsiki to send email, rename the `email.yml.example` file to `email.yml` and set
 its properties as you would [ActionMailer's](http://guides.rubyonrails.org/action_mailer_basics.html).
 
-Finally run Tsatsiki. You can either create a new account or log in with the username **admin** 
-and the password **password**.
 
-## Running Cucumber from the Browser
+### Running Cucumber from the Browser
 
 Tsatsiki can execute Cucumber on a project's features. As tests are completed, their results are
 relayed back to the client through a WebSocket server. The server is run automatically when
@@ -37,3 +40,6 @@ Tsatsiki is started (see `config/initializers/start_websocket_server.rb`), but y
 the server manually, check its status, stop, or restart it from the command line by running:
 
     script/websocket-server
+
+By default the server runs on host **127.0.0.1** and port **8080**. You can change these settings
+by editing `config/websocket.yml`.
