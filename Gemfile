@@ -8,6 +8,9 @@ gem 'sqlite3'
 # JS
 gem 'jquery-rails'
 
+# Right now Rails seems to still require this:
+gem 'therubyracer'
+
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
