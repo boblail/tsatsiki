@@ -1,9 +1,9 @@
 .scenario-tag {
-  &.tag-human { background-image: url('<%= "#{Rails.configuration.try(:relative_url_root)}#{asset_path("icons/user.png")}" %>'); }
-  &.tag-javascript { background-image: url('<%= "#{Rails.configuration.try(:relative_url_root)}#{asset_path("icons/script_code.png")}" %>'); }
+  &.tag-human { background-image: url('<%= "#{Rails.configuration.try(:relative_url_root)}/icons/user.png" %>'); }
+  &.tag-javascript { background-image: url('<%= "#{Rails.configuration.try(:relative_url_root)}/icons/script_code.png" %>'); }
   &.tag-wip,
-  &.tag-todo { background-image: url('<%= "#{Rails.configuration.try(:relative_url_root)}#{asset_path("icons/page_white_edit.png")}" %>'); }
-  &.tag-new { background-image: url('<%= "#{Rails.configuration.try(:relative_url_root)}#{asset_path("icons/page_white.png")}" %>'); }
+  &.tag-todo { background-image: url('<%= "#{Rails.configuration.try(:relative_url_root)}/icons/page_white_edit.png" %>'); }
+  &.tag-new { background-image: url('<%= "#{Rails.configuration.try(:relative_url_root)}/icons/page_white.png" %>'); }
 }
 
 .tree {

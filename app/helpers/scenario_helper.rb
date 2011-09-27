@@ -35,7 +35,7 @@ module ScenarioHelper
   
   def scenario_icon_for(tag)
     explanation = KNOWN_TAGS[tag]
-    explanation && image_tag("icons/#{explanation[0]}", :class => "icon", :height => 14, :width => 14, :alt => explanation[1], :title => explanation[1])
+    explanation && image_tag("/icons/#{explanation[0]}", :class => "icon", :height => 14, :width => 14, :alt => explanation[1], :title => explanation[1])
   end
   
   
