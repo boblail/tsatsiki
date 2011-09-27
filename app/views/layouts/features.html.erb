@@ -3,11 +3,11 @@
 <div class="split-screen">
   <div class="left">
     <ol class="project-statistics">
-      <%= project_statistics :features, :completed, :todo, :proposed, :boundaries, :undefined %>
+      <%= project_statistics :features, :completed, :todo, :proposed, :human, :undefined %>
     </ol>
     
     <ol class="project-statistics extras">
-      <%= project_statistics :started, :human %>
+      <%= project_statistics :started, :boundaries %>
     </ol>
     
     <input type="text" id="feature_filter" />
