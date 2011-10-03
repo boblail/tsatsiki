@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Test Plan - Tsatsiki</title>
+  <%= stylesheet_link_tag "application" %>
+  <%= javascript_include_tag "application" %>
+  <%= csrf_meta_tags %>
+  <style type="text/css">
+    html, body, h1, h2, h3, h4 { font-family: 'Times New Roman'; }
+    body#interior {
+      padding-top: 32px;
+    }
+    h1 { margin-top: 0; }
+    h2 {
+      font-size: 1.25em;
+      font-weight: bold;
+      margin: 3em 0 1.5em 0;
+    }
+    h3 {
+      font-size: 1em;
+      font-weight: bold;
+      text-decoration: underline;
+      margin-bottom: 0.5em;
+    }
+    .scenario-steps {
+      margin-left: 2em;
+    }
+  </style>
+</head>
+<body id="interior">
+  <%= yield %>
+</body>
+</html>

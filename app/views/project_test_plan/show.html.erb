@@ -1,0 +1,19 @@
+<h1>Test Plan for <%= @project.name %></h1>
+
+<% with_each_leaf_feature(@features) do |ancestors, feature| %>
+  <h2><%= (ancestors.map(&:name) + [feature.name]).join(" > ") %></h2>
+  <% feature.scenarios.select {|s| s.completed? && s.human?}.each do |scenario| %>
+    <h3><%= scenario.name %></h3>
+    <div class="scenario-steps">
+      <ul>
+        <%= render :partial => "scenarios/step", :collection => scenario.steps %>
+        <% if scenario.examples -%>
+          <li>
+            <span class="scenario-step-term">Examples:</span>
+            <%= render :partial => "partials/table", :object => scenario.examples %>
+          </li>
+        <% end -%>
+      </ul>
+    </div>
+  <% end %>
+<% end %>

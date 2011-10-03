@@ -6,6 +6,7 @@ Tsatsiki::Application.routes.draw do
   
   resources :projects do
     resources :users, :controller => "project_users"
+    resource :test_plan, :controller => "project_test_plan"
   end
   
   constraints :project_id => /\d+/, :index => /\d+/ do
