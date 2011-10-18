@@ -12,6 +12,7 @@ Check out the repo:
 Install the bundle:
 
     bundle install
+    git submodule update --init
 
 Run migrations and seed the site with an administrator account and the Project data for Tsatsiki:
 
