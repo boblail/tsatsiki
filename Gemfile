@@ -3,7 +3,7 @@ source 'http://rubygems.org'
 gem 'rails', '3.1.0'
 
 # DB
-gem 'sqlite3'
+# gem 'sqlite3'
 gem 'mysql2'
 
 # JS
