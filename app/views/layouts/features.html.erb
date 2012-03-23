@@ -39,6 +39,7 @@
       project_id: <%= @project.id %>
     });
     new Collapsable('#feature_tree');
+    var canRename = <%= can?(:edit, @project => Scenario) %>;
     var renamer = new Renamer();
     
     
@@ -89,15 +90,15 @@
     }
     
     
-    
-    $('a.scenario-steps-link').click(updateSelectedScenario)
-                              .pjax('#scenario')
-                              .dblclick(function() { renamer.rename(selectedItem) });
+    var $scenarios = $('a.scenario-steps-link');
+    $scenarios.click(updateSelectedScenario).pjax('#scenario');
+    if(canRename) { 
+      $scenarios.dblclick(function() { renamer.rename(selectedItem) });
+    }
     
     $('.scenario-title a').pjax('#scenario');
     
-    $('a.feature-new-scenario').click(showOrHideNewScenario)
-                               .pjax('#scenario');
+    $('a.feature-new-scenario').click(showOrHideNewScenario).pjax('#scenario');
     
     $('#scenario').delegate('a#cancel_new_scenario', 'click', function(event) {
       hideNewScenario(event);
@@ -162,7 +163,7 @@
     // !todo: these don't work unless the feature tree is focusable
     $('#features').keyup(function(e) {
       if(selectedItem) {
-        (e.keyCode == 13) && renamer.rename(selectedItem);
+        (e.keyCode == 13) && canRename && renamer.rename(selectedItem);
         if(e.keyCode == 38) {
           e.preventDefault();
           e.stopImmediatePropagation();

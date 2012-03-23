@@ -15,8 +15,10 @@
       return false;
     });
     
+<% if can?(:edit, @project => Scenario) %>
     var renamer = new Renamer();
     $('a.scenario-steps-link').click(function() { renamer.rename($(this)) });
+<% end %>
     
   });
 </script>
