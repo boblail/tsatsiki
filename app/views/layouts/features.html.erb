@@ -39,6 +39,7 @@
       project_id: <%= @project.id %>
     });
     new Collapsable('#feature_tree');
+    var renamer = new Renamer();
     
     
     
@@ -91,7 +92,7 @@
     
     $('a.scenario-steps-link').click(updateSelectedScenario)
                               .pjax('#scenario')
-                              .dblclick(renameSelectedItem);
+                              .dblclick(function() { renamer.rename(selectedItem) });
     
     $('.scenario-title a').pjax('#scenario');
     
@@ -161,7 +162,7 @@
     // !todo: these don't work unless the feature tree is focusable
     $('#features').keyup(function(e) {
       if(selectedItem) {
-        (e.keyCode == 13) && renameSelectedItem();
+        (e.keyCode == 13) && renamer.rename(selectedItem);
         if(e.keyCode == 38) {
           e.preventDefault();
           e.stopImmediatePropagation();
@@ -184,60 +185,6 @@
     }
     
     
-    
-    function renameSelectedItem() {
-      if(selectedItem) {
-        var caption = selectedItem.parent(),
-            input = $(document.createElement('input'));
-        
-        input.attr('type', 'text')
-             .addClass('renamer')
-             .blur(abortRename)
-             .keyup(__onKeyUpInRename)
-             .val(selectedItem.text())
-             .prependTo(caption)
-             .select();
-        selectedItem.addClass('being-renamed').hide();
-      }
-    }
-    
-    function commitRename() {
-      if(selectedItem) {
-        var input = $('.renamer'),
-            name  = input.val();
-        if(name) {
-          selectedItem.html(name);
-          saveName(selectedItem.attr('href'), name);
-        }
-      }
-      __endRename();
-    }
-    
-    function abortRename() {
-      __endRename();
-    }
-    
-    function __endRename() {
-      $('.renamer').remove();
-      $('.being-renamed').show();
-    }
-    
-    function __onKeyUpInRename(e) {
-      if(e.keyCode == 13) { // Enter
-        e.stopImmediatePropagation();
-        commitRename();
-      }
-      if(e.keyCode == 27) { // Escape
-        e.stopImmediatePropagation();
-        abortRename();
-      }
-    }
-    
-    
-    
-    function saveName(url, name) {
-      $.put(url, {scenario: {name: name}});
-    }
     
     
     

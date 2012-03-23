@@ -7,6 +7,7 @@ gem 'sqlite3'
 
 # JS
 gem 'jquery-rails'
+gem 'underscore-rails'
 
 # Right now Rails seems to still require this:
 gem 'therubyracer'

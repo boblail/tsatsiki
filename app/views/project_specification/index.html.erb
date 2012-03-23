@@ -14,5 +14,9 @@
       e.preventDefault();
       return false;
     });
+    
+    var renamer = new Renamer();
+    $('a.scenario-steps-link').click(function() { renamer.rename($(this)) });
+    
   });
 </script>
