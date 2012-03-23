@@ -1,0 +1,35 @@
+body.projectSpecificationIndex {
+  background: #e0e0e0;
+  
+  #page {
+    margin: .25in auto;
+    width: 7.5in;
+    border: 1px solid #555;
+    padding: .5in;
+    background: white;
+    position: relative;
+    
+    h1 { margin: 0; }
+    h2 {
+      font-size: 1em;
+      margin: 0 0 1.5em 0;
+      color: #555;
+      
+      em { 
+        font-style: normal;
+        font-weight: bold;
+      }
+    }
+    
+    #feature_tree { margin-left: -14px; }
+    
+    .tree > li { background: none; }
+    
+    .feature > .caption {
+      background: none;
+      color: black;
+      font-size: 1em;
+    }
+    .feature-new-scenario { display: none !important; }
+  }
+}

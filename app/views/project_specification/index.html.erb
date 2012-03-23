@@ -1,0 +1,18 @@
+<div id="page">
+  <h1><%= @project.name %></h1>
+  <h2>Software Requirements Specification ✪ <em><%= Date.today.strftime("%B %d, %Y")%></em></h2>
+  <div>
+    <%= render_features(@project.features, :id => "feature_tree") %>
+  </div>
+</div>
+
+<script type="text/javascript">
+  $(function() {
+    App.debug('loaded');
+    $('.feature-new-scenario').remove();
+    $('#feature_tree').delegate('.scenario a', 'click', function(e) {
+      e.preventDefault();
+      return false;
+    });
+  });
+</script>

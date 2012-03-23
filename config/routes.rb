@@ -10,6 +10,8 @@ Tsatsiki::Application.routes.draw do
   end
   
   constraints :project_id => /\d+/, :index => /\d+/ do
+    match '/projects/:project_id/specification' => 'project_specification#index', :via => :get, :as => :project_specification
+    
     match '/projects/:project_id/features/*feature/new' => 'scenarios#new', :via => :get, :as => :new_scenario
     match '/projects/:project_id/features/*feature/:index/edit' => 'scenarios#edit', :via => :get, :as => :edit_scenario
     match '/projects/:project_id/features/*feature/:index' => 'scenarios#show', :via => :get, :as => :scenario

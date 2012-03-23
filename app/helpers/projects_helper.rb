@@ -26,6 +26,10 @@ module ProjectsHelper
     (request.path =~ /projects\/\d+\/features/) && "selected"
   end
   
+  def project_specification_class
+    (request.path =~ /projects\/\d+\/specification/) && "selected"
+  end
+  
   def edit_project_class
     (request.path =~ /projects\/\d+\/edit/) && "selected"
   end
