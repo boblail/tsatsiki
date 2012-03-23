@@ -4,6 +4,7 @@ gem 'rails', '3.1.0'
 
 # DB
 gem 'sqlite3'
+gem 'mysql2'
 
 # JS
 gem 'jquery-rails'
